@@ -1,6 +1,14 @@
-p {
+p,
+h1 {
   text-align: center;
   font-style: italic;
+}
+
+#howto p {
+  font-size: 1.5em;
+  font-style: normal;
+  max-width: 72ch;
+  margin: 2rem auto;
 }
 
 table {
