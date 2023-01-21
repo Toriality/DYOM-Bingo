@@ -1,0 +1,34 @@
+p {
+  text-align: center;
+  font-style: italic;
+}
+
+table {
+  border-collapse: collapse; /* merge border */
+  margin: auto;
+  width: 60%; /* adjust width */
+  height: 90vh;
+  margin: 0 auto; /* center table */
+}
+
+td {
+  border: 1px solid black; /* add border */
+  text-align: center; /* center text */
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 30px; /* add padding */
+  justify-content: center;
+}
+
+/* add hover effect */
+td:hover {
+  background-color: #ffeeaa;
+}
+
+.selected:hover {
+  background-color: #ffbb33;
+}
+
+.selected {
+  background-color: #ffbb33;
+}
