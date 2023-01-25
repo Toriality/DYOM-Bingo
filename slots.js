@@ -62,7 +62,7 @@ export const slots = [
   // Settings
   "Wanted stars enabled",
   "Wanted stars disabled",
-  'Mission has Intro Text (Appears in the upper-left after "Missiondeisgn by...")',
+  'Mission has Intro Text (Appears in the upper-left before "Missiondeisgn by...")',
   "Riot mode enabled",
   "No peds and cars on the streets",
 
