@@ -20,6 +20,27 @@ body {
   background: #2b37b3;
 }
 
+td span {
+  position: absolute;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  background-color: black;
+  color: #ccc;
+  padding: 5px 10px;
+  transition: opacity 600ms linear;
+  pointer-events: none;
+}
+td:hover span {
+  visibility: visible;
+  opacity: 100%;
+  position: absolute;
+  transform: translate(-125px, 25px);
+  width: 32ch;
+  opacity: 0.9;
+  z-index: 999;
+}
+
 .miniheader {
   display: flex;
   justify-content: space-between;
@@ -61,6 +82,7 @@ form {
 }
 
 .formdiv {
+  user-select: none;
   display: flex;
   justify-content: space-between;
   gap: 32px;
@@ -91,6 +113,7 @@ input[type="checkbox"] {
 button {
   margin-top: 1rem;
   font-size: 1.2rem;
+  user-select: none;
 }
 
 #howto p {
@@ -111,6 +134,7 @@ table {
   border-collapse: collapse;
   margin: auto 4rem;
   height: 90vh;
+  user-select: none;
 }
 
 td {

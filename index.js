@@ -36,6 +36,11 @@ button.addEventListener("click", () => {
       validSlot === false
     );
     addedStrings.push(randomSlot.string);
+    if (randomSlot.helperText) {
+      let helperText = document.createElement("span");
+      helperText.innerText = randomSlot.helperText;
+      thisSlot.appendChild(helperText);
+    }
   });
 });
 
@@ -46,10 +51,15 @@ for (let i = 0; i < 5; i++) {
     let randomSlot;
     let cell = document.createElement("td");
     do {
-      randomSlot = slots[Math.floor(Math.random() * slots.length)].string;
-      cell.textContent = randomSlot;
+      randomSlot = slots[Math.floor(Math.random() * slots.length)];
+      cell.textContent = randomSlot.string;
     } while (addedStrings.includes(cell.textContent));
-    addedStrings.push(randomSlot);
+    addedStrings.push(randomSlot.string);
+    if (randomSlot.helperText) {
+      let helperText = document.createElement("span");
+      helperText.innerText = randomSlot.helperText;
+      cell.appendChild(helperText);
+    }
     row.appendChild(cell);
   }
   table.appendChild(row);
