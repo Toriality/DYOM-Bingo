@@ -7,6 +7,38 @@ let table = document.createElement("table");
 // List of inserted strings
 let addedStrings = [];
 
+// Options
+let limitNeedsTimer = false;
+let limitNeedsTTS = false;
+let limitNeedsTranslator = false;
+let limitNeedsInfo = false;
+let button = document.getElementById("btn");
+button.addEventListener("click", () => {
+  addedStrings = [];
+  limitNeedsInfo = document.getElementById("needsInfo").checked;
+  limitNeedsTTS = document.getElementById("needsTTS").checked;
+  limitNeedsTimer = document.getElementById("needsTimer").checked;
+  limitNeedsTranslator = document.getElementById("needsTranslator").checked;
+  let existingSlots = document.querySelectorAll("td");
+  existingSlots.forEach((thisSlot) => {
+    let randomSlot;
+    let validSlot;
+    do {
+      validSlot = true;
+      randomSlot = slots[Math.floor(Math.random() * slots.length)];
+      if (randomSlot.needsInfo && limitNeedsInfo) validSlot = false;
+      if (randomSlot.needsTimer && limitNeedsTimer) validSlot = false;
+      if (randomSlot.needsTranslator && limitNeedsTranslator) validSlot = false;
+      if (randomSlot.needsTTS && limitNeedsTTS) validSlot = false;
+      thisSlot.innerText = randomSlot.string;
+    } while (
+      addedStrings.includes(thisSlot.textContent) ||
+      validSlot === false
+    );
+    addedStrings.push(randomSlot.string);
+  });
+});
+
 // Create a 5x5 bingo table
 for (let i = 0; i < 5; i++) {
   let row = document.createElement("tr");
@@ -14,7 +46,7 @@ for (let i = 0; i < 5; i++) {
     let randomSlot;
     let cell = document.createElement("td");
     do {
-      randomSlot = slots[Math.floor(Math.random() * slots.length)];
+      randomSlot = slots[Math.floor(Math.random() * slots.length)].string;
       cell.textContent = randomSlot;
     } while (addedStrings.includes(cell.textContent));
     addedStrings.push(randomSlot);
@@ -22,7 +54,6 @@ for (let i = 0; i < 5; i++) {
   }
   table.appendChild(row);
 }
-
 // Get main div and append created table
 let dyom = document.getElementById("dyom");
 dyom.appendChild(table);

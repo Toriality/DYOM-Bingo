@@ -9,6 +9,27 @@
   </head>
   <body>
     <div><p>Refresh the page to get new random slots</p></div>
+    <div id="options">
+      <form>
+        <label for="needsTranslator">
+          Limit slots that require translator:
+        </label>
+        <input type="checkbox" id="needsTranslator" name="needsTranslator" />
+
+        <label for="needsTTS">Limit slots that require TTS:</label>
+        <input type="checkbox" id="needsTTS" name="needsTTS" />
+
+        <label for="needsInfo">Limit slots that require DYOM Info:</label>
+        <input type="checkbox" id="needsInfo" name="needsInfo" />
+
+        <label for="needsTimer">
+          Limit slots that require knwoing the in-game time:
+        </label>
+        <input type="checkbox" id="needsTimer" name="needsTimer" />
+
+        <button type="button" id="btn">Generate new slot</button>
+      </form>
+    </div>
     <div id="dyom"></div>
     <script src="index.js" type="module"></script>
     <div>
