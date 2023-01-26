@@ -77,3 +77,34 @@ cells.forEach(function (cell) {
     else cell.classList.add("selected");
   });
 });
+
+// :has alternative for Firefox
+let formLabels = document.querySelectorAll(".formdiv label");
+let checkboxes = document.querySelectorAll("input");
+checkboxes.forEach((input) => {
+  input.addEventListener("change", () => {
+    let parent = input.parentElement;
+    if (input.checked) {
+      parent.style.backgroundColor = "rgba(255, 204, 204, 0.75)";
+      parent.style.borderColor = "rgba(255, 49, 49, 0.75)";
+    } else {
+      parent.style.backgroundColor = "#eee";
+      parent.style.borderColor = "#ccc";
+    }
+    parent.addEventListener("mouseenter", () => {
+      if (!input.checked) {
+        parent.style.backgroundColor = "#ffffcf";
+        parent.style.borderColor = "#ffdf70";
+      }
+    });
+    parent.addEventListener("mouseleave", () => {
+      if (!input.checked) {
+        parent.style.backgroundColor = "#eee";
+        parent.style.borderColor = "#ccc";
+      }
+    });
+  });
+});
+formLabels.forEach((label) => {
+  label.addEventListener("");
+});
