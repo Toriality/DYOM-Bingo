@@ -92,7 +92,7 @@ export const slots = [
   },
   {
     slotType: "Mission Info",
-    string: "Mission was made this year",
+    string: "Mission was made within a year",
     needsInfo: true,
   },
   {
