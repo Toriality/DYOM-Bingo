@@ -23,7 +23,35 @@ const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(date);
 const year = date.getFullYear();
 
 export const slots = [
+  // TTS
+  {
+    slotType: "TTS",
+    string: "Has a male TTS voice",
+    needsTTS: true,
+  },
+  {
+    slotType: "TTS",
+    string: "Has a female TTS voice",
+    needsTTS: true,
+  },
+
   // Start
+  {
+    slotType: "Start",
+    string: "Starts at San Fierro",
+  },
+  {
+    slotType: "Start",
+    string: "Starts at Las Venturas",
+  },
+  {
+    slotType: "Start",
+    string: "Starts at Los Santos",
+  },
+  {
+    slotType: "Start",
+    string: "Starts at an interior",
+  },
   {
     slotType: "Start",
     string: "Starts at Grove Street",
@@ -393,6 +421,12 @@ export const slots = [
     slotType: "Actors",
     string: "An actor has a dying animation",
   },
+  {
+    slotType: "Actors",
+    string:
+      "An actor has a name that does not corresponds to the original game character's name",
+    helperText: "Ex: Actor has Ryder skin but his name is Jorge",
+  },
 
   // Checkpoints
   {
@@ -416,6 +450,12 @@ export const slots = [
     slotType: "Checkpoints",
     string:
       "Checkpoint near yellow marker without teleporting you to the interior",
+  },
+  {
+    slotType: "Checkpoints",
+    string:
+      "Checkpoint inside the car you need to enter (instead of a car objective)",
+    helperText: `Because older DYOM versions lack the car objective, designers used to insert a checkpoint inside where the cars' driver seat is located to make a "Enter the car"-like objective`,
   },
 
   // Locations
@@ -462,6 +502,10 @@ export const slots = [
   {
     slotType: "Locations",
     string: "Uses LSPD Parking Lot",
+  },
+  {
+    slotType: "Locations",
+    string: "Uses Madd Dog's mansion",
   },
 
   // Objects and Pickups
@@ -540,5 +584,21 @@ export const slots = [
   {
     slotType: "Others",
     string: "Mission ends abruptly",
+  },
+  {
+    slotType: "Others",
+    string: "Achieve Hitman skill with one weapon",
+    helperText:
+      'There are three levels of skills: "Poor", "Gangster" and "Hitman". DYOM missions starts at poor skill and it cannot be changed',
+  },
+  {
+    slotType: "Others",
+    string: "Objective inside interior without teleporting you to it",
+  },
+  {
+    slotType: "Others",
+    string: "Meta-DYOM / Breaking the 4th wall",
+    helperText:
+      "Makes references to the own mission, DYOM modification, DYOM users or DYOM features",
   },
 ];
