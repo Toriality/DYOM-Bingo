@@ -105,6 +105,3 @@ checkboxes.forEach((input) => {
     });
   });
 });
-formLabels.forEach((label) => {
-  label.addEventListener("");
-});

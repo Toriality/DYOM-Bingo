@@ -23,7 +23,7 @@ const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(date);
 const year = date.getFullYear();
 
 export const slots = [
-  // // Start
+  // Start
   {
     slotType: "Start",
     string: "Starts at Grove Street",
@@ -65,7 +65,7 @@ export const slots = [
     string: "Does not start with a cutscene",
   },
 
-  // // Mission info
+  // Mission info
   {
     slotType: "Mission Info",
     string: "Translated mission",
@@ -98,9 +98,8 @@ export const slots = [
   {
     slotType: "Mission Info",
     string: "Mission was made within a year",
-    helperText: `This mission was published between ${month}, ${
-      year - 1
-    } and ${month}, ${year}`,
+    helperText: `This mission was published between 
+    ${month}, ${year - 1} and ${month}, ${year}`,
     needsInfo: true,
   },
   {
