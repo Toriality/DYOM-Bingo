@@ -79,7 +79,6 @@ cells.forEach(function (cell) {
 });
 
 // :has alternative for Firefox
-let formLabels = document.querySelectorAll(".formdiv label");
 let checkboxes = document.querySelectorAll("input");
 checkboxes.forEach((input) => {
   input.addEventListener("change", () => {
