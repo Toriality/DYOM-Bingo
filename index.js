@@ -21,6 +21,7 @@ button.addEventListener("click", () => {
   limitNeedsTranslator = document.getElementById("needsTranslator").checked;
   let existingSlots = document.querySelectorAll("td");
   existingSlots.forEach((thisSlot) => {
+  	thisSlot.className = "";
     let randomSlot;
     let validSlot;
     do {
