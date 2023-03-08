@@ -33,7 +33,6 @@ td span {
 }
 td:hover span {
   visibility: visible;
-  opacity: 100%;
   position: absolute;
   transform: translate(-125px, 25px);
   width: 32ch;
@@ -160,8 +159,7 @@ td:hover {
 }
 
 #version p {
-  margin: 0;
-  margin-top: 10rem;
+  margin: 10rem 0 0;
   color: #ff8888;
   text-align: center;
 }
