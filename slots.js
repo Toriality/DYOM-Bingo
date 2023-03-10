@@ -3,18 +3,13 @@
     slotType: "Slot Type"
     string: "Insert your string here",
     helperText: "Helper text"
-    needsTimer: boolean,
-    needsTranslator: boolean,
-    needsTTS: boolean,
-    needsInfo: boolean,
+    requires: array of requirements (for example ["TTS", "Info"])
+    
   }
   // slotType: required field
   // string: required field
-  // helperText: optional field. displays the helper text in a little box when you hover the mouse over the slot
-  // needsTimer: optional field. put true if you need to know the in-game time to mark this slot
-  // needsTranslator: optional field. put true if user needs Rainbomizer version that has DYOM translation feature
-  // needsTTS: optional field. put true if user needs Rainbomizer version that has DYOM TTS feature
-  // needsInfo: optional field. put true if user needs Rainbomizer version that has DYOM mission infos feature
+  // helperText: optional field
+  // requires: optional field
 */
 
 // Get current date
@@ -22,17 +17,39 @@ const date = new Date();
 const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(date);
 const year = date.getFullYear();
 
+export const requirements = [
+
+    {
+        name: "Translator",
+        description: "Limit slots that require translator"
+    },
+    {
+        name: "TTS",
+        description: "Limit slots that require TTS"
+    },
+    {
+        name: "Info",
+        description: "Limit slots that require DYOM Info"
+    },
+    {
+        name: "Time",
+        description: "Limit slots that require in-game timer"
+    },
+
+]
+
+
 export const slots = [
   // TTS
   {
     slotType: "TTS",
     string: "Has a male TTS voice",
-    needsTTS: true,
+    requires: ["TTS"]
   },
   {
     slotType: "TTS",
     string: "Has a female TTS voice",
-    needsTTS: true,
+    requires: ["TTS"]
   },
 
   // Start
@@ -82,7 +99,7 @@ export const slots = [
     slotType: "Start",
     string: "Starts at 8:00 AM",
     helperText: "Default time of the day in DYOM",
-    needsTimer: true,
+    requires: ["Time"]
   },
   {
     slotType: "Start",
@@ -99,7 +116,7 @@ export const slots = [
     string: "Translated mission",
     helperText:
       "Mark this slot if your mission has been translated by the DYOM Rainbomizer auto-translate feature",
-    needsTranslator: true,
+    requires: ["Translator"]
   },
   {
     slotType: "Mission Info",
@@ -128,13 +145,13 @@ export const slots = [
     string: "Mission was made within a year",
     helperText: `This mission was published between 
     ${month}, ${year - 1} and ${month}, ${year}`,
-    needsInfo: true,
+    requires: ["Info"]
   },
   {
     slotType: "Mission Info",
     string: "Mission was made ten years ago or more",
     helperText: "DYOM's first version was released on November 30, 2008",
-    needsInfo: true,
+    requires: ["Info"]
   },
   {
     slotType: "Mission Info",
@@ -203,7 +220,7 @@ export const slots = [
     string: "Rainbomizer fails to translate the mission",
     helperText:
       "Sometimes the auto-translate feature encounters a problem trying to translate the current mission",
-    needsTranslator: true,
+    requires:["Translate"]
   },
   {
     slotType: "Issues",

@@ -70,13 +70,14 @@ td:hover span {
   display: flex;
 }
 
-#options,
+#rightPanel,
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-#options {
+#rightPanel {
   margin: 1rem 4rem;
 }
 
@@ -92,22 +93,22 @@ input[type="checkbox"] {
   appearance: none;
   margin: 0;
 }
-.formdiv label {
+.formdiv {
+  flex: 1;
   text-align: center;
-  width: 100%;
+  width: 90%;
   border-radius: 8px;
   padding: 16px 8px;
   background-color: #eee;
   border: 0.6rem solid #ccc;
 }
-.formdiv label:has(input:checked) {
-  background-color: rgba(255, 204, 204, 0.75);
-  border-color: rgba(255, 49, 49, 0.75);
-}
-.formdiv label:hover {
+
+.formdiv:hover {
   background-color: #ffffcf;
   border-color: #ffdf70;
 }
+
+
 
 button {
   margin-top: 1rem;
