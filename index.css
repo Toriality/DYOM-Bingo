@@ -137,6 +137,29 @@ table {
   user-select: none;
 }
 
+
+#scoreBox {
+    display:flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 5px;
+    background-color: #ffffcf;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    user-select: none;
+    border-radius: 5px;
+    border: 10px solid #3daf20;
+    border-color: #ffdf70;
+    font-size: 1.1rem;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  
+}
+
+
+
 td {
   font-weight: bolder;
   border: 0.6rem solid rgba(43, 55, 179, 0.8);

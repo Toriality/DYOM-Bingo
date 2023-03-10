@@ -8,9 +8,26 @@ let table = document.createElement("table");
 let button = document.getElementById("btn");
 let dyom = document.getElementById("dyom");
 
+//Score is stored locally, set to 0 if not set already
+if(!localStorage.getItem("scoreWin"))
+    localStorage.setItem("scoreWin", 0);
+
+if(!localStorage.getItem("scoreLose"))
+    localStorage.setItem("scoreLose", 0);
+
+
+//Load score and display it
+let scoreWin = localStorage.getItem("scoreWin");
+let scoreLose = localStorage.getItem("scoreLose");
+document.getElementById("scoreString").innerText = "Score: "+scoreWin+"-"+scoreLose;
+
+//Player can win once per tile generation, if player already won, don't increment score any more 
+let alreadyWon = false;
+
+
+
 //Requirements list
 let requirementsList = [];
-
 
 
 //On option click, change color and add/remove requirement name from the list
@@ -29,6 +46,7 @@ let optionClicked = (e) => {
 
 //Called on page refresh and on clicking "Generate new slot" b
 let regenerateSlots = () => {
+
     let existingSlots = document.querySelectorAll("td");
 
     //Filter out slots which require selected options, so there is no need to check for that later
@@ -41,7 +59,8 @@ let regenerateSlots = () => {
 
 
     existingSlots.forEach((thisSlot) => {
-        thisSlot.className = "";
+        thisSlot.selected = false;
+        thisSlot.style.backgroundColor = "";
         let randomSlot = filteredSlots[Math.floor(Math.random() * filteredSlots.length)];
         thisSlot.innerText = randomSlot.string;
 
@@ -55,6 +74,66 @@ let regenerateSlots = () => {
         }
     });
 };
+
+//Called every time a tile was clicked on
+let tileClicked = (e) =>{
+    //Set/reset selection
+    let tile = e.target;
+    tile.selected = !tile.selected;
+    
+ 
+    let allTiles = Array.from(document.getElementsByTagName("td"));
+    let selectedTiles = allTiles.filter(tile => tile.selected);
+    let winningTiles = [];
+    //Clear tile colours
+    allTiles.forEach(tile =>tile.style.backgroundColor = "");
+    //Set colour on selected tiles
+    selectedTiles.forEach(tile => tile.style.backgroundColor = "#ffdf70")
+
+    //Search for winning tiles/bingo
+
+    for(let i = 0; i<5; i++){
+        let selectedInRow = allTiles.filter(tile=>tile.y==i).filter(tile=>tile.selected);
+        let selectedInColumn = allTiles.filter(tile=>tile.x==i).filter(tile=>tile.selected);
+        if(selectedInColumn.length==5)
+            winningTiles = winningTiles.concat(selectedInColumn)
+        if(selectedInRow.length==5)
+            winningTiles = winningTiles.concat(selectedInRow)
+    }
+    let selectedDiagonally1 = allTiles.filter(tile=>tile.y==tile.x).filter(tile=>tile.selected)
+    let selectedDiagonally2 = allTiles.filter(tile=>(4-tile.y)==tile.x).filter(tile=>tile.selected)
+    if(selectedDiagonally1.length==5)
+        winningTiles = winningTiles.concat(selectedDiagonally1)
+    if(selectedDiagonally2.length==5)
+        winningTiles = winningTiles.concat(selectedDiagonally2)   
+
+    //On winning condition
+    if(winningTiles.length>0 && !alreadyWon){
+        scoreWin++;
+
+        localStorage.setItem("scoreWin", scoreWin);
+        alreadyWon=true;
+        document.getElementById("scoreString").innerText = "Score: "+scoreWin+"-"+scoreLose;
+    }
+    //set different color for winning tiles
+    winningTiles.forEach(tile => tile.style.backgroundColor = "#8dff70")
+
+
+}
+
+//If no bingo, and regenerating slots, increment scoreLose
+let buttonHandler = () => {
+    if(!alreadyWon){
+        scoreLose++;
+
+        localStorage.setItem("scoreLose", scoreLose);
+        document.getElementById("scoreString").innerText = "Score: "+scoreWin+"-"+scoreLose;
+    }
+
+    alreadyWon=false;
+    regenerateSlots();
+}
+
 
 
 //Create option buttons from a requirement list
@@ -78,19 +157,25 @@ requirements.forEach((req) => {
 })
 
 
+
+
+
+
 // Create a 5x5 bingo table and add it to dyom div
 for (let i = 0; i < 5; i++) {
   let row = document.createElement("tr");
   for (let j = 0; j < 5; j++) {
     let cell = document.createElement("td");
-    cell.addEventListener("click", () => cell.className = cell.className=="selected"?"":"selected");
+    cell.y = i;
+    cell.x = j;
+    cell.addEventListener("click", tileClicked);
     row.appendChild(cell);
   }
   table.appendChild(row);
 }
 dyom.appendChild(table);
 
-button.addEventListener("click", regenerateSlots);
+button.addEventListener("click", buttonHandler);
 regenerateSlots();
 
 
