@@ -218,8 +218,6 @@ button:active {
 
     /*Bingo Board*/
     .play-area {
-        display: flex;
-        flex-direction: column;
         font-size: 1.4rem;
     }
 
@@ -228,13 +226,7 @@ button:active {
     }
 
     td {
-        font-weight: bolder;
-        border: 0.6rem solid rgba(43, 55, 179, 0.8);
-        text-align: center;
-        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-        width: 16rem;
         height: 10rem;
-        padding: 1.6rem;
     }
 
     /*Options*/
@@ -252,23 +244,11 @@ button:active {
     /*Footer*/
 
     #out {
-        background-color: #000000;
-        text-align: center;
         border-top: 1rem solid #ffdf70;
         padding: 2rem;
     }
     
-    #out h1 {
-        color: #ffdf70;
-        font-size: 3.6rem;
-        margin: 5rem auto;
-    }
-    
     #out p {
-        color: #ffffff;
-        max-width: 70rem;
-        font-size: 2rem;
-        text-align: justify;
         margin: 0 5rem;
         margin-bottom: 3.6rem;
     }
@@ -278,8 +258,6 @@ button:active {
 
     /*Bingo Board*/
     .play-area {
-        display: flex;
-        flex-direction: column;
         font-size: 1.4rem;
         margin: 2rem;
     }
@@ -289,13 +267,8 @@ button:active {
     }
 
     td {
-        font-weight: bolder;
-        border: 0.6rem solid rgba(43, 55, 179, 0.8);
-        text-align: center;
-        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
         width: 12rem;
         height: 12rem;
-        padding: 1.6rem;
     }
 
     /*Options*/
@@ -349,7 +322,6 @@ button:active {
 
     .play-area {
         flex-direction: row;
-        font-size: 1.6rem;
         margin: 2rem;
     }
 
