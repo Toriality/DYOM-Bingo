@@ -1,0 +1,45 @@
+/*Bingo Board*/
+.play-area {
+    font-size: 1.4rem;
+    margin: 2rem;
+}
+
+#dyom {
+    overflow-x: unset;
+}
+
+td {
+    width: 12rem;
+    height: 12rem;
+}
+
+/*Options*/
+
+#options form {
+    flex-direction: column;
+}
+
+.option-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.formdiv {
+    width: 20rem;
+    aspect-ratio: unset;
+}
+
+.generate-button {
+    margin: auto;
+}
+
+/*Footer*/
+
+#howto p {
+    margin: auto;
+    margin-bottom: 3rem;
+}
+
+#version p {
+    margin: auto;
+}
