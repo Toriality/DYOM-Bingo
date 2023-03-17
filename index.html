@@ -19,39 +19,13 @@
 
     <div id="main">
       <div id="dyom"></div>
-      <div id="options">
-        <form>
-          <div class="formdiv">
-            <label for="needsTranslator">
-              <input
-                type="checkbox"
-                id="needsTranslator"
-                name="needsTranslator"
-              />
-              Limit slots that require translator
-            </label>
-          </div>
-          <div class="formdiv">
-            <label for="needsTTS">
-              <input type="checkbox" id="needsTTS" name="needsTTS" />
-              Limit slots that require TTS
-            </label>
-          </div>
-          <div class="formdiv">
-            <label for="needsInfo">
-              <input type="checkbox" id="needsInfo" name="needsInfo" />
-              Limit slots that require DYOM Info
-            </label>
-          </div>
-          <div class="formdiv">
-            <label for="needsTimer">
-              <input type="checkbox" id="needsTimer" name="needsTimer" />
-              Limit slots that require knowing the in-game time
-            </label>
-          </div>
+      <div id="rightPanel">
+        <div id="scoreBox">
+          <span id="scoreString"></span>
+        </div>
+        <div id="options"></div>
 
-          <button type="button" id="btn">Generate new slot</button>
-        </form>
+        <button type="button" id="btn">Generate new slot</button>
       </div>
       <script src="index.js" type="module"></script>
     </div>
@@ -77,8 +51,8 @@
           number of slots by contributing to the source code at the link above.
         </p>
         <p>
-          Although the missions are randomly picked, and you have no control over
-          their content, this Bingo game still does not consist entirely of
+          Although the missions are randomly picked, and you have no control
+          over their content, this Bingo game still does not consist entirely of
           luck. There are a few techniques you can use to beat your opponents.
           Completing missions as quickly as possible so that you gain new
           content faster, or skipping missions that do not seem to have any
@@ -87,7 +61,8 @@
         </p>
       </div>
       <div id="version">
-        <p>Version: 1.1</p>
+        <p>Version: 1.2</p>
+        <a href="changelogs.html">Click to see the changelogs</a>
       </div>
     </div>
   </body>
