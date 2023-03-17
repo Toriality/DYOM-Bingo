@@ -56,6 +56,7 @@ td:hover span {
 }
 .miniheader a {
   color: #ffdf70;
+  margin: 8px;
 }
 
 #out {
@@ -70,13 +71,14 @@ td:hover span {
   display: flex;
 }
 
-#options,
+#rightPanel,
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-#options {
+#rightPanel {
   margin: 1rem 4rem;
 }
 
@@ -92,19 +94,17 @@ input[type="checkbox"] {
   appearance: none;
   margin: 0;
 }
-.formdiv label {
+.formdiv {
+  flex: 1;
   text-align: center;
-  width: 100%;
+  width: 90%;
   border-radius: 8px;
   padding: 16px 8px;
   background-color: #eee;
   border: 0.6rem solid #ccc;
 }
-.formdiv label:has(input:checked) {
-  background-color: rgba(255, 204, 204, 0.75);
-  border-color: rgba(255, 49, 49, 0.75);
-}
-.formdiv label:hover {
+
+.formdiv:hover {
   background-color: #ffffcf;
   border-color: #ffdf70;
 }
@@ -136,6 +136,25 @@ table {
   user-select: none;
 }
 
+#scoreBox {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 5px;
+  background-color: #ffffcf;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  user-select: none;
+  border-radius: 5px;
+  border: 10px solid #3daf20;
+  border-color: #ffdf70;
+  font-size: 1.1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
 td {
   font-weight: bolder;
   border: 0.6rem solid rgba(43, 55, 179, 0.8);
@@ -158,8 +177,12 @@ td:hover {
   background-color: #ffdf70;
 }
 
-#version p {
+#version {
   margin: 10rem 0 0;
   color: #ff8888;
   text-align: center;
+}
+
+#version a {
+  color: #ffdf70;
 }

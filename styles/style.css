@@ -26,7 +26,7 @@ html {
     font-size: 1.6rem;
 }
 
-.miniheader span {
+.miniheader p {
     color: #ffffff;
     font-weight: bold;
     margin: 1rem 0;
@@ -105,63 +105,38 @@ td:hover span {
 
 /*Options*/
 
-#options,
-form {
+#right-panel {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-#options form {
     flex-direction: column;
-}
-
-.option-buttons {
-    display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    margin: auto;
 }
 
-#options {
-    margin: 2rem 1rem;
+#scoreBox {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: bold;
 }
 
 .formdiv {
-    user-select: none;
     display: flex;
-    width: 12rem;
-    aspect-ratio: 1/1;
-    margin: 0.5rem;
-}
-
-input[type="checkbox"] {
-    appearance: none;
-    margin: 0;
-}
-
-.formdiv label {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-    width: 100%;
-    border-radius: 8px;
-    padding: 16px 8px;
-    background-color: #eee;
-    border: 0.6rem solid #ccc;
+    height: 5rem;
+    background-color: #ffffff;
+    border: #ccc solid 0.5rem;
+    border-radius: 0.8rem;
+    margin: 1rem auto;
+    font-weight: bold;
 }
 
-.formdiv label:has(input:checked) {
-    background-color: rgba(255, 204, 204, 0.75);
-    border-color: rgba(255, 49, 49, 0.75);
+.formdiv:hover {
+    background-color: #ccc;
 }
 
-.formdiv label:hover {
-    background-color: #ffffcf;
-    border-color: #ffdf70;
-}
-
-.generate-button {
-    text-align: center;
+.formdiv:active {
+    background-color: #ff8888;
+    border-color: #ff8888;
 }
 
 button {
@@ -170,8 +145,8 @@ button {
     font-size: 1.8rem;
     height: 5rem;
     background-color: #ffdf70;
-    border: #ffd745 solid 5px;
-    border-radius: 8px;
+    border: #ffd745 solid 0.5rem;
+    border-radius: 0.8rem;
     min-width: 20rem;
 }
 
@@ -212,4 +187,9 @@ button:active {
 #out #version p {
     color: #ff8888;
     text-align: center;
+}
+
+#out #version a {
+    color: #ffd745;
+    font-size: 1.6rem;
 }
