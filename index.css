@@ -56,6 +56,7 @@ td:hover span {
 }
 .miniheader a {
   color: #ffdf70;
+  margin: 8px;
 }
 
 #out {
@@ -108,8 +109,6 @@ input[type="checkbox"] {
   border-color: #ffdf70;
 }
 
-
-
 button {
   margin-top: 1rem;
   font-size: 1.2rem;
@@ -137,28 +136,24 @@ table {
   user-select: none;
 }
 
-
 #scoreBox {
-    display:flex;
-    flex-direction: column;
-    width: 90%;
-    padding: 5px;
-    background-color: #ffffcf;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-    user-select: none;
-    border-radius: 5px;
-    border: 10px solid #3daf20;
-    border-color: #ffdf70;
-    font-size: 1.1rem;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 5px;
+  background-color: #ffffcf;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  user-select: none;
+  border-radius: 5px;
+  border: 10px solid #3daf20;
+  border-color: #ffdf70;
+  font-size: 1.1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  
 }
-
-
 
 td {
   font-weight: bolder;
@@ -182,8 +177,12 @@ td:hover {
   background-color: #ffdf70;
 }
 
-#version p {
+#version {
   margin: 10rem 0 0;
   color: #ff8888;
   text-align: center;
+}
+
+#version a {
+  color: #ffdf70;
 }
