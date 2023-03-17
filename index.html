@@ -12,30 +12,50 @@
     <title>DYOM Bingo</title>
   </head>
   <body>
-    <header>
-      <div class="miniheader">
-        <p>Refresh the page to get new random slots</p>
-        <p>
-          <a href="https://github.com/Toriality/DYOM-Bingo" target="_blank">
-            Contribute to the code!
-          </a>
-        </p>
-      </div>
-    </header>
-    <main>
-      <div id="main">
-        <section class="play-area">
-          <div id="dyom"></div>
-          <div id="right-panel">
-            <div id="scoreBox">
-              <span id="scoreString"></span>
-            </div>
-            <div id="options"></div>
-    
-            <button type="button" id="btn">Generate new slot</button>
+    <div class="miniheader">
+      <p>Refresh the page to get new random slots</p>
+      <p>
+        <a href="https://github.com/Toriality/DYOM-Bingo" target="_blank">
+          Contribute to the code!
+        </a>
+      </p>
+    </div>
+
+    <div id="main">
+      <div id="dyom"></div>
+      <div id="options">
+        <form>
+          <div class="formdiv">
+            <label for="needsTranslator">
+              <input
+                type="checkbox"
+                id="needsTranslator"
+                name="needsTranslator"
+              />
+              Limit slots that require translator
+            </label>
           </div>
-            <script src="index.js" type="module"></script>
-        </section>
+          <div class="formdiv">
+            <label for="needsTTS">
+              <input type="checkbox" id="needsTTS" name="needsTTS" />
+              Limit slots that require TTS
+            </label>
+          </div>
+          <div class="formdiv">
+            <label for="needsInfo">
+              <input type="checkbox" id="needsInfo" name="needsInfo" />
+              Limit slots that require DYOM Info
+            </label>
+          </div>
+          <div class="formdiv">
+            <label for="needsTimer">
+              <input type="checkbox" id="needsTimer" name="needsTimer" />
+              Limit slots that require knowing the in-game time
+            </label>
+          </div>
+
+          <button type="button" id="btn">Generate new slot</button>
+        </form>
       </div>
     </main>
     <footer>
