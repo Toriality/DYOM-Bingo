@@ -152,7 +152,21 @@ requirements.forEach((req) => {
   div.innerText = req.description;
   div.obj = req;
   div.addEventListener("click", optionClicked);
+  div.addEventListener("mouseenter", () => {
+    div.style.backgroundColor = div.selected
+      ? "rgba(255, 204, 204, 0.75)"
+      : "#ffffcf";
+    div.style.borderColor = div.selected
+      ? "rgba(255, 49, 49, 0.75)"
+      : "#ffdf70";
+  });
 
+  div.addEventListener("mouseleave", () => {
+    div.style.backgroundColor = div.selected
+      ? "rgba(255, 204, 204, 0.75)"
+      : "#eee";
+    div.style.borderColor = div.selected ? "rgba(255, 49, 49, 0.75)" : "#ccc";
+  });
   div.selected = false;
   document.getElementById("options").appendChild(div);
 });
