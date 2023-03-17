@@ -42,6 +42,8 @@ let optionClicked = (e) => {
         requirementsList.push(div.obj.name);
     else
         requirementsList = requirementsList.filter(name => name !== div.obj.name)
+
+    regenerateSlots()
 }
 
 //Called on page refresh and on clicking "Generate new slot" b
