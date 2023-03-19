@@ -10,6 +10,7 @@ import { score } from "./score.js";
 //Functions for creating and querying tiles
 import { tiles } from "./tiles.js"
 
+//Functions for creating and updating timer and PB
 import { timer } from "./timer.js"
 
 //Relevant visual elements
@@ -19,7 +20,7 @@ let optionsDiv = document.getElementById("options");
 let scoreBox = document.getElementById("scoreBox");
 let timerBox = document.getElementById("timerBox");
 
-
+//Let timer module create it's text inside timerBox
 timer.createIn(timerBox);
 
 
@@ -32,7 +33,9 @@ score.createIn(scoreBox);
 //When tiles module detects winning condition it calls this function
 const onWin = () => {
     if(!alreadyWon){
+        //Update score
         score.updateWon();
+        //Stop timer and potentially update PB
         timer.win();
         alreadyWon = true;
 
@@ -73,6 +76,7 @@ let regenerateSlots = () => {
   slotsList = newSlots;
   //Let tiles module do the update
   tiles.regenerate(newSlots);
+  //Restart timer each time new tiles are generated
   timer.restart();
 
 };

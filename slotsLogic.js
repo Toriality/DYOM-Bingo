@@ -2,6 +2,7 @@ import {slots} from "./slotsData.js"
 
 
 export const slotsLogic = {
+    //Return count of slots
     getCount: () => {
         return slots.length;
     },
