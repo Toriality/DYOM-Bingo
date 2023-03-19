@@ -77,9 +77,18 @@ let regenerateSlots = () => {
 
 //If no bingo, and regenerating slots signal lose condition
 let buttonHandler = () => {
-  if (!alreadyWon) onLose();
-  alreadyWon = false;
-  regenerateSlots();
+  if (!alreadyWon) {
+    let shouldRegenerate = confirm(
+      "You lose a point when you regenerate a Bingo card without completing it. Are you sure you want to get a new card?"
+    );
+    if (shouldRegenerate) {
+      onLose();
+      regenerateSlots();
+    }
+  } else {
+    alreadyWon = false;
+    regenerateSlots();
+  }
 };
 
 button.addEventListener("click", buttonHandler);
