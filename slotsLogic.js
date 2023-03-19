@@ -2,6 +2,12 @@ import {slots} from "./slotsData.js"
 
 
 export const slotsLogic = {
+    getCount: () => {
+        return slots.length;
+    },
+
+
+
   //Generate random 5*5 slots, excluding selected options and currently displayed tiles
   generate: (requirements, current) => {
       //Filter out slots which require selected options, so there is no need to check for that later
