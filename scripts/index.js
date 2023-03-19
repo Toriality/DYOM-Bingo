@@ -43,6 +43,7 @@ const onWin = () => {
 
 //Connect onWin declared above with tiles module
 tiles.onWin = onWin;
+
 //Let tiles module create all tiles
 tiles.createIn(dyomDiv);
 
@@ -56,8 +57,10 @@ const onLose = () => {
 const onReqChange = () => {
   regenerateSlots();
 };
+
 //Connect onReqChange declared above with requirements module
 req.onChange = onReqChange;
+
 //Let requirements module create all option buttons
 req.createIn(optionsDiv);
 

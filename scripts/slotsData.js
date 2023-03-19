@@ -18,37 +18,35 @@ const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(date);
 const year = date.getFullYear();
 
 export const requirements = [
-
-    {
-        name: "Translator",
-        description: "Limit slots that require translator"
-    },
-    {
-        name: "TTS",
-        description: "Limit slots that require TTS"
-    },
-    {
-        name: "Info",
-        description: "Limit slots that require DYOM Info"
-    },
-    {
-        name: "Time",
-        description: "Limit slots that require in-game timer"
-    },
-
-]
+  {
+    name: "Translator",
+    description: "Limit slots that require translator",
+  },
+  {
+    name: "TTS",
+    description: "Limit slots that require TTS",
+  },
+  {
+    name: "Info",
+    description: "Limit slots that require DYOM Info",
+  },
+  {
+    name: "Time",
+    description: "Limit slots that require in-game timer",
+  },
+];
 
 export const slots = [
   // TTS
   {
     slotType: "TTS",
     string: "Has a male TTS voice",
-    requires: ["TTS"]
+    requires: ["TTS"],
   },
   {
     slotType: "TTS",
     string: "Has a female TTS voice",
-    requires: ["TTS"]
+    requires: ["TTS"],
   },
 
   // Start
@@ -98,7 +96,7 @@ export const slots = [
     slotType: "Start",
     string: "Starts at 8:00 AM",
     helperText: "Default time of the day in DYOM",
-    requires: ["Time"]
+    requires: ["Time"],
   },
   {
     slotType: "Start",
@@ -115,7 +113,7 @@ export const slots = [
     string: "Translated mission",
     helperText:
       "Mark this slot if your mission has been translated by the DYOM Rainbomizer auto-translate feature",
-    requires: ["Translator"]
+    requires: ["Translator"],
   },
   {
     slotType: "Mission Info",
@@ -144,13 +142,13 @@ export const slots = [
     string: "Mission was made within a year",
     helperText: `This mission was published between 
     ${month}, ${year - 1} and ${month}, ${year}`,
-    requires: ["Info"]
+    requires: ["Info"],
   },
   {
     slotType: "Mission Info",
     string: "Mission was made ten years ago or more",
     helperText: "DYOM's first version was released on November 30, 2008",
-    requires: ["Info"]
+    requires: ["Info"],
   },
   {
     slotType: "Mission Info",
@@ -219,7 +217,7 @@ export const slots = [
     string: "Rainbomizer fails to translate the mission",
     helperText:
       "Sometimes the auto-translate feature encounters a problem trying to translate the current mission",
-    requires:["Translate"]
+    requires: ["Translate"],
   },
   {
     slotType: "Issues",
@@ -619,9 +617,7 @@ export const slots = [
   },
 ];
 
-
 export const generate = (requirements, current) => {
-
   //Filter out slots which require selected options, so there is no need to check for that later
   let filteredSlots = slots;
   requirements.forEach(
@@ -630,7 +626,6 @@ export const generate = (requirements, current) => {
         (slot) => slot.requires == undefined || !slot.requires.includes(req)
       ))
   );
-
 
   //Filter out slots which are displayed right now, so slots don't repeat as often
   current.forEach(
@@ -642,18 +637,14 @@ export const generate = (requirements, current) => {
 
   let newSlots = new Array();
 
-  for(let i=0; i<5*5; i++){
+  for (let i = 0; i < 5 * 5; i++) {
     let randomSlot =
       filteredSlots[Math.floor(Math.random() * filteredSlots.length)];
-        //Instead of retrying each time the same thing was chosen, just filter out chosen slot so it cannot be chosen again
+    //Instead of retrying each time the same thing was chosen, just filter out chosen slot so it cannot be chosen again
     filteredSlots = filteredSlots.filter(
       (slot) => slot.string != randomSlot.string
     );
     newSlots.push(randomSlot);
-
   }
   return newSlots;
-}
-
-
-
+};
