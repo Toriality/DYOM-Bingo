@@ -10,11 +10,18 @@ import { score } from "./score.js";
 //Functions for creating and querying tiles
 import { tiles } from "./tiles.js"
 
+import { timer } from "./timer.js"
+
 //Relevant visual elements
 let button = document.getElementById("btn");
 let dyomDiv = document.getElementById("dyom");
 let optionsDiv = document.getElementById("options");
-let scoreString = document.getElementById("scoreBox");
+let scoreBox = document.getElementById("scoreBox");
+let timerBox = document.getElementById("timerBox");
+
+
+timer.createIn(timerBox);
+
 
 //Player can win once per tile generation, if player already won, don't increment score any more
 let alreadyWon = false;
@@ -26,7 +33,9 @@ score.createIn(scoreBox);
 const onWin = () => {
     if(!alreadyWon){
         score.updateWon();
+        timer.win();
         alreadyWon = true;
+
     }
 }
 
@@ -64,6 +73,7 @@ let regenerateSlots = () => {
   slotsList = newSlots;
   //Let tiles module do the update
   tiles.regenerate(newSlots);
+  timer.restart();
 
 };
 

@@ -136,7 +136,7 @@ table {
   user-select: none;
 }
 
-#scoreBox {
+.textBox {
   display: flex;
   flex-direction: column;
   width: 90%;
