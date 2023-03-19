@@ -5,7 +5,7 @@ import { slots, requirements } from "./slots.js";
 let table = document.createElement("table");
 
 let button = document.getElementById("btn");
-let dyom = document.getElementById("dyom");
+let dyom = document.getElementById("card");
 
 //Score is stored locally, set to 0 if not set already
 if (!localStorage.getItem("scoreWin")) localStorage.setItem("scoreWin", 0);

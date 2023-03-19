@@ -5,35 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link
-      rel="stylesheet"
-      href="./styles/tablet.css"
-      media="screen and (min-width: 600px)"
-    />
-    <link
-      rel="stylesheet"
-      href="./styles/desktop.css"
-      media="screen and (min-width: 1024px)"
-    />
-    <link
-      rel="stylesheet"
-      href="./styles/hd.css"
-      media="screen and (min-width: 1280px)"
-    />
-    <link
-      rel="stylesheet"
-      href="./styles/fullhd.css"
-      media="screen and (min-width: 1920px)"
-    />
+    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/game.css" />
+    <link rel="stylesheet" href="./styles/table.css" />
+    <link rel="stylesheet" href="./styles/card.css" />
+    <link rel="stylesheet" href="./styles/panel.css" />
     <title>DYOM Bingo</title>
   </head>
   <body>
+    <!-- Site Header -->
     <header>
       <img src="images/logo.png" width="128px" />
       <ul class="nav">
         <li><a href="./index.html">Home</a></li>
-        <li><a href="./changelogs.html">Changelog</a></li>
+        <li><a href="./help.html">Help</a></li>
+        <li><a href="./changelogs.html">Changelogs</a></li>
         <li>
           <a href="https://github.com/Toriality/DYOM-Bingo" target="_blank">
             Contribute
@@ -41,59 +29,28 @@
         </li>
       </ul>
     </header>
-    <main>
-      <div id="main">
-        <section class="play-area">
-          <div id="dyom"></div>
-          <div id="right-panel">
-            <div id="scoreBox">
-              <span id="scoreString"></span>
-            </div>
-            <div id="options"></div>
 
-            <button type="button" id="btn">Generate new slot</button>
+    <!-- Main Content -->
+    <main>
+      <section id="game">
+        <div id="card"></div>
+        <div id="panel">
+          <div id="scoreBox" class="option-button">
+            <span id="scoreString"></span>
           </div>
-          <script src="index.js" type="module"></script>
-        </section>
-      </div>
+          <div id="options"></div>
+
+          <button type="button" id="btn">Generate new slot</button>
+        </div>
+      </section>
     </main>
+
+    <!-- Site Footer -->
     <footer>
-      <div id="out">
-        <div id="howto">
-          <h1>How to play?</h1>
-          <p>
-            The game consists of a 5x5 Bingo card. You should mark a slot as
-            completed when the content written on it happens during your play.
-            For example, if you have a "Mission name is DYOM" slot and the name
-            of the mission you are playing is "DYOM", you can mark the slot as
-            completed by clicking on it.
-          </p>
-          <p>
-            The first player who manages to mark 5 consecutive slots wins the
-            match. The more players, the more fun and challenging the match will
-            be.
-          </p>
-          <p>
-            Currently the Bingo has 132 different slots that are randomly
-            generated every time the page is reloaded. You can help increase the
-            number of slots by contributing to the source code at the link
-            above.
-          </p>
-          <p>
-            Although the missions are randomly picked, and you have no control
-            over their content, this Bingo game still does not consist entirely
-            of luck. There are a few techniques you can use to beat your
-            opponents. Completing missions as quickly as possible so that you
-            gain new content faster, or skipping missions that do not seem to
-            have any content that exists in your Bingo slots are some possible
-            techniques to beat the game before the other players.
-          </p>
-        </div>
-        <div id="version">
-          <p>Version: 1.2</p>
-          <a href="changelogs.html">Click to see the changelogs</a>
-        </div>
-      </div>
+      <p>DYOM Bingo v1.2</p>
     </footer>
+
+    <!-- Load Script -->
+    <script src="index.js" type="module"></script>
   </body>
 </html>

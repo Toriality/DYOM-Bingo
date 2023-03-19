@@ -1,0 +1,16 @@
+#card {
+  display: flex;
+}
+
+@media screen and (min-width: 1280px) {
+  #card {
+    margin-right: 2rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  #card {
+    margin-right: 10rem;
+    flex-grow: 1;
+  }
+}

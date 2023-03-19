@@ -1,0 +1,102 @@
+#panel {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+#scoreBox {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: bold;
+  padding: 5px;
+  background-color: #ffffcf;
+  user-select: none;
+  border-radius: 5px;
+  border: 10px solid #ffdf70;
+}
+
+.formdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  background-color: #ffffff;
+  border: #ccc solid 0.5rem;
+  border-radius: 0.8rem;
+  margin: 1rem auto;
+  font-weight: bold;
+}
+
+.formdiv:hover {
+  background-color: #ccc;
+}
+
+.formdiv:active {
+  background-color: #ff8888;
+  border-color: #ff8888;
+}
+
+button {
+  margin-top: 1rem;
+  user-select: none;
+  font-size: 1.8rem;
+  height: 5rem;
+  background-color: #ffdf70;
+  border: #ffd745 solid 0.5rem;
+  border-radius: 0.8rem;
+  min-width: 20rem;
+}
+
+button:hover {
+  background-color: #ffffcf;
+  border-color: #ffeba8;
+}
+
+button:active {
+  background-color: #ffd745;
+  border-color: #ffd745;
+}
+
+@media screen and (min-width: 1024px) {
+  #options form {
+    flex-direction: column;
+  }
+
+  .option-buttons {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .generate-button {
+    font-weight: bold;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #panel {
+    margin-top: 0;
+  }
+
+  #options {
+    margin: auto;
+  }
+
+  #options form {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .option-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formdiv {
+    width: min(48rem, 24vw);
+  }
+
+  .formdiv label {
+    justify-content: center;
+  }
+}

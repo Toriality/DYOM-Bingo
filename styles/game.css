@@ -1,0 +1,33 @@
+#game {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  min-height: 82vh;
+  margin: 0;
+}
+
+@media screen and (min-width: 600px) {
+  #game {
+    margin: 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #game {
+    margin: 2rem 8rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #game {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  #game {
+    height: 90vh;
+    font-size: 2rem;
+  }
+}

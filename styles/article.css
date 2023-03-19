@@ -1,0 +1,68 @@
+article {
+  margin: 2rem 0;
+  background-color: #000000;
+  border-top: 1rem solid #ffdf70;
+  padding: 2rem;
+}
+
+.container {
+  margin: auto;
+  max-width: 70ch;
+}
+
+.container h1,
+.container h2,
+.container h3 {
+  color: #ffdf70;
+  text-align: center;
+  margin: 4rem auto;
+}
+
+.container h1 {
+  font-size: 4rem;
+}
+.container h2 {
+  font-size: 3rem;
+}
+.container h3 {
+  font-size: 2rem;
+}
+
+.container p,
+.container li {
+  color: white;
+}
+
+.container li,
+.container p {
+  color: #ffffff;
+  font-size: 2rem;
+  text-align: justify;
+  margin: auto;
+}
+
+.container hr {
+  margin: 4rem 0;
+}
+
+.container strong {
+  color: #ffdf70;
+}
+
+@media screen and (min-width: 600px) {
+  article {
+    margin: 2rem 4rem;
+  }
+  .container {
+    max-width: 77ch;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  article {
+    margin: 2rem 8rem;
+  }
+  .container {
+    max-width: 128ch;
+  }
+}
