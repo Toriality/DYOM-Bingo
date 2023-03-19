@@ -14,7 +14,8 @@ import { tiles } from "./tiles.js";
 import { timer } from "./timer.js";
 
 //Relevant visual elements
-let button = document.getElementById("btn");
+let generateBtn = document.getElementById("generate");
+let resetBtn = document.getElementById("reset");
 let dyomDiv = document.getElementById("card");
 let optionsDiv = document.getElementById("options");
 let scoreBox = document.getElementById("scoreBox");
@@ -91,5 +92,17 @@ let buttonHandler = () => {
   }
 };
 
-button.addEventListener("click", buttonHandler);
+//Handle reset score button
+let resetHandler = () => {
+  let shouldReset = confirm("Are you sure you want to reset your score?");
+  if (shouldReset) {
+    score.reset();
+    timer.resetPB();
+    regenerateSlots();
+  }
+};
+
+generateBtn.addEventListener("click", buttonHandler);
+resetBtn.addEventListener("click", resetHandler);
+
 regenerateSlots();

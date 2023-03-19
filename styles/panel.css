@@ -48,6 +48,22 @@ button {
   min-width: 20rem;
 }
 
+#reset {
+  background-color: #ff8888;
+  border-color: #ff6666;
+}
+
+#reset:hover {
+  background-color: #ffcccc;
+  border-color: #ffaaaa;
+}
+
+#reset:active {
+  color: white;
+  background-color: #ff6666;
+  border-color: #ff6666;
+}
+
 button:hover {
   background-color: #ffffcf;
   border-color: #ffeba8;
