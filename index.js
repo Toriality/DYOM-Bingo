@@ -82,7 +82,5 @@ let buttonHandler = () => {
   regenerateSlots();
 };
 
-document.getElementById("slotCount").innerText = slotsLogic.getCount();
-
 button.addEventListener("click", buttonHandler);
 regenerateSlots();

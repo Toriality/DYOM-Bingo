@@ -4,7 +4,8 @@
   margin-top: 32px;
 }
 
-#scoreBox {
+.textBox {
+  margin-bottom: 1rem;
   text-align: center;
   font-size: 2.4rem;
   font-weight: bold;
