@@ -16,6 +16,12 @@
   border: 10px solid #ffdf70;
 }
 
+.textBox.dark {
+  color: #ffffff;
+  background-color: #111111;
+  border-color: #000000;
+}
+
 .formdiv {
   display: flex;
   justify-content: center;
@@ -28,13 +34,29 @@
   font-weight: bold;
 }
 
-.formdiv:hover {
-  background-color: #ccc;
+.formdiv.mouseenter {
+  background-color: #ffeba8;
+  border-color: #ffd745;
 }
 
-.formdiv:active {
-  background-color: #ff8888;
-  border-color: #ff8888;
+.formdiv.click {
+  background-color: #ffaaaa;
+  border-color: #ff6666;
+}
+
+.formdiv.dark {
+  color: white;
+  background-color: #333;
+  border-color: #000000;
+}
+
+.formdiv.dark.mouseenter {
+  background-color: #111;
+}
+
+.formdiv.dark.click {
+  background-color: rgba(255, 49, 49, 0.75);
+  border-color: rgba(99, 0, 0, 0.75);
 }
 
 button {
@@ -48,9 +70,31 @@ button {
   min-width: 20rem;
 }
 
+#generate.dark {
+  color: #ffffff;
+  background-color: #001a34;
+  border-color: #000b14;
+}
+
+#generate.dark:hover {
+  background-color: #000911;
+  border-color: #000b14;
+}
+
 #reset {
   background-color: #ff8888;
   border-color: #ff6666;
+}
+
+#reset.dark {
+  color: #ffffff;
+  background-color: #210909;
+  border-color: #0f0000;
+}
+
+#reset.dark:hover {
+  background-color: #0f0000;
+  border-color: #0f0000;
 }
 
 #reset:hover {

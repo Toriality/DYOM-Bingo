@@ -7,13 +7,15 @@ const tileClicked = (e) => {
   let allTiles = Array.from(tiles.getAll());
   let selectedTiles = allTiles.filter((tile) => tile.selected);
   let winningTiles = [];
+
   //Clear tile colours
-  allTiles.forEach((tile) => (tile.style.backgroundColor = ""));
+  allTiles.forEach((tile) => tile.classList.remove("selected"));
+  allTiles.forEach((tile) => tile.classList.remove("win"));
+
   //Set colour on selected tiles
-  selectedTiles.forEach((tile) => (tile.style.backgroundColor = "#ffdf70"));
+  selectedTiles.forEach((tile) => tile.classList.add("selected"));
 
   //Search for winning tiles/bingo
-
   for (let i = 0; i < 5; i++) {
     let selectedInRow = allTiles
       .filter((tile) => tile.y == i)
@@ -38,7 +40,7 @@ const tileClicked = (e) => {
     winningTiles = winningTiles.concat(selectedDiagonally2);
 
   //set different color for winning tiles
-  winningTiles.forEach((tile) => (tile.style.backgroundColor = "#8dff70"));
+  winningTiles.forEach((tile) => tile.classList.add("win"));
 
   //On winning condition call function assigned from index.js
   if (winningTiles.length > 0 && tiles.onWin != null) tiles.onWin();
@@ -74,7 +76,7 @@ export const tiles = {
       let randomSlot = newSlots.pop();
 
       thisSlot.selected = false;
-      thisSlot.style.backgroundColor = "";
+      thisSlot.classList.remove("win", "selected");
       thisSlot.innerText = randomSlot.string;
       if (randomSlot.helperText) {
         let helperText = document.createElement("span");

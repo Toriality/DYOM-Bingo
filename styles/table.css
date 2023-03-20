@@ -7,6 +7,10 @@ table {
   width: 100%;
 }
 
+table.dark {
+  background-color: rgba(22, 22, 22, 0.92);
+}
+
 td {
   font-weight: bolder;
   border: 0.6rem solid rgba(43, 55, 179, 0.8);
@@ -18,8 +22,33 @@ td {
   padding: 1.6rem;
 }
 
+td.dark {
+  color: white;
+  border-color: rgba(11, 11, 20, 0.92);
+}
+
 td:hover {
   background-color: #ffffcf;
+}
+
+td.selected {
+  background-color: #ffdf70;
+}
+
+td.win {
+  background-color: #8dff70;
+}
+
+td.dark:hover {
+  background-color: #111111;
+}
+
+td.dark.selected {
+  background-color: rgba(43, 55, 179, 0.8);
+}
+
+td.dark.win {
+  background-color: #2b9511;
 }
 
 td span {

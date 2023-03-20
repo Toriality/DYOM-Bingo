@@ -7,8 +7,7 @@ let requirementsList = [];
 let optionClicked = (e) => {
   let div = e.target;
   let selected = (e.target.selected = !e.target.selected);
-  div.style.backgroundColor = selected ? "rgba(255, 204, 204, 0.75)" : "#eee";
-  div.style.borderColor = selected ? "rgba(255, 49, 49, 0.75)" : "#ccc";
+  div.classList.toggle("click");
 
   if (selected) requirementsList.push(div.obj.name);
   else
@@ -32,21 +31,10 @@ export const req = {
       div.obj = req;
       div.addEventListener("click", optionClicked);
       div.addEventListener("mouseenter", () => {
-        div.style.backgroundColor = div.selected
-          ? "rgba(255, 204, 204, 0.75)"
-          : "#ffffcf";
-        div.style.borderColor = div.selected
-          ? "rgba(255, 49, 49, 0.75)"
-          : "#ffdf70";
+        if (!div.selected) div.classList.add("mouseenter");
       });
-
       div.addEventListener("mouseleave", () => {
-        div.style.backgroundColor = div.selected
-          ? "rgba(255, 204, 204, 0.75)"
-          : "#eee";
-        div.style.borderColor = div.selected
-          ? "rgba(255, 49, 49, 0.75)"
-          : "#ccc";
+        div.classList.remove("mouseenter");
       });
       div.selected = false;
       document.getElementById("options").appendChild(div);

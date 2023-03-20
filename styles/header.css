@@ -30,6 +30,15 @@ header {
   color: #ffdf70;
 }
 
+.nav i,
+nav i.light {
+  color: #ffdf70;
+}
+
+.nav i.dark {
+  color: #2b37b3;
+}
+
 @media screen and (max-width: 1024px) {
   header {
     flex-direction: column;

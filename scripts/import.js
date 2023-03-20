@@ -1,7 +1,17 @@
 async function loadHeader() {
+  const target = document.querySelector("header");
+
   const response = await fetch("/components/header.html");
   const text = await response.text();
-  document.querySelector("header").innerHTML = text;
+  target.innerHTML = text;
+
+  //Since the header is present in every page
+  //Append theme script to it so that the theme is loaded in every apge
+  const script = document.createElement("script");
+  script.src = "./scripts/theme.js";
+  script.type = "module";
+
+  target.appendChild(script);
 }
 
 async function loadFooter() {
