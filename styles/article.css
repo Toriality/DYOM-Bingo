@@ -49,6 +49,21 @@ article {
   color: #ffdf70;
 }
 
+.container details {
+  font-size: 1.6rem;
+  text-decoration: underline;
+  margin: 4rem 0;
+  color: white;
+}
+
+.container details img {
+  width: 100%;
+}
+
+.container figure {
+  text-align: center;
+}
+
 @media screen and (min-width: 600px) {
   article {
     margin: 2rem 4rem;
