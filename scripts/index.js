@@ -109,3 +109,4 @@ generateBtn.addEventListener("click", buttonHandler);
 resetBtn.addEventListener("click", resetHandler);
 
 regenerateSlots();
+console.log(slotsLogic.getCount());

@@ -48,6 +48,11 @@ export const slots = [
     string: "Has a female TTS voice",
     requires: ["TTS"],
   },
+  {
+    slotType: "TTS",
+    string: "Has a braziliam TTS voice",
+    requires: ["TTS"],
+  },
 
   // Start
   {
@@ -106,6 +111,33 @@ export const slots = [
     slotType: "Start",
     string: "Does not start with a cutscene",
   },
+  {
+    slotType: "Start",
+    string: "Starts at night",
+  },
+  {
+    slotType: "Start",
+    string: "Starts at day",
+  },
+  {
+    slotType: "Start",
+    string: "Starts during a sandstorm",
+  },
+  {
+    slotType: "Start",
+    string: "Starts at a rainy weather",
+  },
+  {
+    slotType: "Start",
+    string: "Starts at a sunny weather",
+    helperText: "Default weather in DYOM",
+  },
+  {
+    slotType: "Start",
+    string: "Starts wanted by the police",
+    helperText:
+      "Player starts with a wanted level equals or higher than 1 star",
+  },
 
   // Mission info
   {
@@ -157,6 +189,11 @@ export const slots = [
   },
   {
     slotType: "Mission Info",
+    string: "Mission was made by LeonCJ",
+    helperText: "LeonCJ is a senior designer of DYOM Community",
+  },
+  {
+    slotType: "Mission Info",
     string: "Mission author has 'DYOM' on their name",
   },
   {
@@ -192,7 +229,7 @@ export const slots = [
   },
   {
     slotType: "Mission Theme",
-    string: "Life simulation mission",
+    string: "Casual life simulation mission",
     helperText:
       "Stories that tries to simulate real-life situations, like going to work and meeting your friends",
   },
@@ -209,6 +246,38 @@ export const slots = [
   {
     slotType: "Mission Theme",
     string: "Military mission",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Rescue mission",
+    helperText:
+      "The story is about the player trying to rescue someone or a group of people",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Drug-related mission",
+    helperText:
+      "The story is about a drug-related situation (like drug dealing, drug use, etc)",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Heist mission",
+    helperText:
+      "The story is about a heist (like casino heist, bank robbery, etc)",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Revenge mission",
+    helperText:
+      "The story is about a revenge being committed by the player or against the player",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Racing mission",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Cop mission",
   },
 
   // Bugs and problems
@@ -241,6 +310,12 @@ export const slots = [
     helperText:
       "It is a problem with the base game. You cannot render too many entries at the same time without breaking the game",
   },
+  {
+    slotType: "Issues",
+    string: "Camera bug",
+    helperText:
+      "The camera of a cutscene get stuck during gameplay. This happens when you set an cutscene to follow/look at an actor as the last cutscene before the start of a gameplay.",
+  },
 
   // Mission status
   {
@@ -252,6 +327,21 @@ export const slots = [
     slotType: "Status",
     string: "MISSION FAILED",
     helperText: "Fail a mission",
+  },
+  {
+    slotType: "Status",
+    string: "Wasted",
+    helperText: "Player died",
+  },
+  {
+    slotType: "Status",
+    string: "Busted",
+    helperText: "Player gets arrested",
+  },
+  {
+    slotType: "Status",
+    string: "Mission skipped",
+    helperText: "Skip a mission",
   },
 
   // Player
@@ -303,6 +393,11 @@ export const slots = [
   {
     slotType: "Player",
     string: "Player is a Grove Street member (gang skin)",
+  },
+  {
+    slotType: "Player",
+    string: "Player has a big health bar half-filled",
+    helperText: "This happens when the player's health is set to 150",
   },
 
   // Settings
@@ -437,6 +532,18 @@ export const slots = [
   },
   {
     slotType: "Actors",
+    string: "An actor has a defined walking or running route",
+    helperText:
+      "The designer can assign a walk/run/sprint/drive route to an actor",
+  },
+  {
+    slotType: "Actors",
+    string: "An actor has a driving animation",
+    helperText:
+      "The designer can assign a walk/run/sprint/drive route to an actor",
+  },
+  {
+    slotType: "Actors",
     string:
       "An actor has a name that does not corresponds to the original game character's name",
     helperText: "Ex: Actor has Ryder skin but his name is Jorge",
@@ -469,7 +576,6 @@ export const slots = [
     slotType: "Checkpoints",
     string:
       "Checkpoint inside the car you need to enter (instead of a car objective)",
-    helperText: `Because older DYOM versions lack the car objective, designers used to insert a checkpoint inside where the cars' driver seat is located to make a "Enter the car"-like objective`,
   },
 
   // Locations
@@ -521,6 +627,22 @@ export const slots = [
     slotType: "Locations",
     string: "Uses Madd Dog's mansion",
   },
+  {
+    slotType: "Locations",
+    string: "Uses Area 69's base",
+  },
+  {
+    slotType: "Locations",
+    string: "Uses Area 69 exterior",
+  },
+  {
+    slotType: "Locations",
+    string: "Uses Caligula's basement",
+  },
+  {
+    slotType: "Locations",
+    string: "Uses a casino interior",
+  },
 
   // Objects and Pickups
   {
@@ -547,6 +669,10 @@ export const slots = [
     slotType: "Objects Pickups",
     string: "Has a money bag pickup",
   },
+  {
+    slotType: "Objects Pickups",
+    string: "Has weapon pickups",
+  },
 
   // Cutscenes and Timeouts
   {
@@ -569,6 +695,59 @@ export const slots = [
     helperText:
       "DYOM has a feature for playing sounds but many designers don't know about it. Anyways, the Rainbomizer mod does not support it yet",
   },
+  {
+    slotType: "Scenes",
+    string: "Cutscene-only mission",
+  },
+  {
+    slotType: "Scenes",
+    string: "Mission has no cutscenes",
+  },
+  {
+    slotType: "Scenes",
+    string: "Unnecessarily long cutscene duration",
+  },
+  {
+    slotType: "Scenes",
+    string: "Explosion happens during a cutscene",
+    helperText: "Something explodes, like a car, a house, Big Smoke, etc",
+  },
+  {
+    slotType: "Scenes",
+    string: "Smooth cutscene",
+    helperText:
+      "The camera of the cutscene moves around smoothly, instead of being a static shot",
+  },
+  {
+    slotType: "Scenes",
+    string: "Shaky camera",
+    helperText:
+      "The cutscene has a shaky effect (Commonly used for explosions or drunk effect)",
+  },
+  {
+    slotType: "Scenes",
+    string: "Establishing shot",
+    helperText:
+      "A cutscene that shows the location of the scene, used to show where the action will happen",
+  },
+  {
+    slotType: "Scenes",
+    string: "First-person cutscene",
+    helperText:
+      "Also known as Point of View shot (POV) is when the DYOM camera is set to emulate the perspective of the player or a defined actor",
+  },
+  {
+    slotType: "Scenes",
+    string: "Ground level shot",
+    helperText:
+      "A ground level shot is when the cutscene's camera height is on the ground level or very close to it",
+  },
+  {
+    slotType: "Scenes",
+    string: "Overhead shot",
+    helperText:
+      "An overhead shot is when a cutscene camera is placed way up high, looking down on a subject (Actor, car, object, etc)",
+  },
 
   // Others
   {
@@ -577,19 +756,23 @@ export const slots = [
   },
   {
     slotType: "Others",
+    string: "Timelimit objective",
+    helperText:
+      "A timelimit objective starts a timer and the player needs to complete a defined set of objectives before the timer runs out",
+  },
+  {
+    slotType: "Others",
+    string: "Money objective",
+    helperText:
+      "A money objective will increase or decrease the ammount of money the player has",
+  },
+  {
+    slotType: "Others",
     string: "Utilizes a white marker",
   },
   {
     slotType: "Others",
     string: "Some cars are locked",
-  },
-  {
-    slotType: "Others",
-    string: "Cutscene-only mission",
-  },
-  {
-    slotType: "Others",
-    string: "Mission has no cutscenes",
   },
   {
     slotType: "Others",
