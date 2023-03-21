@@ -1,7 +1,7 @@
 async function loadHeader() {
   const target = document.querySelector("header");
 
-  const response = await fetch("/components/header.html");
+  const response = await fetch("./components/header.html");
   const text = await response.text();
   target.innerHTML = text;
 
@@ -15,7 +15,7 @@ async function loadHeader() {
 }
 
 async function loadFooter() {
-  const response = await fetch("/components/footer.html");
+  const response = await fetch("./components/footer.html");
   const text = await response.text();
   document.querySelector("footer").innerHTML = text;
 }
