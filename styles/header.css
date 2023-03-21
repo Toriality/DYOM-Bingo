@@ -1,0 +1,64 @@
+header {
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  border-bottom: 0.6rem solid #ffdf70;
+  padding: 1rem 8rem;
+  font-size: 1.6rem;
+}
+
+.nav {
+  margin-left: 32px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: end;
+  list-style: none;
+}
+
+.nav li {
+  background-color: black;
+  margin: 0 2rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  padding: 0.8rem 2rem;
+}
+
+.nav a:hover {
+  color: #ffdf70;
+}
+
+.nav i,
+nav i.light {
+  color: #ffdf70;
+}
+
+.nav i.dark {
+  color: #2b37b3;
+}
+
+@media screen and (max-width: 1024px) {
+  header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  header img {
+    margin-bottom: 1rem;
+    width: 86px;
+  }
+
+  .nav {
+    margin-left: 0;
+  }
+
+  .nav li {
+    margin: 0;
+  }
+
+  .nav a {
+    padding: 0 1rem;
+  }
+}

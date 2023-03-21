@@ -1,0 +1,99 @@
+table {
+  box-shadow: rgba(0, 0, 0, 0.25) 4px 6px 8px 2px;
+  background-color: rgba(188, 193, 255, 0.8);
+  backdrop-filter: blur(20px) brightness(200%);
+  border-collapse: collapse;
+  user-select: none;
+  width: 100%;
+}
+
+table.dark {
+  background-color: rgba(22, 22, 22, 0.92);
+}
+
+td {
+  font-weight: bolder;
+  border: 0.6rem solid rgba(43, 55, 179, 0.8);
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  width: 16rem;
+  height: 16rem;
+  padding: 1.6rem;
+}
+
+td.dark {
+  color: white;
+  border-color: rgba(11, 11, 20, 0.92);
+}
+
+td:hover {
+  background-color: #ffffcf;
+}
+
+td.selected {
+  background-color: #ffdf70;
+}
+
+td.win {
+  background-color: #8dff70 !important;
+}
+
+td.dark:hover {
+  background-color: #111111;
+}
+
+td.dark.selected {
+  background-color: rgba(43, 55, 179, 0.8);
+}
+
+td.dark.win {
+  background-color: #2b9511 !important;
+}
+
+.free {
+  background-color: rgba(43, 55, 179, 0.8) !important;
+  background-image: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.free.dark {
+  background-color: rgba(11, 11, 20, 0.92) !important;
+}
+
+td span {
+  position: absolute;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  background-color: black;
+  color: #ccc;
+  padding: 5px 10px;
+  transition: opacity 600ms linear;
+  pointer-events: none;
+}
+
+td:hover span {
+  visibility: visible;
+  position: absolute;
+  transform: translate(-125px, 25px);
+  width: 32ch;
+  opacity: 0.9;
+  z-index: 999;
+}
+
+@media screen and (min-width: 1024px) {
+  td {
+    width: 12rem;
+    height: 12rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  td {
+    width: 18rem;
+    height: 12rem;
+  }
+}

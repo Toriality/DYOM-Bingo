@@ -18,38 +18,40 @@ const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(date);
 const year = date.getFullYear();
 
 export const requirements = [
-
-    {
-        name: "Translator",
-        description: "Limit slots that require translator"
-    },
-    {
-        name: "TTS",
-        description: "Limit slots that require TTS"
-    },
-    {
-        name: "Info",
-        description: "Limit slots that require DYOM Info"
-    },
-    {
-        name: "Time",
-        description: "Limit slots that require in-game timer"
-    },
-
-]
-
+  {
+    name: "Translator",
+    description: "Limit slots that require translator",
+  },
+  {
+    name: "TTS",
+    description: "Limit slots that require TTS",
+  },
+  {
+    name: "Info",
+    description: "Limit slots that require DYOM Info",
+  },
+  {
+    name: "Time",
+    description: "Limit slots that require in-game timer",
+  },
+];
 
 export const slots = [
   // TTS
   {
     slotType: "TTS",
     string: "Has a male TTS voice",
-    requires: ["TTS"]
+    requires: ["TTS"],
   },
   {
     slotType: "TTS",
     string: "Has a female TTS voice",
-    requires: ["TTS"]
+    requires: ["TTS"],
+  },
+  {
+    slotType: "TTS",
+    string: "Has a braziliam TTS voice",
+    requires: ["TTS"],
   },
 
   // Start
@@ -99,7 +101,7 @@ export const slots = [
     slotType: "Start",
     string: "Starts at 8:00 AM",
     helperText: "Default time of the day in DYOM",
-    requires: ["Time"]
+    requires: ["Time"],
   },
   {
     slotType: "Start",
@@ -109,6 +111,33 @@ export const slots = [
     slotType: "Start",
     string: "Does not start with a cutscene",
   },
+  {
+    slotType: "Start",
+    string: "Starts at night",
+  },
+  {
+    slotType: "Start",
+    string: "Starts at day",
+  },
+  {
+    slotType: "Start",
+    string: "Starts during a sandstorm",
+  },
+  {
+    slotType: "Start",
+    string: "Starts at a rainy weather",
+  },
+  {
+    slotType: "Start",
+    string: "Starts at a sunny weather",
+    helperText: "Default weather in DYOM",
+  },
+  {
+    slotType: "Start",
+    string: "Starts wanted by the police",
+    helperText:
+      "Player starts with a wanted level equals or higher than 1 star",
+  },
 
   // Mission info
   {
@@ -116,7 +145,7 @@ export const slots = [
     string: "Translated mission",
     helperText:
       "Mark this slot if your mission has been translated by the DYOM Rainbomizer auto-translate feature",
-    requires: ["Translator"]
+    requires: ["Translator"],
   },
   {
     slotType: "Mission Info",
@@ -145,18 +174,23 @@ export const slots = [
     string: "Mission was made within a year",
     helperText: `This mission was published between 
     ${month}, ${year - 1} and ${month}, ${year}`,
-    requires: ["Info"]
+    requires: ["Info"],
   },
   {
     slotType: "Mission Info",
     string: "Mission was made ten years ago or more",
     helperText: "DYOM's first version was released on November 30, 2008",
-    requires: ["Info"]
+    requires: ["Info"],
   },
   {
     slotType: "Mission Info",
     string: "Mission made by Target13",
     helperText: "Target13 is a senior designer of DYOM Community",
+  },
+  {
+    slotType: "Mission Info",
+    string: "Mission was made by LeonCJ",
+    helperText: "LeonCJ is a senior designer of DYOM Community",
   },
   {
     slotType: "Mission Info",
@@ -195,7 +229,7 @@ export const slots = [
   },
   {
     slotType: "Mission Theme",
-    string: "Life simulation mission",
+    string: "Casual life simulation mission",
     helperText:
       "Stories that tries to simulate real-life situations, like going to work and meeting your friends",
   },
@@ -213,6 +247,38 @@ export const slots = [
     slotType: "Mission Theme",
     string: "Military mission",
   },
+  {
+    slotType: "Mission Theme",
+    string: "Rescue mission",
+    helperText:
+      "The story is about the player trying to rescue someone or a group of people",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Drug-related mission",
+    helperText:
+      "The story is about a drug-related situation (like drug dealing, drug use, etc)",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Heist mission",
+    helperText:
+      "The story is about a heist (like casino heist, bank robbery, etc)",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Revenge mission",
+    helperText:
+      "The story is about a revenge being committed by the player or against the player",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Racing mission",
+  },
+  {
+    slotType: "Mission Theme",
+    string: "Cop mission",
+  },
 
   // Bugs and problems
   {
@@ -220,7 +286,7 @@ export const slots = [
     string: "Rainbomizer fails to translate the mission",
     helperText:
       "Sometimes the auto-translate feature encounters a problem trying to translate the current mission",
-    requires:["Translate"]
+    requires: ["Translate"],
   },
   {
     slotType: "Issues",
@@ -244,6 +310,12 @@ export const slots = [
     helperText:
       "It is a problem with the base game. You cannot render too many entries at the same time without breaking the game",
   },
+  {
+    slotType: "Issues",
+    string: "Camera bug",
+    helperText:
+      "The camera of a cutscene get stuck during gameplay. This happens when you set an cutscene to follow/look at an actor as the last cutscene before the start of a gameplay.",
+  },
 
   // Mission status
   {
@@ -255,6 +327,21 @@ export const slots = [
     slotType: "Status",
     string: "MISSION FAILED",
     helperText: "Fail a mission",
+  },
+  {
+    slotType: "Status",
+    string: "Wasted",
+    helperText: "Player died",
+  },
+  {
+    slotType: "Status",
+    string: "Busted",
+    helperText: "Player gets arrested",
+  },
+  {
+    slotType: "Status",
+    string: "Mission skipped",
+    helperText: "Skip a mission",
   },
 
   // Player
@@ -306,6 +393,11 @@ export const slots = [
   {
     slotType: "Player",
     string: "Player is a Grove Street member (gang skin)",
+  },
+  {
+    slotType: "Player",
+    string: "Player has a big health bar half-filled",
+    helperText: "This happens when the player's health is set to 150",
   },
 
   // Settings
@@ -440,6 +532,18 @@ export const slots = [
   },
   {
     slotType: "Actors",
+    string: "An actor has a defined walking or running route",
+    helperText:
+      "The designer can assign a walk/run/sprint/drive route to an actor",
+  },
+  {
+    slotType: "Actors",
+    string: "An actor has a driving animation",
+    helperText:
+      "The designer can assign a walk/run/sprint/drive route to an actor",
+  },
+  {
+    slotType: "Actors",
     string:
       "An actor has a name that does not corresponds to the original game character's name",
     helperText: "Ex: Actor has Ryder skin but his name is Jorge",
@@ -472,7 +576,6 @@ export const slots = [
     slotType: "Checkpoints",
     string:
       "Checkpoint inside the car you need to enter (instead of a car objective)",
-    helperText: `Because older DYOM versions lack the car objective, designers used to insert a checkpoint inside where the cars' driver seat is located to make a "Enter the car"-like objective`,
   },
 
   // Locations
@@ -524,6 +627,22 @@ export const slots = [
     slotType: "Locations",
     string: "Uses Madd Dog's mansion",
   },
+  {
+    slotType: "Locations",
+    string: "Uses Area 69's base",
+  },
+  {
+    slotType: "Locations",
+    string: "Uses Area 69 exterior",
+  },
+  {
+    slotType: "Locations",
+    string: "Uses Caligula's basement",
+  },
+  {
+    slotType: "Locations",
+    string: "Uses a casino interior",
+  },
 
   // Objects and Pickups
   {
@@ -550,6 +669,10 @@ export const slots = [
     slotType: "Objects Pickups",
     string: "Has a money bag pickup",
   },
+  {
+    slotType: "Objects Pickups",
+    string: "Has weapon pickups",
+  },
 
   // Cutscenes and Timeouts
   {
@@ -572,6 +695,59 @@ export const slots = [
     helperText:
       "DYOM has a feature for playing sounds but many designers don't know about it. Anyways, the Rainbomizer mod does not support it yet",
   },
+  {
+    slotType: "Scenes",
+    string: "Cutscene-only mission",
+  },
+  {
+    slotType: "Scenes",
+    string: "Mission has no cutscenes",
+  },
+  {
+    slotType: "Scenes",
+    string: "Unnecessarily long cutscene duration",
+  },
+  {
+    slotType: "Scenes",
+    string: "Explosion happens during a cutscene",
+    helperText: "Something explodes, like a car, a house, Big Smoke, etc",
+  },
+  {
+    slotType: "Scenes",
+    string: "Smooth cutscene",
+    helperText:
+      "The camera of the cutscene moves around smoothly, instead of being a static shot",
+  },
+  {
+    slotType: "Scenes",
+    string: "Shaky camera",
+    helperText:
+      "The cutscene has a shaky effect (Commonly used for explosions or drunk effect)",
+  },
+  {
+    slotType: "Scenes",
+    string: "Establishing shot",
+    helperText:
+      "A cutscene that shows the location of the scene, used to show where the action will happen",
+  },
+  {
+    slotType: "Scenes",
+    string: "First-person cutscene",
+    helperText:
+      "Also known as Point of View shot (POV) is when the DYOM camera is set to emulate the perspective of the player or a defined actor",
+  },
+  {
+    slotType: "Scenes",
+    string: "Ground level shot",
+    helperText:
+      "A ground level shot is when the cutscene's camera height is on the ground level or very close to it",
+  },
+  {
+    slotType: "Scenes",
+    string: "Overhead shot",
+    helperText:
+      "An overhead shot is when a cutscene camera is placed way up high, looking down on a subject (Actor, car, object, etc)",
+  },
 
   // Others
   {
@@ -580,19 +756,23 @@ export const slots = [
   },
   {
     slotType: "Others",
+    string: "Timelimit objective",
+    helperText:
+      "A timelimit objective starts a timer and the player needs to complete a defined set of objectives before the timer runs out",
+  },
+  {
+    slotType: "Others",
+    string: "Money objective",
+    helperText:
+      "A money objective will increase or decrease the ammount of money the player has",
+  },
+  {
+    slotType: "Others",
     string: "Utilizes a white marker",
   },
   {
     slotType: "Others",
     string: "Some cars are locked",
-  },
-  {
-    slotType: "Others",
-    string: "Cutscene-only mission",
-  },
-  {
-    slotType: "Others",
-    string: "Mission has no cutscenes",
   },
   {
     slotType: "Others",
@@ -619,3 +799,35 @@ export const slots = [
       "Makes references to the own mission, DYOM modification, DYOM users or DYOM features",
   },
 ];
+
+export const generate = (requirements, current) => {
+  //Filter out slots which require selected options, so there is no need to check for that later
+  let filteredSlots = slots;
+  requirements.forEach(
+    (req) =>
+      (filteredSlots = filteredSlots.filter(
+        (slot) => slot.requires == undefined || !slot.requires.includes(req)
+      ))
+  );
+
+  //Filter out slots which are displayed right now, so slots don't repeat as often
+  current.forEach(
+    (exSlot) =>
+      (filteredSlots = filteredSlots.filter(
+        (slot) => slot.string != exSlot.innerText
+      ))
+  );
+
+  let newSlots = new Array();
+
+  for (let i = 0; i < 5 * 5; i++) {
+    let randomSlot =
+      filteredSlots[Math.floor(Math.random() * filteredSlots.length)];
+    //Instead of retrying each time the same thing was chosen, just filter out chosen slot so it cannot be chosen again
+    filteredSlots = filteredSlots.filter(
+      (slot) => slot.string != randomSlot.string
+    );
+    newSlots.push(randomSlot);
+  }
+  return newSlots;
+};

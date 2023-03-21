@@ -4,66 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/game.css" />
+    <link rel="stylesheet" href="./styles/table.css" />
+    <link rel="stylesheet" href="./styles/card.css" />
+    <link rel="stylesheet" href="./styles/panel.css" />
     <title>DYOM Bingo</title>
   </head>
   <body>
-    <div class="miniheader">
-      <p>Refresh the page to get new random slots</p>
-      <p>
-        <a href="https://github.com/Toriality/DYOM-Bingo" target="_blank">
-          Contribute to the code!
-        </a>
-      </p>
-    </div>
+    <header></header>
 
-    <div id="main">
-      <div id="dyom"></div>
-      <div id="rightPanel">
-        <div id="scoreBox">
-          <span id="scoreString"></span>
+    <main>
+      <section id="game">
+        <div id="card"></div>
+        <div id="panel">
+          <div id="scoreBox" class="textBox"></div>
+          <div id="timerBox" class="textBox"></div>
+          <div id="options"></div>
+          <button type="button" id="generate">Generate new card</button>
+          <button type="button" id="reset">Reset score</button>
         </div>
-        <div id="options"></div>
+      </section>
+    </main>
 
-        <button type="button" id="btn">Generate new slot</button>
-      </div>
-      <script src="index.js" type="module"></script>
-    </div>
+    <footer></footer>
 
-    <div id="out">
-      <div id="howto">
-        <h1>How to play?</h1>
-        <p>
-          The game consists of a 5x5 Bingo card. You should mark a slot as
-          completed when the content written on it happens during your play. For
-          example, if you have a "Mission name is DYOM" slot and the name of the
-          mission you are playing is "DYOM", you can mark the slot as completed
-          by clicking on it.
-        </p>
-        <p>
-          The first player who manages to mark 5 consecutive slots wins the
-          match. The more players, the more fun and challenging the match will
-          be.
-        </p>
-        <p>
-          Currently the Bingo has 132 different slots that are randomly
-          generated every time the page is reloaded. You can help increase the
-          number of slots by contributing to the source code at the link above.
-        </p>
-        <p>
-          Although the missions are randomly picked, and you have no control
-          over their content, this Bingo game still does not consist entirely of
-          luck. There are a few techniques you can use to beat your opponents.
-          Completing missions as quickly as possible so that you gain new
-          content faster, or skipping missions that do not seem to have any
-          content that exists in your Bingo slots are some possible techniques
-          to beat the game before the other players.
-        </p>
-      </div>
-      <div id="version">
-        <p>Version: 1.2</p>
-        <a href="changelogs.html">Click to see the changelogs</a>
-      </div>
-    </div>
+    <script src="./scripts/index.js" type="module"></script>
+    <script src="./scripts/import.js" type="module"></script>
   </body>
 </html>
