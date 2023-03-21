@@ -18,9 +18,6 @@ let optionClicked = (e) => {
 };
 
 export const req = {
-  //Function supplied from index.js
-  onChange: null,
-
   //Create option buttons
   createIn: (div) => {
     //Create option buttons from a requirement list

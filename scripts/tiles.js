@@ -1,5 +1,7 @@
 //Called every time a tile was clicked on
 const tileClicked = (e) => {
+  tiles.skippable = false;
+
   //Toggle selection
   let tile = e.target;
   tile.classList.toggle("selected");
@@ -52,6 +54,10 @@ const tileClicked = (e) => {
 };
 
 export const tiles = {
+  //Let the player skip the bingo without losing a point
+  //if no tiles were selected before
+  skippable: true,
+
   //Function assigned by index.js
   onWin: null,
 
@@ -82,6 +88,8 @@ export const tiles = {
 
   //add new text to each tile according to newSlots
   regenerate: (newSlots) => {
+    tiles.skippable = true;
+
     tiles.getAll().forEach((thisSlot) => {
       let randomSlot = newSlots.pop();
 

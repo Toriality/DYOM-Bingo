@@ -53,14 +53,6 @@ const onLose = () => {
   score.updateLost();
 };
 
-//Called whenever option is checked or unchecked
-const onReqChange = () => {
-  regenerateSlots();
-};
-
-//Connect onReqChange declared above with requirements module
-req.onChange = onReqChange;
-
 //Let requirements module create all option buttons
 req.createIn(optionsDiv);
 
@@ -81,7 +73,10 @@ let regenerateSlots = () => {
 
 //If no bingo, and regenerating slots signal lose condition
 let buttonHandler = () => {
-  if (!alreadyWon) {
+  if (alreadyWon || tiles.skippable) {
+    alreadyWon = false;
+    regenerateSlots();
+  } else {
     let shouldRegenerate = confirm(
       "You lose a point when you regenerate a Bingo card without completing it. Are you sure you want to get a new card?"
     );
@@ -89,9 +84,6 @@ let buttonHandler = () => {
       onLose();
       regenerateSlots();
     }
-  } else {
-    alreadyWon = false;
-    regenerateSlots();
   }
 };
 
