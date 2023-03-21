@@ -38,6 +38,11 @@ export const timer = {
     timer.display(time, timer.getPB());
   },
 
+  getTime: () => {
+    let time = Date.now() - timer.startTime;
+    return time;
+  },
+
   //Restarts the timer
   restart: () => {
     timer.startTime = Date.now();

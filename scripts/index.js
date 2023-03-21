@@ -13,6 +13,9 @@ import { tiles } from "./tiles.js";
 //Functions for creating and updating timer and PB
 import { timer } from "./timer.js";
 
+//Functions for storing cards
+import { history } from "./history.js";
+
 //Relevant visual elements
 let generateBtn = document.getElementById("generate");
 let resetBtn = document.getElementById("reset");
@@ -61,6 +64,17 @@ let slotsList = [];
 
 //Called on page refresh and on clicking "Generate new slot" button
 let regenerateSlots = () => {
+  //Save card before regenerating
+  if (!tiles.skippable) {
+    history.save({
+      date: new Date(),
+      score: score.get(),
+      time: timer.getTime(),
+      pb: timer.getPB(),
+      card: tiles.getAll(),
+    });
+  }
+
   //Generate new slots ommiting existing ones and those with set requirements
   let newSlots = slotsLogic.generate(req.getAll(), slotsList);
   //Save slotsList for next generation event
@@ -101,4 +115,5 @@ generateBtn.addEventListener("click", buttonHandler);
 resetBtn.addEventListener("click", resetHandler);
 
 regenerateSlots();
+history.init();
 console.log(slotsLogic.getCount());
