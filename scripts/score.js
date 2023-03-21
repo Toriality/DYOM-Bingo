@@ -39,10 +39,13 @@ export const score = {
   //Increment "win" score, display it and store it
   updateWon: () => {
     let scoreObj = score.get();
+    let audio = new Audio("./sound/win.wav");
+
     scoreObj.win++;
     document.getElementById("scoreString").innerText =
       "Score: " + scoreObj.win + "-" + scoreObj.lose;
 
+    audio.play();
     score.set(scoreObj);
   },
 
