@@ -38,6 +38,9 @@ export const history = {
 
       //Create table
       let table = document.createElement("table");
+      let helperText = document.createElement("span");
+      helperText.innerText = "Click to view details";
+      table.appendChild(helperText);
       for (let i = 0; i < 5; i++) {
         let row = document.createElement("tr");
         for (let j = 0; j < 5; j++) {

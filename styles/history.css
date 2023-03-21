@@ -27,8 +27,35 @@
   width: unset;
 }
 
+#historyBox table:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 #historyBox td {
   width: unset;
   height: unset;
   pointer-events: none;
+}
+
+/* TODO: Make helperText on this code and on table.css DRY */
+#historyBox table span {
+  position: absolute;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  background-color: black;
+  color: #ccc;
+  padding: 5px 10px;
+  transition: opacity 600ms linear;
+  pointer-events: none;
+}
+
+#historyBox table:hover span {
+  visibility: visible;
+  position: absolute;
+  transform: translate(4%, 333%);
+  width: 32ch;
+  opacity: 0.9;
+  z-index: 999;
 }
