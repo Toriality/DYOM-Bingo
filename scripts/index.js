@@ -23,6 +23,10 @@ let dyomDiv = document.getElementById("card");
 let optionsDiv = document.getElementById("options");
 let scoreBox = document.getElementById("scoreBox");
 let timerBox = document.getElementById("timerBox");
+let historyBox = document.getElementById("historyBox");
+
+//Let history module create it's text inside historyBox
+history.createIn(historyBox);
 
 //Let timer module create it's text inside timerBox
 timer.createIn(timerBox);

@@ -11,7 +11,7 @@ const theme = {
     let formdivElements = document.querySelectorAll(".formdiv");
     let generate = document.getElementById("generate");
     let reset = document.getElementById("reset");
-    let table = document.querySelector("table");
+    let table = document.querySelectorAll("table");
     let td = document.querySelectorAll("td");
 
     //Set new theme
@@ -25,7 +25,9 @@ const theme = {
       themeIcon.classList.remove("dark");
       generate.classList.remove("dark");
       reset.classList.remove("dark");
-      table.classList.remove("dark");
+      for (let i = 0; i < table.length; i++) {
+        table[i].classList.remove("dark");
+      }
       for (let i = 0; i < textBoxElements.length; i++) {
         textBoxElements[i].classList.remove("dark");
       }
@@ -39,7 +41,9 @@ const theme = {
       themeIcon.classList.add("dark");
       generate.classList.add("dark");
       reset.classList.add("dark");
-      table.classList.add("dark");
+      for (let i = 0; i < table.length; i++) {
+        table[i].classList.add("dark");
+      }
       for (let i = 0; i < textBoxElements.length; i++) {
         textBoxElements[i].classList.add("dark");
       }

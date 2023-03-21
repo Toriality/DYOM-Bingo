@@ -25,6 +25,36 @@ export const history = {
     }
   },
 
+  createIn: (div) => {
+    if (history.get() === null) return;
+
+    let table = document.createElement("table");
+    let row = document.createElement("tr");
+    history.get().forEach((cardData) => {
+      let card = cardData.card;
+      //Create cards
+      let cardDiv = document.createElement("div");
+      cardDiv.className = "card";
+
+      //Create table
+      let table = document.createElement("table");
+      for (let i = 0; i < 5; i++) {
+        let row = document.createElement("tr");
+        for (let j = 0; j < 5; j++) {
+          let cell = document.createElement("td");
+          let slot = card.slots.find((slot) => slot.x === j && slot.y === i);
+          //cell.innerText = slot.string;
+          if (slot.selected) cell.classList.add("selected");
+          if (slot.win) cell.classList.add("win");
+          row.appendChild(cell);
+        }
+        table.appendChild(row);
+      }
+      cardDiv.appendChild(table);
+      div.appendChild(cardDiv);
+    });
+  },
+
   save: ({ date, score, time, pb, card }) => {
     //Parse history data from localStorage to json
     let historyData = JSON.parse(localStorage.getItem("history"));
@@ -59,5 +89,8 @@ export const history = {
     localStorage.setItem("history", JSON.stringify(historyData));
   },
 
-  get: () => {},
+  get: () => {
+    let historyData = JSON.parse(localStorage.getItem("history"));
+    return historyData;
+  },
 };
