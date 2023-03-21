@@ -36,7 +36,7 @@ td.selected {
 }
 
 td.win {
-  background-color: #8dff70;
+  background-color: #8dff70 !important;
 }
 
 td.dark:hover {
@@ -48,7 +48,19 @@ td.dark.selected {
 }
 
 td.dark.win {
-  background-color: #2b9511;
+  background-color: #2b9511 !important;
+}
+
+.free {
+  background-color: rgba(43, 55, 179, 0.8) !important;
+  background-image: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.free.dark {
+  background-color: rgba(11, 11, 20, 0.92) !important;
 }
 
 td span {

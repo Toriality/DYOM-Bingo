@@ -1,15 +1,20 @@
 //Called every time a tile was clicked on
 const tileClicked = (e) => {
-  //Set/reset selection
+  //Toggle selection
   let tile = e.target;
-  tile.selected = !tile.selected;
+  tile.classList.toggle("selected");
 
   let allTiles = Array.from(tiles.getAll());
-  let selectedTiles = allTiles.filter((tile) => tile.selected);
+  let selectedTiles = allTiles.filter((tile) =>
+    tile.classList.contains("selected")
+  );
   let winningTiles = [];
 
   //Clear tile colours
-  allTiles.forEach((tile) => tile.classList.remove("selected"));
+  allTiles.forEach(
+    (tile) =>
+      !tile.classList.contains("free") && tile.classList.remove("selected")
+  );
   allTiles.forEach((tile) => tile.classList.remove("win"));
 
   //Set colour on selected tiles
@@ -19,10 +24,10 @@ const tileClicked = (e) => {
   for (let i = 0; i < 5; i++) {
     let selectedInRow = allTiles
       .filter((tile) => tile.y == i)
-      .filter((tile) => tile.selected);
+      .filter((tile) => tile.classList.contains("selected"));
     let selectedInColumn = allTiles
       .filter((tile) => tile.x == i)
-      .filter((tile) => tile.selected);
+      .filter((tile) => tile.classList.contains("selected"));
     if (selectedInColumn.length == 5)
       winningTiles = winningTiles.concat(selectedInColumn);
     if (selectedInRow.length == 5)
@@ -30,10 +35,10 @@ const tileClicked = (e) => {
   }
   let selectedDiagonally1 = allTiles
     .filter((tile) => tile.y == tile.x)
-    .filter((tile) => tile.selected);
+    .filter((tile) => tile.classList.contains("selected"));
   let selectedDiagonally2 = allTiles
     .filter((tile) => 4 - tile.y == tile.x)
-    .filter((tile) => tile.selected);
+    .filter((tile) => tile.classList.contains("selected"));
   if (selectedDiagonally1.length == 5)
     winningTiles = winningTiles.concat(selectedDiagonally1);
   if (selectedDiagonally2.length == 5)
@@ -62,7 +67,12 @@ export const tiles = {
         cell.className = "tile";
         cell.y = i;
         cell.x = j;
-        cell.addEventListener("click", tileClicked);
+        //Center slot is a free slot
+        if (i === 2 && j === 2) {
+          cell.classList.add("selected", "free");
+        } else {
+          cell.addEventListener("click", tileClicked);
+        }
         row.appendChild(cell);
       }
       table.appendChild(row);
@@ -75,13 +85,19 @@ export const tiles = {
     tiles.getAll().forEach((thisSlot) => {
       let randomSlot = newSlots.pop();
 
-      thisSlot.selected = false;
-      thisSlot.classList.remove("win", "selected");
-      thisSlot.innerText = randomSlot.string;
-      if (randomSlot.helperText) {
-        let helperText = document.createElement("span");
-        helperText.innerText = randomSlot.helperText;
-        thisSlot.appendChild(helperText);
+      if (thisSlot.classList.contains("free")) {
+        //The free slot should always be selected and contains no text inside
+        thisSlot.classList.remove("win");
+        thisSlot.innerText = "";
+      } else {
+        //Reset classes, add slot string and helperText
+        thisSlot.classList.remove("win", "selected");
+        thisSlot.innerText = randomSlot.string;
+        if (randomSlot.helperText) {
+          let helperText = document.createElement("span");
+          helperText.innerText = randomSlot.helperText;
+          thisSlot.appendChild(helperText);
+        }
       }
     });
   },
