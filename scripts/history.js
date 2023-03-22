@@ -86,7 +86,7 @@ export const history = {
     });
   },
 
-  save: ({ date, score, time, pb, card }) => {
+  save: ({ id, date, score, time, pb, card }) => {
     //Parse history data from localStorage to json
     let historyData = JSON.parse(localStorage.getItem("history"));
 
@@ -109,14 +109,29 @@ export const history = {
       };
     });
 
-    historyData.push({
-      date,
-      score,
-      time,
-      pb,
-      card: storedCard,
-    });
-
+    //Finish save process by editing the card if its already stored in localStorage
+    //or adding a new card if ID is not found there
+    let cardIndex = historyData.findIndex((card) => card.id === id);
+    if (cardIndex === -1) {
+      //New card
+      historyData.push({
+        id: id,
+        date: date,
+        score: score,
+        time: time,
+        pb: pb,
+        card: storedCard,
+      });
+    } else {
+      //Existing card
+      historyData[cardIndex] = {
+        ...historyData[cardIndex],
+        score: score,
+        time: time,
+        pb: pb,
+        card: storedCard,
+      };
+    }
     localStorage.setItem("history", JSON.stringify(historyData));
   },
 

@@ -1,4 +1,13 @@
+import { score } from "./score.js";
+import { timer } from "./timer.js";
+import { history } from "./history.js";
 import { createBingoTable } from "./utils.js";
+
+//Random ID
+const randomID = () => {
+  let id = Math.random().toString(16).slice(2);
+  return id;
+};
 
 //Called every time a tile was clicked on
 const tileClicked = (e) => {
@@ -53,9 +62,21 @@ const tileClicked = (e) => {
 
   //On winning condition call function assigned from index.js
   if (winningTiles.length > 0 && tiles.onWin != null) tiles.onWin();
+
+  // Save
+  history.save({
+    id: tiles.id,
+    date: new Date(),
+    score: score.get(),
+    time: timer.getTime(),
+    pb: timer.getPB(),
+    card: tiles.getAll(),
+  });
 };
 
 export const tiles = {
+  id: null,
+
   //Let the player skip the bingo without losing a point
   //if no tiles were selected before
   skippable: true,
@@ -82,6 +103,8 @@ export const tiles = {
 
   //add new text to each tile according to newSlots
   regenerate: (newSlots) => {
+    history.init();
+    tiles.id = randomID();
     tiles.skippable = true;
 
     tiles.getAll().forEach((thisSlot) => {
