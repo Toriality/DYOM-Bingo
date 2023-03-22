@@ -65,6 +65,7 @@ export const timer = {
   display: (now, pb) => {
     //Calculate current time, convert it to HH:MM:SS.MS/10 and display it
     let span = document.getElementById("timerString");
+    span.classList.add("tim");
 
     span.innerHTML = `
       Time: 
