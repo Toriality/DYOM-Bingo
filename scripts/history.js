@@ -135,6 +135,10 @@ export const history = {
     localStorage.setItem("history", JSON.stringify(historyData));
   },
 
+  reset: () => {
+    localStorage.setItem("history", JSON.stringify([]));
+  },
+
   get: () => {
     let historyData = JSON.parse(localStorage.getItem("history"));
     return historyData;

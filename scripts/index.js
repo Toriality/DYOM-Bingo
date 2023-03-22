@@ -100,6 +100,7 @@ let resetHandler = () => {
   if (shouldReset) {
     score.reset();
     timer.resetPB();
+    history.reset();
     regenerateSlots();
   }
 };
