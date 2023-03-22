@@ -1,0 +1,41 @@
+/* make a modal */
+#modal {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#modal.active {
+  display: block;
+}
+
+#modalBox {
+  margin: 2% auto;
+  padding: 2rem;
+  background-color: #f4f4f4;
+  width: 50%;
+}
+
+#modalClose {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  color: red;
+  margin-bottom: 12px;
+}
+
+#modalContent td {
+  pointer-events: none;
+}
+
+#modalContent div {
+  font-size: 1.4rem;
+  margin: 2rem 0;
+}

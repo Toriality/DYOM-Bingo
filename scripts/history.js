@@ -1,21 +1,48 @@
-/* All the data below corresponds to the data that was saved when the card was stored
-[
-    {
-       date: date
-       score: { win, lost }
-       time: time elapsed
-       pb: user's pb score
-       card: {
-        slots: [
-            {
-                x, y, string, selected, win
-            }
-        ]
-       }
-    }
-]
+import {
+  createBingoTable,
+  createModal,
+  toHours,
+  toMilliseconds,
+  toMinutes,
+  toSeconds,
+} from "./utils.js";
 
-*/
+const createModalContent = (date, score, time, pb, card) => {
+  // prettier-ignore
+  let timeDate = `${toHours(time)}:${toMinutes(time)}:${toSeconds(time)}:${toMilliseconds(time)}`;
+  // prettier-ignore
+  let pbDate = `${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}:${toMilliseconds(pb)}`;
+  if (pbDate == "00:00:00:00") pbDate = "Not set yet";
+
+  let dateDiv = document.createElement("div");
+  dateDiv.id = "date";
+  dateDiv.innerHTML = `<p>Date: ${date}</p>`;
+
+  let infoDiv = document.createElement("div");
+  infoDiv.id = "info";
+  infoDiv.innerHTML = `
+    <p>Score: ${score.win} - ${score.lose}</p>
+    <p>Time: ${timeDate}</p>
+    <p>PB: ${pbDate}</p>
+  `;
+
+  // Create table with strings
+  let table = createBingoTable((cell, i, j) => {
+    let slot = card.slots.find((slot) => slot.x === j && slot.y === i);
+    cell.innerText = slot.string;
+    if (slot.selected) cell.classList.add("selected");
+    if (slot.win) cell.classList.add("win");
+  });
+  let cardDiv = document.createElement("div");
+  cardDiv.id = "card";
+  cardDiv.appendChild(table);
+
+  let content = document.createElement("div");
+  content.appendChild(dateDiv);
+  content.appendChild(cardDiv);
+  content.appendChild(infoDiv);
+  return content;
+};
 
 export const history = {
   init: () => {
@@ -28,33 +55,34 @@ export const history = {
   createIn: (div) => {
     if (history.get() === null) return;
 
-    let table = document.createElement("table");
-    let row = document.createElement("tr");
     history.get().forEach((cardData) => {
       let card = cardData.card;
+
       //Create cards
       let cardDiv = document.createElement("div");
       cardDiv.className = "card";
 
-      //Create table
-      let table = document.createElement("table");
+      //Create table without strings
+      let table = createBingoTable((cell, i, j) => {
+        let slot = card.slots.find((slot) => slot.x === j && slot.y === i);
+        if (slot.selected) cell.classList.add("selected");
+        if (slot.win) cell.classList.add("win");
+      });
       let helperText = document.createElement("span");
       helperText.innerText = "Click to view details";
       table.appendChild(helperText);
-      for (let i = 0; i < 5; i++) {
-        let row = document.createElement("tr");
-        for (let j = 0; j < 5; j++) {
-          let cell = document.createElement("td");
-          let slot = card.slots.find((slot) => slot.x === j && slot.y === i);
-          //cell.innerText = slot.string;
-          if (slot.selected) cell.classList.add("selected");
-          if (slot.win) cell.classList.add("win");
-          row.appendChild(cell);
-        }
-        table.appendChild(row);
-      }
       cardDiv.appendChild(table);
       div.appendChild(cardDiv);
+
+      //Create modal content
+      let content = createModalContent(
+        cardData.date,
+        cardData.score,
+        cardData.time,
+        cardData.pb,
+        card
+      );
+      createModal(table, content);
     });
   },
 
