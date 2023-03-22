@@ -71,6 +71,7 @@ const theme = {
       document.getElementById("themeIcon"),
       document.getElementById("generate"),
       document.getElementById("reset"),
+      document.getElementById("modalBox"),
       ...document.querySelectorAll("table"),
       ...document.querySelectorAll("td"),
       ...document.querySelectorAll(".textBox"),

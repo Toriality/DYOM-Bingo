@@ -20,6 +20,11 @@
   background-color: #f4f4f4;
 }
 
+#modalBox.dark {
+  background-color: #050505;
+  color: white;
+}
+
 #modalClose {
   font-size: 1.8rem;
   font-weight: bold;
