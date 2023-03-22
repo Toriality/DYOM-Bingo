@@ -1,3 +1,5 @@
+import { toHours, toMinutes, toSeconds, toMilliseconds } from "./utils.js";
+
 export const timer = {
   //Time at which timer was started
   startTime: null,
@@ -60,40 +62,22 @@ export const timer = {
     timer.display(time, timer.getPB());
   },
 
-  display: (current, pb) => {
+  display: (now, pb) => {
     //Calculate current time, convert it to HH:MM:SS.MS/10 and display it
     let span = document.getElementById("timerString");
-    let hrs = Math.floor((current / (1000 * 60 * 60)) % 24)
-      .toString()
-      .padStart(2, "0");
-    let mins = Math.floor((current / (1000 * 60)) % 60)
-      .toString()
-      .padStart(2, "0");
-    let secs = Math.floor((current / 1000) % 60)
-      .toString()
-      .padStart(2, "0");
-    let mils = Math.floor((current % 1000) / 10)
-      .toString()
-      .padStart(2, "0");
 
-    span.innerHTML = "Time: " + hrs + ":" + mins + ":" + secs + "." + mils;
+    span.innerHTML = `
+      Time: 
+      ${toHours(now)}:${toMinutes(now)}:${toSeconds(now)}:${toMilliseconds(now)}
+      `;
+
     //The same with pb if exists
     if (pb != null) {
-      let pbhrs = Math.floor((pb / (1000 * 60 * 60)) % 24)
-        .toString()
-        .padStart(2, "0");
-      let pbmins = Math.floor((pb / (1000 * 60)) % 60)
-        .toString()
-        .padStart(2, "0");
-      let pbsecs = Math.floor((pb / 1000) % 60)
-        .toString()
-        .padStart(2, "0");
-      let pbmils = Math.floor((pb % 1000) / 10)
-        .toString()
-        .padStart(2, "0");
-
-      span.innerHTML +=
-        "<br />PB: " + +pbhrs + ":" + pbmins + ":" + pbsecs + "." + pbmils;
+      span.innerHTML += `
+        <br />
+        PB:
+        ${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}:${toMilliseconds(pb)}
+        `;
     } else span.innerHTML += "<br />PB: Not set yet";
   },
 };

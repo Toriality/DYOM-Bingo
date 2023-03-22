@@ -1,3 +1,5 @@
+import { createBingoTable } from "./utils.js";
+
 //Called every time a tile was clicked on
 const tileClicked = (e) => {
   tiles.skippable = false;
@@ -64,25 +66,17 @@ export const tiles = {
   //Create tiles inside supplied element
   createIn: (div) => {
     // Create table element
-    let table = document.createElement("table");
-    // Create a 5x5 bingo table and add it to dyom div
-    for (let i = 0; i < 5; i++) {
-      let row = document.createElement("tr");
-      for (let j = 0; j < 5; j++) {
-        let cell = document.createElement("td");
-        cell.className = "tile";
-        cell.y = i;
-        cell.x = j;
-        //Center slot is a free slot
-        if (i === 2 && j === 2) {
-          cell.classList.add("selected", "free");
-        } else {
-          cell.addEventListener("click", tileClicked);
-        }
-        row.appendChild(cell);
+    let table = createBingoTable((cell, i, j) => {
+      cell.className = "tile";
+      cell.y = i;
+      cell.x = j;
+      //Center slot is a free slot
+      if (i === 2 && j === 2) {
+        cell.classList.add("selected", "free");
+      } else {
+        cell.addEventListener("click", tileClicked);
       }
-      table.appendChild(row);
-    }
+    });
     div.appendChild(table);
   },
 
