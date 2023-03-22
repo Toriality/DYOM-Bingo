@@ -1,3 +1,10 @@
+const toggleTheme = (elements, add) => {
+  elements.forEach((element) => {
+    if (add) element.classList.add("dark");
+    else element.classList.remove("dark");
+  });
+};
+
 const theme = {
   get: () => {
     let theme = localStorage.getItem("theme") || "light";
@@ -21,50 +28,26 @@ const theme = {
     background.style.backgroundImage = `url("./images/background_${theme}.jpg")`;
 
     //Change color and other attributes
-    if (theme == "light") {
-      themeIcon.classList.remove("dark");
-      generate.classList.remove("dark");
-      reset.classList.remove("dark");
-      for (let i = 0; i < table.length; i++) {
-        table[i].classList.remove("dark");
-      }
-      for (let i = 0; i < textBoxElements.length; i++) {
-        textBoxElements[i].classList.remove("dark");
-      }
-      for (let i = 0; i < formdivElements.length; i++) {
-        formdivElements[i].classList.remove("dark");
-      }
-      for (let i = 0; i < td.length; i++) {
-        td[i].classList.remove("dark");
-      }
-    } else {
-      themeIcon.classList.add("dark");
-      generate.classList.add("dark");
-      reset.classList.add("dark");
-      for (let i = 0; i < table.length; i++) {
-        table[i].classList.add("dark");
-      }
-      for (let i = 0; i < textBoxElements.length; i++) {
-        textBoxElements[i].classList.add("dark");
-      }
-      for (let i = 0; i < formdivElements.length; i++) {
-        formdivElements[i].classList.add("dark");
-      }
-      for (let i = 0; i < td.length; i++) {
-        td[i].classList.add("dark");
-      }
-    }
+    let elements = [
+      themeIcon,
+      generate,
+      reset,
+      ...table,
+      ...textBoxElements,
+      ...formdivElements,
+      ...td,
+    ];
+
+    if (theme == "light") toggleTheme(elements, false);
+    else toggleTheme(elements, true);
   },
 };
 
 themeIcon.addEventListener("click", () => {
   const userTheme = theme.get();
 
-  if (userTheme === "light") {
-    theme.set("dark");
-  } else {
-    theme.set("light");
-  }
+  if (userTheme === "light") theme.set("dark");
+  else theme.set("light");
 });
 
 //Init theme
