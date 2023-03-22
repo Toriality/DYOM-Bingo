@@ -63,7 +63,8 @@ const tileClicked = (e) => {
   //On winning condition call function assigned from index.js
   if (winningTiles.length > 0 && tiles.onWin != null) tiles.onWin();
 
-  // Save
+  // Save and update history div
+  let historyBox = document.getElementById("historyBox");
   history.save({
     id: tiles.id,
     date: new Date(),
@@ -72,6 +73,7 @@ const tileClicked = (e) => {
     pb: timer.getPB(),
     card: tiles.getAll(),
   });
+  history.updateIn(historyBox);
 };
 
 export const tiles = {
@@ -103,7 +105,12 @@ export const tiles = {
 
   //add new text to each tile according to newSlots
   regenerate: (newSlots) => {
+    //re-render history div
+    let historyBox = document.getElementById("historyBox");
     history.init();
+    history.reRenderIn(historyBox);
+
+    //Tiles initialization
     tiles.id = randomID();
     tiles.skippable = true;
 

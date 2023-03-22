@@ -24,6 +24,17 @@
   padding: 0 32px;
 }
 
+#historyBox .card.current td {
+  background: #777;
+  border-color: #222;
+}
+#historyBox .card.current td.selected {
+  background: #aaa;
+}
+#historyBox .card.current td.win {
+  background: #fff !important;
+}
+
 #historyBox table {
   width: unset;
 }

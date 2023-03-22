@@ -86,6 +86,31 @@ export const history = {
     });
   },
 
+  updateIn: (div) => {
+    let card = history.get()[history.get().length - 1].card;
+    let cardDiv = div.querySelector(".card.current");
+
+    if (!cardDiv) {
+      cardDiv = document.createElement("div");
+      cardDiv.classList.add("card", "current");
+      div.appendChild(cardDiv);
+    }
+
+    let table = createBingoTable((cell, i, j) => {
+      let slot = card.slots.find((slot) => slot.x === j && slot.y === i);
+      if (slot.selected) cell.classList.add("selected");
+      if (slot.win) cell.classList.add("win");
+    });
+
+    cardDiv.innerHTML = "";
+    cardDiv.appendChild(table);
+  },
+
+  reRenderIn: (div) => {
+    div.innerHTML = "";
+    history.createIn(div);
+  },
+
   save: ({ id, date, score, time, pb, card }) => {
     //Parse history data from localStorage to json
     let historyData = JSON.parse(localStorage.getItem("history"));
