@@ -12,15 +12,16 @@
 
 #historyBox {
   display: flex;
-  /*justify-content: space-around*/
+  padding: 2rem 0;
+  justify-content: center;
   flex-wrap: wrap;
   row-gap: 4rem;
-  padding: 2rem 8rem;
   background: #1a2431;
 }
 
 #historyBox .card {
-  flex: 0 0 20%;
+  margin: auto;
+  padding: 0 32px;
 }
 
 #historyBox table {
@@ -58,4 +59,14 @@
   width: 32ch;
   opacity: 0.9;
   z-index: 999;
+}
+
+@media screen and (min-width: 1280px) {
+  #historyBox .card {
+    flex: 1 20%;
+  }
+
+  #historyBox table {
+    margin: auto;
+  }
 }
