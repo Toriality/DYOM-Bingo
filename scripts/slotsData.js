@@ -34,9 +34,40 @@ export const requirements = [
     name: "Time",
     description: "Limit slots that require in-game timer",
   },
+  {
+    name: "Subtitles",
+    description: "Limit slots that require original subtitles",
+  },
 ];
 
 export const slots = [
+  // Subtitles
+  {
+    slotType: "Subtitles",
+    string: "English mission",
+    requires: ["Subtitles"],
+  },
+  {
+    slotType: "Subtitles",
+    string: "Portugese mission",
+    requires: ["Subtitles"],
+  },
+  {
+    slotType: "Subtitles",
+    string: "Spanish mission",
+    requires: ["Subtitles"],
+  },
+  {
+    slotType: "Subtitles",
+    string: "Italian mission",
+    requires: ["Subtitles"],
+  },
+  {
+    slotType: "Subtitles",
+    string: "Polish mission",
+    requires: ["Subtitles"],
+  },
+
   // TTS
   {
     slotType: "TTS",
