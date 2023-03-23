@@ -14,7 +14,7 @@ export const timer = {
     span.id = "timerString";
     div.appendChild(span);
     timer.tick();
-    timer.tickReference = setInterval(timer.tick, 10);
+    timer.tickReference = setInterval(timer.tick, 200);
   },
 
   //Get PB from localstorage
@@ -49,7 +49,7 @@ export const timer = {
   restart: () => {
     timer.startTime = Date.now();
     if (timer.tickReference == null)
-      timer.tickReference = setInterval(timer.tick, 10);
+      timer.tickReference = setInterval(timer.tick, 200);
   },
 
   //On win stop the timer and set new PB if conditions are met
@@ -65,11 +65,10 @@ export const timer = {
   display: (now, pb) => {
     //Calculate current time, convert it to HH:MM:SS.MS/10 and display it
     let span = document.getElementById("timerString");
-    span.classList.add("tim");
 
     span.innerHTML = `
       Time: 
-      ${toHours(now)}:${toMinutes(now)}:${toSeconds(now)}:${toMilliseconds(now)}
+      ${toHours(now)}:${toMinutes(now)}:${toSeconds(now)}
       `;
 
     //The same with pb if exists
@@ -77,7 +76,7 @@ export const timer = {
       span.innerHTML += `
         <br />
         PB:
-        ${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}:${toMilliseconds(pb)}
+        ${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}
         `;
     } else span.innerHTML += "<br />PB: Not set yet";
   },
