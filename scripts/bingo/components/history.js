@@ -5,7 +5,7 @@ import {
   toMilliseconds,
   toMinutes,
   toSeconds,
-} from "./utils.js";
+} from "../utils.js";
 
 const createModalContent = (date, score, time, pb, card) => {
   // prettier-ignore
@@ -45,6 +45,8 @@ const createModalContent = (date, score, time, pb, card) => {
 };
 
 export const history = {
+  div: null,
+
   init: () => {
     //Create localStorage for history if it doesn't exist
     if (localStorage.getItem("history") == null) {
@@ -84,16 +86,19 @@ export const history = {
       );
       createModal(table, content);
     });
+
+    history.div = div;
   },
 
-  updateIn: (div) => {
+  // Updates the last card in the history
+  update: () => {
     let card = history.get()[history.get().length - 1].card;
-    let cardDiv = div.querySelector(".card.current");
+    let cardDiv = history.div.querySelector(".card.current");
 
     if (!cardDiv) {
       cardDiv = document.createElement("div");
       cardDiv.classList.add("card", "current");
-      div.appendChild(cardDiv);
+      history.div.appendChild(cardDiv);
     }
 
     let table = createBingoTable((cell, i, j) => {
@@ -106,11 +111,13 @@ export const history = {
     cardDiv.appendChild(table);
   },
 
-  reRenderIn: (div) => {
-    div.innerHTML = "";
-    history.createIn(div);
+  // Refresh div
+  refresh: () => {
+    history.div.innerHTML = "";
+    history.createIn(history.div);
   },
 
+  // Save card
   save: ({ id, date, score, time, pb, card }) => {
     //Parse history data from localStorage to json
     let historyData = JSON.parse(localStorage.getItem("history"));

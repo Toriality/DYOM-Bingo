@@ -1,8 +1,10 @@
 // Toggle dark theme class on elements
 const toggleTheme = (elements, add) => {
   elements.forEach((element) => {
-    if (add) element.classList.add("dark");
-    else element.classList.remove("dark");
+    if (element) {
+      if (add) element.classList.add("dark");
+      else element.classList.remove("dark");
+    }
   });
 };
 
@@ -18,14 +20,16 @@ const watchTheme = () => {
   const observer = new MutationObserver(callback);
   const historyBox = document.getElementById("historyBox");
   const modal = document.getElementById("modal");
-  observer.observe(historyBox, {
-    childList: true,
-    subtree: true,
-  });
-  observer.observe(modal, {
-    childList: true,
-    subtree: true,
-  });
+  if (historyBox && modal) {
+    observer.observe(historyBox, {
+      childList: true,
+      subtree: true,
+    });
+    observer.observe(modal, {
+      childList: true,
+      subtree: true,
+    });
+  }
 };
 
 const theme = {

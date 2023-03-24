@@ -1,44 +1,7 @@
-/* TEMPLATE:
-  {
-    slotType: "Slot Type"
-    string: "Insert your string here",
-    helperText: "Helper text"
-    requires: array of requirements (for example ["TTS", "Info"])
-    
-  }
-  // slotType: required field
-  // string: required field
-  // helperText: optional field
-  // requires: optional field
-*/
-
 // Get current date
 const date = new Date();
 const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(date);
 const year = date.getFullYear();
-
-export const requirements = [
-  {
-    name: "Translator",
-    description: "Limit slots that require translator",
-  },
-  {
-    name: "TTS",
-    description: "Limit slots that require TTS",
-  },
-  {
-    name: "Info",
-    description: "Limit slots that require DYOM Info",
-  },
-  {
-    name: "Time",
-    description: "Limit slots that require in-game timer",
-  },
-  {
-    name: "Subtitles",
-    description: "Limit slots that require original subtitles",
-  },
-];
 
 export const slots = [
   // Subtitles
@@ -204,7 +167,7 @@ export const slots = [
     slotType: "Mission Info",
     string: "Mission was made within a year",
     helperText: `This mission was published between 
-    ${month}, ${year - 1} and ${month}, ${year}`,
+      ${month}, ${year - 1} and ${month}, ${year}`,
     requires: ["Info"],
   },
   {

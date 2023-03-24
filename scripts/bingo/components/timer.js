@@ -1,4 +1,4 @@
-import { toHours, toMinutes, toSeconds, toMilliseconds } from "./utils.js";
+import { toHours, toMinutes, toSeconds } from "../utils.js";
 
 export const timer = {
   //Time at which timer was started
@@ -9,12 +9,10 @@ export const timer = {
 
   //Creates timer text element
   createIn: (div) => {
-    timer.startTime = Date.now();
     let span = document.createElement("span");
     span.id = "timerString";
+    span.innerText = "Time: Loading...";
     div.appendChild(span);
-    timer.tick();
-    timer.tickReference = setInterval(timer.tick, 200);
   },
 
   //Get PB from localstorage
