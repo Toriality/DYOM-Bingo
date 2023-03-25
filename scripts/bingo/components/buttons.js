@@ -3,9 +3,9 @@ import { history } from "./history.js";
 import { score } from "./score.js";
 
 export const buttons = {
-  createIn: (div) => {
-    let generateBtn = document.createElement("button");
-    let resetBtn = document.createElement("button");
+  createIn(div) {
+    const generateBtn = document.createElement("button");
+    const resetBtn = document.createElement("button");
 
     generateBtn.id = "generate";
     resetBtn.id = "reset";
@@ -21,7 +21,7 @@ export const buttons = {
       if (game.skippable || game.alreadyWon) game.new();
       // Else show a confirmation dialog and let the player decide
       else {
-        let shouldStartNew = confirm(
+        const shouldStartNew = confirm(
           "Are you sure you want to generate a new card? You will lose a point."
         );
         if (shouldStartNew) {
@@ -33,7 +33,7 @@ export const buttons = {
 
     // Reset everything
     resetBtn.addEventListener("click", () => {
-      let shouldReset = confirm(
+      const shouldReset = confirm(
         "Are you sure you want to reset your stats? All the data will be lost."
       );
       if (shouldReset) {

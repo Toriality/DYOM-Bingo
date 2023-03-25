@@ -34,9 +34,9 @@ const watchTheme = () => {
 
 const theme = {
   // Initialize theme configuration
-  init: () => {
+  init() {
     // Theme switch button
-    let themeIcon = document.getElementById("themeIcon");
+    const themeIcon = document.getElementById("themeIcon");
     themeIcon.addEventListener("click", () => {
       theme.set();
     });
@@ -47,15 +47,15 @@ const theme = {
   },
 
   // Get current theme
-  get: () => {
+  get() {
     // If no theme is set, return default theme (light)
     let thisTheme = localStorage.getItem("theme") || "light";
     return thisTheme;
   },
 
   // Change current theme to another one
-  set: () => {
-    let thisTheme = theme.get();
+  set() {
+    const thisTheme = theme.get();
     if (thisTheme === "light") thisTheme = "dark";
     else thisTheme = "light";
     localStorage.setItem("theme", thisTheme);
@@ -63,15 +63,15 @@ const theme = {
   },
 
   // Apply visuals to elements
-  apply: () => {
-    let thisTheme = theme.get();
+  apply() {
+    const thisTheme = theme.get();
 
     // Change background
-    let background = document.querySelector("html");
+    const background = document.querySelector("html");
     background.style.backgroundImage = `url("./images/background_${thisTheme}.jpg")`;
 
     // Apply theme to elements
-    let elements = [
+    const elements = [
       document.getElementById("themeIcon"),
       document.getElementById("generate"),
       document.getElementById("reset"),
@@ -81,7 +81,7 @@ const theme = {
       ...document.querySelectorAll(".textBox"),
       ...document.querySelectorAll(".formdiv"),
     ];
-    if (thisTheme == "light") toggleTheme(elements, false);
+    if (thisTheme === "light") toggleTheme(elements, false);
     else toggleTheme(elements, true);
   },
 };

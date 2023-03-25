@@ -4,9 +4,9 @@ import { history } from "./history.js";
 
 export const card = {
   // Create card table and tiles
-  createIn: (div) => {
-    let table = createBingoTable((cell, i, j) => {
-      if (i == 2 && j == 2) {
+  createIn(div) {
+    const table = createBingoTable((cell, i, j) => {
+      if (i === 2 && j === 2) {
         cell.classList.add("selected", "free");
       }
       cell.x = j;
@@ -19,20 +19,20 @@ export const card = {
   },
 
   // Get tiles array from HTMLElement
-  get: () => {
-    let tiles = Array.from(document.getElementsByClassName("tile"));
+  get() {
+    const tiles = Array.from(document.getElementsByClassName("tile"));
     return tiles;
   },
 
   // Set tiles from given slots
-  set: (slots) => {
-    let tiles = card.get();
+  set(slots) {
+    const tiles = card.get();
     tiles.forEach((tile) => {
-      let randomSlot = slots.pop();
+      const randomSlot = slots.pop();
       if (!tile.classList.contains("free")) {
         tile.innerText = randomSlot.string;
         if (randomSlot.helperText) {
-          let helperText = document.createElement("span");
+          const helperText = document.createElement("span");
           helperText.innerText = randomSlot.helperText;
           tile.appendChild(helperText);
         }
@@ -41,8 +41,8 @@ export const card = {
   },
 
   // Clear card tiles
-  reset: () => {
-    let tiles = card.get();
+  reset() {
+    const tiles = card.get();
     tiles.forEach((tile) => {
       tile.innerText = "";
       if (tile.classList.contains("free")) {
@@ -54,7 +54,7 @@ export const card = {
   },
 
   // Generate a new card from given slots
-  generate: (slots) => {
+  generate(slots) {
     card.reset();
     card.set(slots);
   },
@@ -64,11 +64,11 @@ const onTileClick = (e) => {
   game.skippable = false;
 
   //Toggle selection
-  let tile = e.target;
+  const tile = e.target;
   tile.classList.toggle("selected");
 
-  let tiles = card.get();
-  let selectedTiles = tiles.filter((tile) =>
+  const tiles = card.get();
+  const selectedTiles = tiles.filter((tile) =>
     tile.classList.contains("selected")
   );
   let winningTiles = [];
@@ -85,26 +85,26 @@ const onTileClick = (e) => {
 
   //Search for winning tiles/bingo
   for (let i = 0; i < 5; i++) {
-    let selectedInRow = tiles
-      .filter((tile) => tile.y == i)
+    const selectedInRow = tiles
+      .filter((tile) => tile.y === i)
       .filter((tile) => tile.classList.contains("selected"));
-    let selectedInColumn = tiles
-      .filter((tile) => tile.x == i)
+    const selectedInColumn = tiles
+      .filter((tile) => tile.x === i)
       .filter((tile) => tile.classList.contains("selected"));
-    if (selectedInColumn.length == 5)
+    if (selectedInColumn.length === 5)
       winningTiles = winningTiles.concat(selectedInColumn);
-    if (selectedInRow.length == 5)
+    if (selectedInRow.length === 5)
       winningTiles = winningTiles.concat(selectedInRow);
   }
-  let selectedDiagonally1 = tiles
-    .filter((tile) => tile.y == tile.x)
+  const selectedDiagonally1 = tiles
+    .filter((tile) => tile.y === tile.x)
     .filter((tile) => tile.classList.contains("selected"));
-  let selectedDiagonally2 = tiles
-    .filter((tile) => 4 - tile.y == tile.x)
+  const selectedDiagonally2 = tiles
+    .filter((tile) => 4 - tile.y === tile.x)
     .filter((tile) => tile.classList.contains("selected"));
-  if (selectedDiagonally1.length == 5)
+  if (selectedDiagonally1.length === 5)
     winningTiles = winningTiles.concat(selectedDiagonally1);
-  if (selectedDiagonally2.length == 5)
+  if (selectedDiagonally2.length === 5)
     winningTiles = winningTiles.concat(selectedDiagonally2);
 
   //set different color for winning tiles

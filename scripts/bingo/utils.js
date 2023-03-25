@@ -1,11 +1,11 @@
 // Create 5x5 bingo table
 // cellSettings(cell, i, j) = additional code for each cell
 export const createBingoTable = (cellSettings) => {
-  let table = document.createElement("table");
+  const table = document.createElement("table");
   for (let i = 0; i < 5; i++) {
-    let row = document.createElement("tr");
+    const row = document.createElement("tr");
     for (let j = 0; j < 5; j++) {
-      let cell = document.createElement("td");
+      const cell = document.createElement("td");
       cellSettings(cell, i, j);
       row.appendChild(cell);
     }
@@ -18,9 +18,9 @@ export const createBingoTable = (cellSettings) => {
 // div = the div that opens the modal when clicked
 // content = content to be inserted inside modal
 export const createModal = (div, content) => {
-  let modalDiv = document.getElementById("modal");
-  let modalContent = document.getElementById("modalContent");
-  let modalClose = document.getElementById("modalClose");
+  const modalDiv = document.getElementById("modal");
+  const modalContent = document.getElementById("modalContent");
+  const modalClose = document.getElementById("modalClose");
 
   div.addEventListener("click", () => {
     modalDiv.classList.add("active");

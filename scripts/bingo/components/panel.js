@@ -4,11 +4,11 @@ import { buttons } from "./buttons.js";
 import { options } from "./options.js";
 
 export const panel = {
-  createIn: (div) => {
-    let scoreDiv = document.createElement("div");
-    let timerDiv = document.createElement("div");
-    let optionsDiv = document.createElement("div");
-    let buttonsDiv = document.createElement("div");
+  createIn(div) {
+    const scoreDiv = document.createElement("div");
+    const timerDiv = document.createElement("div");
+    const optionsDiv = document.createElement("div");
+    const buttonsDiv = document.createElement("div");
 
     scoreDiv.className = "textBox";
     timerDiv.className = "textBox";

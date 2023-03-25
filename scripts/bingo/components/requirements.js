@@ -4,7 +4,7 @@ import { requirements as requirementsData } from "../data/requirements.js";
 let requirementsList = [];
 
 //On option click, change color and add/remove requirement name from the list
-let optionClicked = (e) => {
+const optionClicked = (e) => {
   let div = e.target;
   let selected = (e.target.selected = !e.target.selected);
   div.classList.toggle("click");
@@ -15,10 +15,10 @@ let optionClicked = (e) => {
 };
 
 export const requirements = {
-  createIn: (div) => {
+  createIn(div) {
     //Create option buttons from a requirement list
     requirementsData.forEach((req) => {
-      let reqDiv = document.createElement("div");
+      const reqDiv = document.createElement("div");
       reqDiv.className = "formdiv";
       reqDiv.innerText = req.description;
       reqDiv.obj = req;
@@ -34,9 +34,9 @@ export const requirements = {
     });
   },
 
-  get: () => {
-    let activeReqs = document.querySelectorAll(".formdiv.click");
-    let reqs = [];
+  get() {
+    const activeReqs = document.querySelectorAll(".formdiv.click");
+    const reqs = [];
     activeReqs.forEach((req) => {
       reqs.push(req.obj.name);
     });

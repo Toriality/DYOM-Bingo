@@ -5,7 +5,7 @@ export const slots = {
 
   //Filter out slots which require selected options,
   //so there is no need to check for that later
-  set: (requirements) => {
+  set(requirements) {
     let filteredSlots = slotsData;
     requirements.forEach(
       (req) =>
@@ -15,10 +15,10 @@ export const slots = {
     );
 
     //Create an array which will hold selected slots
-    let newSlots = new Array();
+    const newSlots = new Array();
 
     for (let i = 0; i < 5 * 5; i++) {
-      let randomSlot =
+      const randomSlot =
         filteredSlots[Math.floor(Math.random() * filteredSlots.length)];
       //Instead of retrying each time the same thing was chosen,
       //just filter out chosen slot so it cannot be chosen again
@@ -31,7 +31,7 @@ export const slots = {
     slots.currentSlots = newSlots;
   },
 
-  get: () => {
+  get() {
     return slots.currentSlots;
   },
 };

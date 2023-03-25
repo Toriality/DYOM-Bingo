@@ -1,8 +1,8 @@
 import { requirements } from "./requirements.js";
 
 export const options = {
-  createIn: (div) => {
-    let requirementsDiv = document.createElement("div");
+  createIn(div) {
+    const requirementsDiv = document.createElement("div");
     requirementsDiv.id = "requirements";
     requirements.createIn(requirementsDiv);
     div.appendChild(requirementsDiv);

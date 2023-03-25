@@ -12,6 +12,7 @@ export const game = {
   alreadyWon: false,
   skippable: true,
   requirements: [],
+
   get score() {
     return score.get();
   },
@@ -25,10 +26,10 @@ export const game = {
     return card.get();
   },
 
-  createIn: (div) => {
-    let cardDiv = document.createElement("div");
-    let panelDiv = document.createElement("div");
-    let historyDiv = document.getElementById("historyBox");
+  createIn(div) {
+    const cardDiv = document.createElement("div");
+    const panelDiv = document.createElement("div");
+    const historyDiv = document.getElementById("historyBox");
 
     cardDiv.id = "card";
     panelDiv.id = "panel";
@@ -42,15 +43,15 @@ export const game = {
   },
 
   // Use on page laod to initialize localStorage values
-  init: () => {
+  init() {
     history.init();
     score.init();
   },
 
   // Start a new game
-  new: () => {
-    let id = Math.random().toString(16).slice(2);
-    let date = new Date();
+  new() {
+    const id = Math.random().toString(16).slice(2);
+    const date = new Date();
     game.date = date.toLocaleString("en-US");
     game.id = id;
     game.skippable = true;
@@ -66,7 +67,7 @@ export const game = {
   },
 
   // Win game
-  onWin: () => {
+  onWin() {
     if (!game.alreadyWon) {
       score.updateWon();
       timer.win();
@@ -75,7 +76,7 @@ export const game = {
   },
 
   // Lose game
-  onLose: () => {
+  onLose() {
     score.updateLost();
   },
 };

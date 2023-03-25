@@ -9,16 +9,16 @@ import {
 
 const createModalContent = (date, score, time, pb, card) => {
   // prettier-ignore
-  let timeDate = `${toHours(time)}:${toMinutes(time)}:${toSeconds(time)}:${toMilliseconds(time)}`;
+  const timeDate = `${toHours(time)}:${toMinutes(time)}:${toSeconds(time)}:${toMilliseconds(time)}`;
   // prettier-ignore
-  let pbDate = `${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}:${toMilliseconds(pb)}`;
-  if (pbDate == "00:00:00:00") pbDate = "Not set yet";
+  const pbDate = `${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}:${toMilliseconds(pb)}`;
+  if (pbDate === "00:00:00:00") pbDate = "Not set yet";
 
-  let dateDiv = document.createElement("div");
+  const dateDiv = document.createElement("div");
   dateDiv.id = "date";
   dateDiv.innerHTML = `<p>Date: ${date}</p>`;
 
-  let infoDiv = document.createElement("div");
+  const infoDiv = document.createElement("div");
   infoDiv.id = "info";
   infoDiv.innerHTML = `
     <p>Score: ${score.win} - ${score.lose}</p>
@@ -27,17 +27,17 @@ const createModalContent = (date, score, time, pb, card) => {
   `;
 
   // Create table with strings
-  let table = createBingoTable((cell, i, j) => {
-    let slot = card.slots.find((slot) => slot.x === j && slot.y === i);
+  const table = createBingoTable((cell, i, j) => {
+    const slot = card.slots.find((slot) => slot.x === j && slot.y === i);
     cell.innerText = slot.string;
     if (slot.selected) cell.classList.add("selected");
     if (slot.win) cell.classList.add("win");
   });
-  let cardDiv = document.createElement("div");
+  const cardDiv = document.createElement("div");
   cardDiv.id = "card";
   cardDiv.appendChild(table);
 
-  let content = document.createElement("div");
+  const content = document.createElement("div");
   content.appendChild(dateDiv);
   content.appendChild(cardDiv);
   content.appendChild(infoDiv);
@@ -47,37 +47,37 @@ const createModalContent = (date, score, time, pb, card) => {
 export const history = {
   div: null,
 
-  init: () => {
+  init() {
     //Create localStorage for history if it doesn't exist
-    if (localStorage.getItem("history") == null) {
+    if (localStorage.getItem("history") === null) {
       localStorage.setItem("history", JSON.stringify([]));
     }
   },
 
-  createIn: (div) => {
+  createIn(div) {
     if (history.get() === null) return;
 
     history.get().forEach((cardData) => {
-      let card = cardData.card;
+      const card = cardData.card;
 
       //Create cards
-      let cardDiv = document.createElement("div");
+      const cardDiv = document.createElement("div");
       cardDiv.className = "card";
 
       //Create table without strings
-      let table = createBingoTable((cell, i, j) => {
-        let slot = card.slots.find((slot) => slot.x === j && slot.y === i);
+      const table = createBingoTable((cell, i, j) => {
+        const slot = card.slots.find((slot) => slot.x === j && slot.y === i);
         if (slot.selected) cell.classList.add("selected");
         if (slot.win) cell.classList.add("win");
       });
-      let helperText = document.createElement("span");
+      const helperText = document.createElement("span");
       helperText.innerText = "Click to view details";
       table.appendChild(helperText);
       cardDiv.appendChild(table);
       div.appendChild(cardDiv);
 
       //Create modal content
-      let content = createModalContent(
+      const content = createModalContent(
         cardData.date,
         cardData.score,
         cardData.time,
@@ -91,8 +91,8 @@ export const history = {
   },
 
   // Updates the last card in the history
-  update: () => {
-    let card = history.get()[history.get().length - 1].card;
+  update() {
+    const card = history.get()[history.get().length - 1].card;
     let cardDiv = history.div.querySelector(".card.current");
 
     if (!cardDiv) {
@@ -101,8 +101,8 @@ export const history = {
       history.div.appendChild(cardDiv);
     }
 
-    let table = createBingoTable((cell, i, j) => {
-      let slot = card.slots.find((slot) => slot.x === j && slot.y === i);
+    const table = createBingoTable((cell, i, j) => {
+      const slot = card.slots.find((slot) => slot.x === j && slot.y === i);
       if (slot.selected) cell.classList.add("selected");
       if (slot.win) cell.classList.add("win");
     });
@@ -112,18 +112,18 @@ export const history = {
   },
 
   // Refresh div
-  refresh: () => {
+  refresh() {
     history.div.innerHTML = "";
     history.createIn(history.div);
   },
 
   // Save card
-  save: ({ id, date, score, time, pb, card }) => {
+  save({ id, date, score, time, pb, card }) {
     //Parse history data from localStorage to json
     let historyData = JSON.parse(localStorage.getItem("history"));
 
     //Save current card to localStorage
-    let storedCard = {
+    const storedCard = {
       slots: [],
     };
 
@@ -150,7 +150,7 @@ export const history = {
 
     //Finish save process by editing the card if its already stored in localStorage
     //or adding a new card if ID is not found there
-    let cardIndex = historyData.findIndex((card) => card.id === id);
+    const cardIndex = historyData.findIndex((card) => card.id === id);
     if (cardIndex === -1) {
       //New card
       historyData.push({
@@ -174,12 +174,12 @@ export const history = {
     localStorage.setItem("history", JSON.stringify(historyData));
   },
 
-  reset: () => {
+  reset() {
     localStorage.setItem("history", JSON.stringify([]));
   },
 
-  get: () => {
-    let historyData = JSON.parse(localStorage.getItem("history"));
+  get() {
+    const historyData = JSON.parse(localStorage.getItem("history"));
     return historyData;
   },
 };

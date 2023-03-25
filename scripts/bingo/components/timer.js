@@ -8,61 +8,61 @@ export const timer = {
   tickReference: null,
 
   //Creates timer text element
-  createIn: (div) => {
-    let span = document.createElement("span");
+  createIn(div) {
+    const span = document.createElement("span");
     span.id = "timerString";
     span.innerText = "Time: Loading...";
     div.appendChild(span);
   },
 
   //Get PB from localstorage
-  getPB: () => {
+  getPB() {
     if (!localStorage.getItem("PB")) return null;
     else return localStorage.getItem("PB");
   },
 
   //Set PB in localstorage
-  setPB: (time) => {
+  setPB(time) {
     localStorage.setItem("PB", time);
   },
 
   //Reset PB to 0
-  resetPB: () => {
+  resetPB() {
     localStorage.removeItem("PB");
   },
 
   //Called each 10 ms when timer is running
-  tick: () => {
-    let time = Date.now() - timer.startTime;
+  tick() {
+    const time = Date.now() - timer.startTime;
 
     timer.display(time, timer.getPB());
   },
 
-  getTime: () => {
-    let time = Date.now() - timer.startTime;
+  getTime() {
+    const time = Date.now() - timer.startTime;
     return time;
   },
 
   //Restarts the timer
-  restart: () => {
+  restart() {
     timer.startTime = Date.now();
-    if (timer.tickReference == null)
+    if (timer.tickReference === null)
       timer.tickReference = setInterval(timer.tick, 200);
   },
 
   //On win stop the timer and set new PB if conditions are met
   //Then display current information
-  win: () => {
-    let time = Date.now() - timer.startTime;
+  win() {
+    const time = Date.now() - timer.startTime;
     clearInterval(timer.tickReference);
     timer.tickReference = null;
-    if (timer.getPB() == null || timer.getPB() > time) timer.setPB(time);
+    if (timer.getPB() === null || timer.getPB() > time) timer.setPB(time);
     timer.display(time, timer.getPB());
   },
 
-  display: (now, pb) => {
+  display(now, pb) {
     //Calculate current time, convert it to HH:MM:SS.MS/10 and display it
-    let span = document.getElementById("timerString");
+    const span = document.getElementById("timerString");
 
     span.innerHTML = `
       Time: 

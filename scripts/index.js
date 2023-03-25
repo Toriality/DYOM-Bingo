@@ -1,6 +1,6 @@
 import { game } from "./bingo/game.js";
 
-let gameDiv = document.getElementById("game");
+const gameDiv = document.getElementById("game");
 
 game.init();
 game.createIn(gameDiv);
