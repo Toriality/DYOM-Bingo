@@ -66,6 +66,19 @@ export const game = {
     timer.restart();
   },
 
+  // Save game
+  save() {
+    history.save({
+      id: this.id,
+      date: this.date,
+      score: this.score,
+      time: this.time,
+      pb: this.pb,
+      card: this.card,
+    });
+    history.update();
+  },
+
   // Win game
   onWin() {
     if (!game.alreadyWon) {
