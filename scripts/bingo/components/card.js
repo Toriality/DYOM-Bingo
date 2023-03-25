@@ -1,6 +1,5 @@
 import { createBingoTable } from "../utils.js";
 import { game } from "../game.js";
-import { history } from "./history.js";
 
 export const card = {
   // Create card table and tiles

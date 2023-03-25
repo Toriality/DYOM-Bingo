@@ -52,14 +52,14 @@ export const game = {
   new() {
     const id = Math.random().toString(16).slice(2);
     const date = new Date();
-    game.date = date.toLocaleString("en-US");
-    game.id = id;
-    game.skippable = true;
-    game.alreadyWon = false;
 
-    game.requirements = requirements.get();
+    this.date = date.toLocaleString("en-US");
+    this.id = id;
+    this.skippable = true;
+    this.alreadyWon = false;
+    this.requirements = requirements.get();
+
     slots.set(game.requirements);
-
     history.refresh();
     card.generate(slots.get());
     score.set(game.score);
@@ -84,7 +84,7 @@ export const game = {
     if (!game.alreadyWon) {
       score.updateWon();
       timer.win();
-      game.alreadyWon = true;
+      this.alreadyWon = true;
     }
   },
 
