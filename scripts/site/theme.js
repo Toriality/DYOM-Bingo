@@ -79,7 +79,7 @@ const theme = {
       ...document.querySelectorAll("table"),
       ...document.querySelectorAll("td"),
       ...document.querySelectorAll(".textBox"),
-      ...document.querySelectorAll(".formdiv"),
+      ...document.querySelectorAll(".formDiv"),
     ];
     if (thisTheme === "light") toggleTheme(elements, false);
     else toggleTheme(elements, true);

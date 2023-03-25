@@ -10,7 +10,7 @@ export const game = {
   id: null,
   date: null,
   alreadyWon: false,
-  skippable: true,
+  canSkip: true,
   requirements: [],
 
   get score() {
@@ -42,7 +42,7 @@ export const game = {
     div.appendChild(panelDiv);
   },
 
-  // Use on page laod to initialize localStorage values
+  // Use on page load to initialize localStorage values
   init() {
     history.init();
     score.init();
@@ -55,7 +55,7 @@ export const game = {
 
     this.date = date.toLocaleString("en-US");
     this.id = id;
-    this.skippable = true;
+    this.canSkip = true;
     this.alreadyWon = false;
     this.requirements = requirements.get();
 

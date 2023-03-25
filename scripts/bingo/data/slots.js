@@ -12,7 +12,7 @@ export const slots = [
   },
   {
     slotType: "Subtitles",
-    string: "Portugese mission",
+    string: "Portuguese mission",
     requires: ["Subtitles"],
   },
   {
@@ -44,7 +44,7 @@ export const slots = [
   },
   {
     slotType: "TTS",
-    string: "Has a braziliam TTS voice",
+    string: "Has a brazilian TTS voice",
     requires: ["TTS"],
   },
 
@@ -611,7 +611,7 @@ export const slots = [
   },
   {
     slotType: "Locations",
-    string: "Uses Los Santos Skycraper",
+    string: "Uses Los Santos Skyscraper",
   },
   {
     slotType: "Locations",
@@ -758,7 +758,7 @@ export const slots = [
     slotType: "Others",
     string: "Money objective",
     helperText:
-      "A money objective will increase or decrease the ammount of money the player has",
+      "A money objective will increase or decrease the amount of money the player has",
   },
   {
     slotType: "Others",

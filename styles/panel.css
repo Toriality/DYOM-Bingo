@@ -27,7 +27,7 @@
   border-color: #000000;
 }
 
-.formdiv {
+.formDiv {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,27 +39,27 @@
   font-weight: bold;
 }
 
-.formdiv.mouseenter {
+.formDiv.mouseenter {
   background-color: #ffeba8;
   border-color: #ffd745;
 }
 
-.formdiv.click {
+.formDiv.click {
   background-color: #ffaaaa;
   border-color: #ff6666;
 }
 
-.formdiv.dark {
+.formDiv.dark {
   color: white;
   background-color: #333;
   border-color: #000000;
 }
 
-.formdiv.dark.mouseenter {
+.formDiv.dark.mouseenter {
   background-color: #111;
 }
 
-.formdiv.dark.click {
+.formDiv.dark.click {
   background-color: rgba(255, 49, 49, 0.75);
   border-color: rgba(99, 0, 0, 0.75);
 }
@@ -158,11 +158,11 @@ button:active {
     flex-direction: column;
   }
 
-  .formdiv {
+  .formDiv {
     width: min(48rem, 24vw);
   }
 
-  .formdiv label {
+  .formDiv label {
     justify-content: center;
   }
 }

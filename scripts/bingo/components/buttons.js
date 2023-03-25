@@ -18,8 +18,8 @@ export const buttons = {
     resetBtn.innerText = "Reset game";
 
     generateBtn.addEventListener("click", () => {
-      // Start new game if its skippable or player already won
-      if (game.skippable || game.alreadyWon) game.new();
+      // Start new game if it can skip or player already won
+      if (game.canSkip || game.alreadyWon) game.new();
       // Else show a confirmation dialog and let the player decide
       else {
         const shouldStartNew = confirm(

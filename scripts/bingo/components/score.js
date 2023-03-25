@@ -21,7 +21,7 @@ export const score = {
     return score;
   },
 
-  //Set score in localstorage
+  //Set score in localStorage
   set(scoreObj) {
     localStorage.setItem("score", JSON.stringify(scoreObj));
   },

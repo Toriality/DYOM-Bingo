@@ -109,7 +109,7 @@ export const card = {
 
 const onTileClick = (e) => {
   // Disable skipping after first user interaction with the card
-  game.skippable = false;
+  game.canSkip = false;
 
   // Toggle selection classes of tile
   card.toggle(e.target);

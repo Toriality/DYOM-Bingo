@@ -15,13 +15,13 @@ export const timer = {
     div.appendChild(span);
   },
 
-  //Get PB from localstorage
+  //Get PB from localStorage
   getPB() {
     if (!localStorage.getItem("PB")) return null;
     else return localStorage.getItem("PB");
   },
 
-  //Set PB in localstorage
+  //Set PB in localStorage
   setPB(time) {
     localStorage.setItem("PB", time);
   },

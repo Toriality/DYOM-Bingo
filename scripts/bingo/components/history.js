@@ -11,7 +11,7 @@ const createModalContent = (date, score, time, pb, card) => {
   // prettier-ignore
   const timeDate = `${toHours(time)}:${toMinutes(time)}:${toSeconds(time)}:${toMilliseconds(time)}`;
   // prettier-ignore
-  const pbDate = `${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}:${toMilliseconds(pb)}`;
+  let pbDate = `${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}:${toMilliseconds(pb)}`;
   if (pbDate === "00:00:00:00") pbDate = "Not set yet";
 
   const dateDiv = document.createElement("div");

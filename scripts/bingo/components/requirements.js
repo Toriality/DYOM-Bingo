@@ -19,7 +19,7 @@ export const requirements = {
     //Create option buttons from a requirement list
     requirementsData.forEach((req) => {
       const reqDiv = document.createElement("div");
-      reqDiv.className = "formdiv";
+      reqDiv.className = "formDiv";
       reqDiv.innerText = req.description;
       reqDiv.obj = req;
       reqDiv.addEventListener("click", optionClicked);
@@ -35,11 +35,11 @@ export const requirements = {
   },
 
   get() {
-    const activeReqs = document.querySelectorAll(".formdiv.click");
-    const reqs = [];
-    activeReqs.forEach((req) => {
-      reqs.push(req.obj.name);
+    const activeRequirements = document.querySelectorAll(".formDiv.click");
+    const requirements = [];
+    activeRequirements.forEach((req) => {
+      requirements.push(req.obj.name);
     });
-    return reqs;
+    return requirements;
   },
 };

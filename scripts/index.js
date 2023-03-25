@@ -6,7 +6,7 @@ game.init();
 game.createIn(gameDiv);
 game.new();
 
-// DEUBG
+// DEBUG
 document.addEventListener("keydown", (e) => {
   if (e.key === "p") {
     console.log(game);
