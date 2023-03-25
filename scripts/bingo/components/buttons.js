@@ -1,6 +1,7 @@
 import { game } from "../game.js";
 import { history } from "./history.js";
 import { score } from "./score.js";
+import { timer } from "./timer.js";
 
 export const buttons = {
   createIn(div) {
@@ -38,6 +39,7 @@ export const buttons = {
       );
       if (shouldReset) {
         score.reset();
+        timer.resetPB();
         history.reset();
         game.new();
       }
