@@ -19,7 +19,7 @@ export const buttons = {
 
     generateBtn.addEventListener("click", () => {
       // Start new game if it can skip or player already won
-      if (game.canSkip || game.alreadyWon) game.new();
+      if (game.canSkip || game.alreadyWon) game.finish();
       // Else show a confirmation dialog and let the player decide
       else {
         const shouldStartNew = confirm(
@@ -27,7 +27,7 @@ export const buttons = {
         );
         if (shouldStartNew) {
           game.onLose();
-          game.new();
+          game.finish();
         }
       }
     });
@@ -41,7 +41,7 @@ export const buttons = {
         score.reset();
         timer.resetPB();
         history.reset();
-        game.new();
+        game.finish();
       }
     });
 

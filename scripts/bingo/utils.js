@@ -1,3 +1,8 @@
+// Generates a random string
+export function generateRandomString() {
+  return Math.random().toString(16).slice(2);
+}
+
 // Create 5x5 bingo table
 // cellSettings(cell, i, j) = additional code for each cell
 export const createBingoTable = (cellSettings) => {

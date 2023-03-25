@@ -5,9 +5,12 @@ import { slots } from "./components/slots.js";
 import { timer } from "./components/timer.js";
 import { score } from "./components/score.js";
 import { history } from "./components/history.js";
+import { seed } from "./components/seed.js";
+import { generateRandomString } from "./utils.js";
 
 export const game = {
   id: null,
+  seed: null,
   date: null,
   alreadyWon: false,
   canSkip: true,
@@ -42,28 +45,37 @@ export const game = {
     div.appendChild(panelDiv);
   },
 
-  // Use on page load to initialize localStorage values
+  // Use on page load to initialize localStorage values and seed
   init() {
     history.init();
     score.init();
+    seed.init();
   },
 
-  // Start a new game
+  // Start a new game based on given seed
   new() {
-    const id = Math.random().toString(16).slice(2);
+    const id = generateRandomString();
+    const gameSeed = seed.get();
     const date = new Date();
 
-    this.date = date.toLocaleString("en-US");
     this.id = id;
+    this.seed = gameSeed;
+    this.date = date.toLocaleString("en-US");
     this.canSkip = true;
     this.alreadyWon = false;
     this.requirements = requirements.get();
 
-    slots.set(game.requirements);
+    slots.set(this.requirements, this.seed.value);
     history.refresh();
     card.generate(slots.get());
-    score.set(game.score);
+    score.set(this.score);
     timer.restart();
+  },
+
+  // Finish the game
+  finish() {
+    seed.set(generateRandomString());
+    this.new();
   },
 
   // Save game
@@ -81,7 +93,7 @@ export const game = {
 
   // Win game
   onWin() {
-    if (!game.alreadyWon) {
+    if (!this.alreadyWon) {
       score.updateWon();
       timer.win();
       this.alreadyWon = true;
