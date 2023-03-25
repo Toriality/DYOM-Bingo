@@ -31,16 +31,21 @@ export const game = {
 
   createIn(div) {
     const cardDiv = document.createElement("div");
+    const seedDiv = document.createElement("div");
     const panelDiv = document.createElement("div");
     const historyDiv = document.getElementById("historyBox");
 
     cardDiv.id = "card";
+    seedDiv.id = "seed";
+    seedDiv.className = "textBox";
     panelDiv.id = "panel";
 
     card.createIn(cardDiv);
+    seed.createIn(seedDiv);
     panel.createIn(panelDiv);
     history.createIn(historyDiv);
 
+    cardDiv.appendChild(seedDiv);
     div.appendChild(cardDiv);
     div.appendChild(panelDiv);
   },
@@ -70,6 +75,7 @@ export const game = {
     card.generate(slots.get());
     score.set(this.score);
     timer.restart();
+    seed.update();
   },
 
   // Finish the game
