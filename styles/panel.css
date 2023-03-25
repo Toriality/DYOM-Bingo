@@ -4,6 +4,11 @@
   margin-top: 32px;
 }
 
+#buttons {
+  display: flex;
+  flex-direction: column;
+}
+
 .textBox {
   margin-bottom: 1rem;
   text-align: center;
