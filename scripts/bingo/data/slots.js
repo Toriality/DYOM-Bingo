@@ -1,3 +1,12 @@
+// slotType = Unused value. Currently only good for visually organizing slots
+// string = String to be displayed in the card's tile
+// (optional) requires = Array of requirements
+// (optional) mode = Array of game modes this slot can be played in. If not set, it will be available in all modes
+
+// Mode strings:
+// - Classic: This is the default game mode.
+// - Guess: This is the Guess the Bingo game mode.
+
 // Get current date
 const date = new Date();
 const month = new Intl.DateTimeFormat("en-US", { month: "long" }).format(date);
@@ -36,16 +45,19 @@ export const slots = [
     slotType: "TTS",
     string: "Has a male TTS voice",
     requires: ["TTS"],
+    mode: ["Classic"],
   },
   {
     slotType: "TTS",
     string: "Has a female TTS voice",
     requires: ["TTS"],
+    mode: ["Classic"],
   },
   {
     slotType: "TTS",
     string: "Has a brazilian TTS voice",
     requires: ["TTS"],
+    mode: ["Classic"],
   },
 
   // Start
@@ -140,6 +152,7 @@ export const slots = [
     helperText:
       "Mark this slot if your mission has been translated by the DYOM Rainbomizer auto-translate feature",
     requires: ["Translator"],
+    mode: ["Classic"],
   },
   {
     slotType: "Mission Info",
@@ -169,12 +182,14 @@ export const slots = [
     helperText: `This mission was published between 
       ${month}, ${year - 1} and ${month}, ${year}`,
     requires: ["Info"],
+    mode: ["Classic"],
   },
   {
     slotType: "Mission Info",
     string: "Mission was made ten years ago or more",
     helperText: "DYOM's first version was released on November 30, 2008",
     requires: ["Info"],
+    mode: ["Classic"],
   },
   {
     slotType: "Mission Info",
@@ -281,6 +296,7 @@ export const slots = [
     helperText:
       "Sometimes the auto-translate feature encounters a problem trying to translate the current mission",
     requires: ["Translate"],
+    mode: ["Classic"],
   },
   {
     slotType: "Issues",
@@ -291,12 +307,14 @@ export const slots = [
   {
     slotType: "Issues",
     string: "Mission crashes",
+    mode: ["Classic"],
   },
   {
     slotType: "Issues",
     string: "Rainbomizer fails to load mission (starts a empty DYOM mission)",
     helperText:
       "Sometimes the Rainbomizer encounters a problem downloading the mission file, or maybe the author deleted it",
+    mode: ["Classic"],
   },
   {
     slotType: "Issues",
@@ -316,26 +334,31 @@ export const slots = [
     slotType: "Status",
     string: "MISSION PASSED RESPECT +",
     helperText: "Complete a mission",
+    mode: ["Classic"],
   },
   {
     slotType: "Status",
     string: "MISSION FAILED",
     helperText: "Fail a mission",
+    mode: ["Classic"],
   },
   {
     slotType: "Status",
     string: "Wasted",
     helperText: "Player died",
+    mode: ["Classic"],
   },
   {
     slotType: "Status",
     string: "Busted",
     helperText: "Player gets arrested",
+    mode: ["Classic"],
   },
   {
     slotType: "Status",
     string: "Mission skipped",
     helperText: "Skip a mission",
+    mode: ["Classic"],
   },
 
   // Player
@@ -495,6 +518,7 @@ export const slots = [
     slotType: "Actors",
     string:
       "Your friend is supposed to go somewhere with you but you leave him behind",
+    mode: ["Classic"],
   },
   {
     slotType: "Actors",
@@ -771,6 +795,7 @@ export const slots = [
   {
     slotType: "Others",
     string: "Quick mission (Complete in less than one minute)",
+    mode: ["Classic"],
   },
   {
     slotType: "Others",
@@ -781,6 +806,7 @@ export const slots = [
     string: "Achieve Hitman skill with one weapon",
     helperText:
       'There are three levels of skills: "Poor", "Gangster" and "Hitman". DYOM missions starts at poor skill and it cannot be changed',
+    mode: ["Classic"],
   },
   {
     slotType: "Others",

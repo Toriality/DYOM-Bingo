@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        gap: 4rem;
+        margin: 0 2rem;
+      }
+      #inputs {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 50%;
+      }
+      #inputs label {
+        margin-top: 32px;
+        margin-bottom: 6px;
+      }
+      #inputs button {
+        margin-top: 2rem;
+      }
+      #inputs #slots {
+        border: 1px solid black;
+        max-height: 32ch;
+        user-select: none;
+        overflow-y: scroll;
+        padding: 0.5rem;
+      }
+      #inputs option {
+        padding: 0.5rem;
+      }
+      #inputs option:hover {
+        background-color: #ddd;
+      }
+      #inputs option.selected {
+        background-color: rgb(150, 255, 150);
+      }
+      #inputs option.selected:hover {
+        background-color: rgb(100, 255, 100);
+      }
+      #outputs {
+        margin: 2rem;
+        padding: 0 2rem;
+        margin-bottom: 0;
+        flex: 1;
+        border: 1px solid black;
+      }
+      #outputs sub {
+        color: gray;
+      }
+      #outputs sub code {
+        color: rgb(0, 255, 0);
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="inputs">
+      <label>Mission Name</label>
+      <input id="name" type="text" placeholder="Mission Name" />
+      <label>Mission Author</label>
+      <input id="author" type="text" placeholder="Mission author" />
+      <label>Mission Description</label>
+      <textarea id="desc" placeholder="Mission description" rows="4"></textarea>
+      <label>Date</label>
+      <input id="date" type="date" placeholder="Date" />
+      <label>Mission URL</label>
+      <input id="url" type="url" placeholder="Mission link" />
+      <label>Slots that should be checked</label>
+      <div id="slots" multiple size="15"></div>
+
+      <button disabled type="button" id="add">Add Mission</button>
+    </div>
+    <div id="outputs">
+      <sub>
+        Copy the code below without the square brackets into
+        <code>scripts/bingo/data/missions.js</code>
+      </sub>
+      <pre><code id="output"> </code></pre>
+    </div>
+
+    <script type="module">
+      import { slots as slotsData } from "./scripts/bingo/data/slots.js";
+
+      const loadSlots = () => {
+        const options = [];
+        const filteredSlots = slotsData.filter(
+          (slot) => slot.mode === undefined || !slot.mode.includes("Classic")
+        );
+        filteredSlots.forEach((slot) => {
+          const option = document.createElement("option");
+          option.value = slot.string;
+          option.textContent = slot.string;
+          options.push(option);
+        });
+
+        return options;
+      };
+
+      const updateOutput = () => {
+        add.disabled = false;
+        // Check if slot has selected class
+        const selectedSlots = slots.filter((slot) =>
+          slot.classList.contains("selected")
+        );
+        const mission = {
+          name: name.value,
+          author: author.value,
+          desc: desc.value,
+          date: date.value,
+          url: url.value,
+          slots: Array.from(selectedSlots).map((slot) => slot.value),
+        };
+
+        added[index] = mission;
+
+        let jsonString = JSON.stringify(added, null, 2);
+        output.innerText = jsonString;
+      };
+
+      const addMission = () => {
+        add.disabled = true;
+        index++;
+        const mission = JSON.parse(output.innerText);
+        added.push(mission);
+        resetAll();
+      };
+
+      const resetAll = () => {
+        name.value = "";
+        author.value = "";
+        desc.value = "";
+        date.value = "";
+        url.value = "";
+        slots.forEach((slot) => slot.classList.remove("selected"));
+      };
+
+      let added = [];
+      let index = 0;
+      const inputs = document.getElementById("inputs");
+      const output = document.getElementById("output");
+      const add = document.getElementById("add");
+      const name = document.getElementById("name");
+      const author = document.getElementById("author");
+      const desc = document.getElementById("desc");
+      const date = document.getElementById("date");
+      const url = document.getElementById("url");
+      const slotsDiv = document.getElementById("slots");
+      const slots = loadSlots();
+      slots.forEach((slot) => {
+        slot.addEventListener("click", (e) => {
+          slot.classList.toggle("selected");
+          updateOutput();
+        });
+        slotsDiv.appendChild(slot);
+      });
+
+      name.addEventListener("input", updateOutput);
+      author.addEventListener("input", updateOutput);
+      desc.addEventListener("input", updateOutput);
+      date.addEventListener("input", updateOutput);
+      url.addEventListener("input", updateOutput);
+      add.addEventListener("click", addMission);
+    </script>
+  </body>
+</html>
