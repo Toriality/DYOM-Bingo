@@ -73,6 +73,7 @@ const theme = {
     // Apply theme to elements
     const elements = [
       document.getElementById("themeIcon"),
+      document.getElementById("apply"),
       document.getElementById("generate"),
       document.getElementById("reset"),
       document.getElementById("modalBox"),

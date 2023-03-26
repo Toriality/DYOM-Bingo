@@ -79,8 +79,10 @@ export const game = {
   },
 
   // Finish the game
-  finish() {
-    seed.set(generateRandomString());
+  finish(newSeed) {
+    if (newSeed) seed.set(newSeed);
+    else seed.set(generateRandomString());
+    console.log(newSeed);
     this.new();
   },
 

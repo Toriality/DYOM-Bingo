@@ -14,6 +14,7 @@ export const seed = {
 
     seedLabel.innerText = "Seed:";
     seedInputDiv.id = "seedInput";
+    seedInput.id = "_seed";
     seedInput.type = "text";
     seedInput.addEventListener("input", (e) => this.set(e.target.value));
     shareText.innerText = "Share";
