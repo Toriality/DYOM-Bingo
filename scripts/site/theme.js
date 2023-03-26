@@ -80,6 +80,7 @@ const theme = {
       ...document.querySelectorAll("td"),
       ...document.querySelectorAll(".textBox"),
       ...document.querySelectorAll(".formDiv"),
+      ...document.querySelectorAll("input[type=text]"),
     ];
     if (thisTheme === "light") toggleTheme(elements, false);
     else toggleTheme(elements, true);

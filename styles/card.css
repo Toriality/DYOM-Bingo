@@ -36,6 +36,20 @@
   border: 1px solid #ccc;
 }
 
+#card #seedInput input.dark {
+  background-color: black;
+  border: 1px solid black;
+}
+
+#card #seedInput input.dark:focus {
+  background-color: white;
+  color: black;
+}
+
+#card #seedInput input.dark:hover {
+  border: 1px solid #ccc;
+}
+
 @media screen and (min-width: 1280px) {
   #card {
     margin-right: 2rem;
