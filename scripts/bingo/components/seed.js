@@ -17,7 +17,7 @@ export const seed = {
     seedInput.type = "text";
     seedInput.addEventListener("input", (e) => this.set(e.target.value));
     shareText.innerText = "Share";
-    shareText.addEventListener("click", copyToClipboard);
+    shareText.addEventListener("click", this.copy);
 
     this.div = { seedInput, shareText };
 
@@ -50,10 +50,9 @@ export const seed = {
     this.string = seedString;
     this.value = seedValue();
   },
-};
 
-const copyToClipboard = () => {
-  const text = document.getElementById("seedInput").value;
-  navigator.clipboard.writeText(text);
-  //alert("Link copied to clipboard!");
+  copy() {
+    const text = this.div.seedInput.value;
+    navigator.clipboard.writeText(text);
+  },
 };
