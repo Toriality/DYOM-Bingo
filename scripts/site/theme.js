@@ -55,7 +55,7 @@ const theme = {
 
   // Change current theme to another one
   set() {
-    const thisTheme = theme.get();
+    let thisTheme = theme.get();
     if (thisTheme === "light") thisTheme = "dark";
     else thisTheme = "light";
     localStorage.setItem("theme", thisTheme);
