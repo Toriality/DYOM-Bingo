@@ -7,12 +7,12 @@ import {
   toSeconds,
 } from "../utils.js";
 
-const createModalContent = (date, score, time, pb, card) => {
+const createModalContent = (seed, date, score, time, pb, card) => {
   // prettier-ignore
-  const timeDate = `${toHours(time)}:${toMinutes(time)}:${toSeconds(time)}:${toMilliseconds(time)}`;
+  const timeDate = `${toHours(time)}:${toMinutes(time)}:${toSeconds(time)}`;
   // prettier-ignore
-  let pbDate = `${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}:${toMilliseconds(pb)}`;
-  if (pbDate === "00:00:00:00") pbDate = "Not set yet";
+  let pbDate = `${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}`;
+  if (pbDate === "00:00:00") pbDate = "Not set yet";
 
   const dateDiv = document.createElement("div");
   dateDiv.id = "date";
@@ -24,6 +24,7 @@ const createModalContent = (date, score, time, pb, card) => {
     <p>Score: ${score.win} - ${score.lose}</p>
     <p>Time: ${timeDate}</p>
     <p>PB: ${pbDate}</p>
+    <p>Seed: ${seed}</p>
   `;
 
   // Create table with strings
@@ -78,6 +79,7 @@ export const history = {
 
       //Create modal content
       const content = createModalContent(
+        cardData.seed,
         cardData.date,
         cardData.score,
         cardData.time,
@@ -118,7 +120,7 @@ export const history = {
   },
 
   // Save card
-  save({ id, date, score, time, pb, card }) {
+  save({ seed, id, date, score, time, pb, card }) {
     //Parse history data from localStorage to json
     let historyData = JSON.parse(localStorage.getItem("history"));
 
@@ -154,6 +156,7 @@ export const history = {
     if (cardIndex === -1) {
       //New card
       historyData.push({
+        seed: seed,
         id: id,
         date: date,
         score: score,
@@ -165,6 +168,7 @@ export const history = {
       //Existing card
       historyData[cardIndex] = {
         ...historyData[cardIndex],
+        seed: seed,
         score: score,
         time: time,
         pb: pb,

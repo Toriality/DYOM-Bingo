@@ -98,6 +98,7 @@ export const game = {
   // Save game
   save() {
     history.save({
+      seed: this.seed.string,
       id: this.id,
       date: this.date,
       score: this.score,
