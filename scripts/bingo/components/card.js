@@ -119,4 +119,7 @@ const onTileClick = (e) => {
 
   // Save game every time a tile is clicked
   game.save();
+
+  // Resume timer if paused
+  game.resume();
 };

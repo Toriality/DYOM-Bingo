@@ -75,9 +75,17 @@ export const game = {
     history.refresh();
     card.generate(slots.get());
     score.set(this.score);
-    timer.restart();
     seed.update();
     easter.check(this.seed.string);
+    timer.restart();
+  },
+
+  pause() {
+    timer.pause();
+  },
+
+  resume() {
+    timer.resume();
   },
 
   // Finish the game

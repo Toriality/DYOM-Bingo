@@ -27,6 +27,18 @@
   border-color: #000000;
 }
 
+.textBox #timerString {
+  cursor: pointer;
+}
+
+.textBox #timerString.paused {
+  color: #ff6666;
+}
+
+.textBox.dark #timerString.paused {
+  color: red;
+}
+
 .formDiv {
   display: flex;
   justify-content: center;

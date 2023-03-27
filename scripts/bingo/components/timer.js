@@ -1,8 +1,14 @@
 import { toHours, toMinutes, toSeconds } from "../utils.js";
 
 export const timer = {
+  // "waiting", "running", "paused", "won"
+  state: "waiting",
+
   //Time at which timer was started
   startTime: null,
+
+  //Time at which timer was paused
+  pauseTime: null,
 
   //setInterval reference for stopping the timer
   tickReference: null,
@@ -11,7 +17,9 @@ export const timer = {
   createIn(div) {
     const span = document.createElement("span");
     span.id = "timerString";
-    span.innerText = "Time: Loading...";
+    span.innerText = "Time: Click on a tile to start";
+    span.title = "Click to pause/resume";
+    span.addEventListener("click", timer.pause);
     div.appendChild(span);
   },
 
@@ -34,7 +42,6 @@ export const timer = {
   //Called each 10 ms when timer is running
   tick() {
     const time = Date.now() - timer.startTime;
-
     timer.display(time, timer.getPB());
   },
 
@@ -43,21 +50,65 @@ export const timer = {
     return time;
   },
 
-  //Restarts the timer
   restart() {
+    timer.state = "waiting";
     timer.startTime = Date.now();
+    timer.pauseTime = null;
+    clearInterval(timer.tickReference);
+    timer.tickReference = null;
+    const span = document.getElementById("timerString");
+    span.innerText = "Time: Click on a tile to start";
+  },
+
+  start() {
+    timer.startTime = Date.now();
+    if (timer.state === "waiting") {
+      timer.tickReference = setInterval(timer.tick, 200);
+      timer.state = "running";
+    }
+  },
+
+  //Stops the timer
+  pause() {
+    if (timer.state === "won") return;
+    if (timer.state === "paused" || timer.state === "waiting")
+      return timer.resume();
+    timer.pauseTime = Date.now() - timer.startTime;
+    clearInterval(timer.tickReference);
+    timer.tickReference = null;
+    const span = document.getElementById("timerString");
+    span.classList.add("paused");
+    timer.state = "paused";
+  },
+
+  //Resume the timer
+  resume() {
+    if (timer.state === "won") return;
+    if (timer.state === "waiting") return timer.start();
+    if (timer.state === "paused")
+      timer.startTime = Date.now() - timer.pauseTime;
     if (timer.tickReference === null)
       timer.tickReference = setInterval(timer.tick, 200);
+    const span = document.getElementById("timerString");
+    span.classList.remove("paused");
+    timer.state = "running";
   },
 
   //On win stop the timer and set new PB if conditions are met
   //Then display current information
   win() {
+    const span = document.getElementById("timerString");
+    if (timer.state === "paused") {
+      timer.startTime = Date.now() - timer.pauseTime;
+      span.classList.remove("paused");
+    }
+    timer.state = "won";
     const time = Date.now() - timer.startTime;
     clearInterval(timer.tickReference);
     timer.tickReference = null;
     if (timer.getPB() === null || timer.getPB() > time) timer.setPB(time);
     timer.display(time, timer.getPB());
+    console.log(timer.state, timer.tickReference);
   },
 
   display(now, pb) {
@@ -66,7 +117,7 @@ export const timer = {
 
     span.innerHTML = `
       Time: 
-      ${toHours(now)}:${toMinutes(now)}:${toSeconds(now)}
+      ${toHours(now)}:${toMinutes(now)}:${toSeconds(now)} 
       `;
 
     //The same with pb if exists
@@ -75,7 +126,7 @@ export const timer = {
         <br />
         PB:
         ${toHours(pb)}:${toMinutes(pb)}:${toSeconds(pb)}
-        `;
+       `;
     } else span.innerHTML += "<br />PB: Not set yet";
   },
 };
