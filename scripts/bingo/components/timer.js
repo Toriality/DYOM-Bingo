@@ -58,6 +58,7 @@ export const timer = {
     timer.tickReference = null;
     const span = document.getElementById("timerString");
     span.innerText = "Time: Click on a tile to start";
+    span.classList.remove("paused");
   },
 
   start() {
@@ -108,7 +109,6 @@ export const timer = {
     timer.tickReference = null;
     if (timer.getPB() === null || timer.getPB() > time) timer.setPB(time);
     timer.display(time, timer.getPB());
-    console.log(timer.state, timer.tickReference);
   },
 
   display(now, pb) {
