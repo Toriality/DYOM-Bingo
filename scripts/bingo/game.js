@@ -7,6 +7,7 @@ import { score } from "./components/score.js";
 import { history } from "./components/history.js";
 import { seed } from "./components/seed.js";
 import { generateRandomString } from "./utils.js";
+import { easter } from "./components/easter.js";
 
 export const game = {
   id: null,
@@ -76,13 +77,13 @@ export const game = {
     score.set(this.score);
     timer.restart();
     seed.update();
+    easter.check(this.seed.string);
   },
 
   // Finish the game
   finish(newSeed) {
     if (newSeed) seed.set(newSeed);
     else seed.set(generateRandomString());
-    console.log(newSeed);
     this.new();
   },
 
