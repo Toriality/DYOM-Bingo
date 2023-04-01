@@ -5,11 +5,11 @@ export const requirements = [
   },
   {
     name: "TTS",
-    description: "Limit slots that require TTS",
+    description: "Limit slots that require Text-To-Speech",
   },
   {
     name: "Info",
-    description: "Limit slots that require DYOM Info",
+    description: "Limit slots that require DYOM Metadata",
   },
   {
     name: "Time",

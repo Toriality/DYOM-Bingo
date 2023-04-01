@@ -44,30 +44,30 @@ export const slots = [
   },
   {
     slotType: "TTS",
-    string: "Has a brazilian TTS voice",
+    string: "Has a Brazilian TTS voice",
     requires: ["TTS"],
   },
 
   // Start
   {
     slotType: "Start",
-    string: "Starts at San Fierro",
+    string: "Starts in San Fierro",
   },
   {
     slotType: "Start",
-    string: "Starts at Las Venturas",
+    string: "Starts in Las Venturas",
   },
   {
     slotType: "Start",
-    string: "Starts at Los Santos",
+    string: "Starts in Los Santos",
   },
   {
     slotType: "Start",
-    string: "Starts at an interior",
+    string: "Starts in an interior",
   },
   {
     slotType: "Start",
-    string: "Starts at Grove Street",
+    string: "Starts in Grove Street",
   },
   {
     slotType: "Start",
@@ -79,7 +79,7 @@ export const slots = [
   },
   {
     slotType: "Start",
-    string: "Starts at Johnson's House",
+    string: "Starts at The Johnson House",
   },
   {
     slotType: "Start",
@@ -107,11 +107,11 @@ export const slots = [
   },
   {
     slotType: "Start",
-    string: "Starts at night",
+    string: "Starts at nighttime",
   },
   {
     slotType: "Start",
-    string: "Starts at day",
+    string: "Starts at daytime",
   },
   {
     slotType: "Start",
@@ -119,18 +119,18 @@ export const slots = [
   },
   {
     slotType: "Start",
-    string: "Starts at a rainy weather",
+    string: "Starts during rainy weather",
   },
   {
     slotType: "Start",
-    string: "Starts at a sunny weather",
+    string: "Starts during sunny weather",
     helperText: "Default weather in DYOM",
   },
   {
     slotType: "Start",
     string: "Starts wanted by the police",
     helperText:
-      "Player starts with a wanted level equals or higher than 1 star",
+      "Player starts with a wanted level of at least 1 star",
   },
 
   // Mission info
@@ -155,12 +155,12 @@ export const slots = [
   },
   {
     slotType: "Mission Info",
-    string: "Mission name is DYOM",
+    string: 'Mission name is "DYOM"',
     helperText: 'The default mission title in DYOM is "DYOM"',
   },
   {
     slotType: "Mission Info",
-    string: "Missiondesign by DYOM",
+    string: '"Missiondesign by DYOM"',
     helperText: `The default author name in DYOM is "DYOM". You can't change the author name in the settings after you confirm it`,
   },
   {
@@ -178,7 +178,7 @@ export const slots = [
   },
   {
     slotType: "Mission Info",
-    string: "Mission made by Target13",
+    string: "Mission was made by Target13",
     helperText: "Target13 is a senior designer of DYOM Community",
   },
   {
@@ -188,15 +188,15 @@ export const slots = [
   },
   {
     slotType: "Mission Info",
-    string: "Mission author has 'DYOM' on their name",
+    string: 'Mission author has "DYOM" in their name',
   },
   {
     slotType: "Mission Info",
-    string: "Mission author has number(s) on their name",
+    string: "Mission author has number(s) in their name",
   },
   {
     slotType: "Mission Info",
-    string: "Part X (where X bigger than 1)",
+    string: "Part X (where X is greater than 1)",
   },
   {
     slotType: "Mission Info",
@@ -219,7 +219,7 @@ export const slots = [
   {
     slotType: "Mission Theme",
     string: "Gang mission",
-    helperText: "Grove vs Ballas, Mafia families, Bikers gangs, etc",
+    helperText: "Grove vs Ballas, Mafia families, Biker gangs, etc",
   },
   {
     slotType: "Mission Theme",
@@ -294,21 +294,21 @@ export const slots = [
   },
   {
     slotType: "Issues",
-    string: "Rainbomizer fails to load mission (starts a empty DYOM mission)",
+    string: "Rainbomizer fails to load mission (starts an empty DYOM mission)",
     helperText:
       "Sometimes the Rainbomizer encounters a problem downloading the mission file, or maybe the author deleted it",
   },
   {
     slotType: "Issues",
-    string: "Ball actor bug",
+    string: '"Ball actor" bug',
     helperText:
-      "It is a problem with the base game. You cannot render too many entries at the same time without breaking the game",
+      "A problem with the base game which occurs when too many NPC actors are loaded at the same time",
   },
   {
     slotType: "Issues",
     string: "Camera bug",
     helperText:
-      "The camera of a cutscene get stuck during gameplay. This happens when you set an cutscene to follow/look at an actor as the last cutscene before the start of a gameplay.",
+      "The camera of a cutscene gets stuck during gameplay. This happens when you set an cutscene to follow/look at an actor as the last cutscene before the start of a gameplay.",
   },
 
   // Mission status
@@ -374,7 +374,7 @@ export const slots = [
   },
   {
     slotType: "Player",
-    string: "Player is from The Triads",
+    string: "Player is a member of the Triads (Woozie's gang)",
   },
   {
     slotType: "Player",
@@ -418,7 +418,7 @@ export const slots = [
   {
     slotType: "Settings",
     string: "No peds and cars on the streets",
-    helperText: "You can opt to disable NPCs spawning at the streets in DYOM",
+    helperText: "A mission designer can disable pedestrians and traffic in DYOM",
   },
 
   // Actors
@@ -442,14 +442,14 @@ export const slots = [
   {
     slotType: "Actors",
     string:
-      "Mission tells you to kill all enemies but you only need to kill one person",
+      "Mission tells you to kill all enemies, but you only need to kill one person",
     helperText:
       'The "Kill whole gang" option was only introduced in later versions of DYOM. That is why many older missions are designed that way',
   },
   {
     slotType: "Actors",
     string:
-      "Mission tells you to kill all enemies but you only need to go to a checkpoint",
+      "Mission tells you to kill all enemies, but you only need to go to a checkpoint",
     helperText:
       'The "Kill whole gang" option was only introduced in later versions of DYOM. That is why many older missions are designed that way',
   },
@@ -494,7 +494,7 @@ export const slots = [
   {
     slotType: "Actors",
     string:
-      "Your friend is supposed to go somewhere with you but you leave him behind",
+      "Your friend is supposed to go somewhere with you, but you leave them behind",
   },
   {
     slotType: "Actors",
@@ -539,7 +539,7 @@ export const slots = [
   {
     slotType: "Actors",
     string:
-      "An actor has a name that does not corresponds to the original game character's name",
+      "An actor has a name that does not correspond to the original game character's name",
     helperText: "Ex: Actor has Ryder skin but his name is Jorge",
   },
 
@@ -564,12 +564,12 @@ export const slots = [
   {
     slotType: "Checkpoints",
     string:
-      "Checkpoint near yellow marker without teleporting you to the interior",
+      "Checkpoint near yellow marker which doesn't teleport you to the interior when entered",
   },
   {
     slotType: "Checkpoints",
     string:
-      "Checkpoint inside the car you need to enter (instead of a car objective)",
+      "Checkpoint is located within the car you need to enter (instead of a 'get in the car' objective)",
   },
 
   // Locations
@@ -603,11 +603,11 @@ export const slots = [
   },
   {
     slotType: "Locations",
-    string: "Uses a 24/7 interior",
+    string: "Uses a 24/7 (convenience store) interior",
   },
   {
     slotType: "Locations",
-    string: "Uses a interior that has background music in it",
+    string: "Uses an interior that has background music in it",
   },
   {
     slotType: "Locations",
@@ -619,11 +619,11 @@ export const slots = [
   },
   {
     slotType: "Locations",
-    string: "Uses Madd Dog's mansion",
+    string: "Uses Madd Dogg's mansion",
   },
   {
     slotType: "Locations",
-    string: "Uses Area 69's base",
+    string: "Uses the Area 69 underground base",
   },
   {
     slotType: "Locations",
@@ -631,7 +631,7 @@ export const slots = [
   },
   {
     slotType: "Locations",
-    string: "Uses Caligula's basement",
+    string: "Uses Caligula's Casino basement",
   },
   {
     slotType: "Locations",
@@ -675,7 +675,7 @@ export const slots = [
   },
   {
     slotType: "Scenes",
-    string: "'Groove Street'",
+    string: '"Groove Street"',
   },
   {
     slotType: "Scenes",
@@ -716,7 +716,7 @@ export const slots = [
     slotType: "Scenes",
     string: "Shaky camera",
     helperText:
-      "The cutscene has a shaky effect (Commonly used for explosions or drunk effect)",
+      "The cutscene has a shaky effect (Commonly used for explosions or drunk player effect)",
   },
   {
     slotType: "Scenes",
@@ -770,7 +770,7 @@ export const slots = [
   },
   {
     slotType: "Others",
-    string: "Quick mission (Complete in less than one minute)",
+    string: "Quick mission (Completed in less than one minute)",
   },
   {
     slotType: "Others",
@@ -780,7 +780,7 @@ export const slots = [
     slotType: "Others",
     string: "Achieve Hitman skill with one weapon",
     helperText:
-      'There are three levels of skills: "Poor", "Gangster" and "Hitman". DYOM missions starts at poor skill and it cannot be changed',
+      'There are three levels of skills: "Poor", "Gangster" and "Hitman". DYOM missions starts at poor skill and it cannot be changed by the mission designer',
   },
   {
     slotType: "Others",
