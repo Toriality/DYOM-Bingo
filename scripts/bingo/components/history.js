@@ -120,7 +120,7 @@ export const history = {
   },
 
   // Save card
-  save({ seed, id, date, score, time, pb, card }) {
+  save({ status, seed, id, date, score, time, pb, card }) {
     //Parse history data from localStorage to json
     let historyData = JSON.parse(localStorage.getItem("history"));
 
@@ -156,6 +156,7 @@ export const history = {
     if (cardIndex === -1) {
       //New card
       historyData.push({
+        status: status,
         seed: seed,
         id: id,
         date: date,
@@ -168,6 +169,7 @@ export const history = {
       //Existing card
       historyData[cardIndex] = {
         ...historyData[cardIndex],
+        status: status,
         seed: seed,
         score: score,
         time: time,
@@ -185,5 +187,12 @@ export const history = {
   get() {
     const historyData = JSON.parse(localStorage.getItem("history"));
     return historyData;
+  },
+
+  restorePoint() {
+    // Restore last card if it contains status of unfinished
+    const lastCard = history.get()[history.get().length - 1];
+    if (lastCard?.status === "unfinished") return lastCard;
+    else return null;
   },
 };

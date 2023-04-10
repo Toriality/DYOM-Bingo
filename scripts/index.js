@@ -4,9 +4,8 @@ const gameDiv = document.getElementById("game");
 
 game.init();
 game.createIn(gameDiv);
-game.new();
-
-console.log(game.seed.value, game.seed.string);
+if (game.shouldStartNewGame) game.new();
+else game.load();
 
 // DEBUG
 document.addEventListener("keydown", (e) => {

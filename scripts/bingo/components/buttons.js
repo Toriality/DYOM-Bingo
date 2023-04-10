@@ -36,10 +36,10 @@ export const buttons = {
         "Are you sure you want to reset your stats? All the data will be lost."
       );
       if (shouldReset) {
+        game.finish();
         score.reset();
         timer.resetPB();
         history.reset();
-        game.finish();
       }
     });
 

@@ -28,16 +28,32 @@ export const card = {
   },
 
   // Set tiles from given slots
-  set(slots) {
+  set(slots, type) {
     const tiles = card.get();
     tiles.forEach((tile) => {
-      const randomSlot = slots.pop();
-      if (!tile.classList.contains("free")) {
-        tile.innerText = randomSlot.string;
-        if (randomSlot.helperText) {
+      if (type === "load") {
+        const slot = slots.find(
+          (slot) => slot.x === tile.x && slot.y === tile.y
+        );
+        tile.innerText = slot.string;
+        if (slot.selected) tile.classList.add("selected");
+        if (slot.helperText) {
           const helperText = document.createElement("span");
-          helperText.innerText = randomSlot.helperText;
+          helperText.innerText = slot.helperText;
           tile.appendChild(helperText);
+        }
+      } else {
+        const randomSlot = slots.pop();
+        if (!tile.classList.contains("free")) {
+          tile.innerText = randomSlot.string;
+          if (randomSlot.helperText) {
+            const helperText = document.createElement("span");
+            helperText.innerText = randomSlot.helperText;
+            tile.appendChild(helperText);
+          }
+        }
+        if (randomSlot.selected) {
+          tile.classList.add("selected");
         }
       }
     });
@@ -117,9 +133,9 @@ const onTileClick = (e) => {
   // Check if player has won the game
   card.checkWin();
 
-  // Save game every time a tile is clicked
-  game.save();
-
   // Resume timer if paused
   game.resume();
+
+  // Save game every time a tile is clicked
+  game.save();
 };
