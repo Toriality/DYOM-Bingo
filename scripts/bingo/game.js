@@ -93,7 +93,7 @@ export const game = {
     this.seed = restored.seed;
     this.date = restored.date;
     this.canSkip = false;
-    this.alreadyWon = false;
+    this.alreadyWon = restored.alreadyWon;
     card.set(restored.card.slots, "load");
     score.set(restored.score);
     seed.set(restored.seed);
@@ -130,6 +130,7 @@ export const game = {
       time: this.time,
       pb: this.pb,
       card: this.card,
+      alreadyWon: this.alreadyWon,
     });
     history.update();
   },
@@ -139,7 +140,6 @@ export const game = {
     if (!this.alreadyWon) {
       score.updateWon();
       timer.win();
-      this.status = "finished";
       this.alreadyWon = true;
     }
   },

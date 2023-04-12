@@ -128,7 +128,7 @@ export const history = {
   },
 
   // Save card
-  save({ status, seed, id, date, score, time, pb, card }) {
+  save({ status, seed, id, date, score, time, pb, card, alreadyWon }) {
     //Parse history data from localStorage to json
     let historyData = JSON.parse(localStorage.getItem("history"));
 
@@ -172,6 +172,7 @@ export const history = {
         time: time,
         pb: pb,
         card: storedCard,
+        alreadyWon: alreadyWon,
       });
     } else {
       //Existing card
@@ -183,6 +184,7 @@ export const history = {
         time: time,
         pb: pb,
         card: storedCard,
+        alreadyWon: alreadyWon,
       };
     }
     localStorage.setItem("history", JSON.stringify(historyData));
