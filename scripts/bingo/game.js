@@ -107,7 +107,6 @@ export const game = {
   },
 
   resume() {
-    console.log("resuming game at" + timer.getTime());
     timer.resume();
   },
 
