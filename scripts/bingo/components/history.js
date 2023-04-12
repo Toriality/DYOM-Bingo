@@ -64,6 +64,7 @@ export const history = {
       //Create cards
       const cardDiv = document.createElement("div");
       cardDiv.className = "card";
+      cardDiv.id = cardData.id;
 
       //Create table without strings
       const table = createBingoTable((cell, i, j) => {
@@ -94,9 +95,16 @@ export const history = {
 
   // Updates the last card in the history
   update() {
-    const card = history.get()[history.get().length - 1].card;
-    let cardDiv = history.div.querySelector(".card.current");
+    const lastGame = history.get()[history.get().length - 1];
+    const lastDiv = history.div.querySelector(".card:last-child");
+    const card = lastGame.card;
 
+    // Check if last card is the current unfinished game
+    if (lastGame?.id === lastDiv?.id) {
+      lastDiv.classList.add("current");
+    }
+
+    let cardDiv = history.div.querySelector(".card.current");
     if (!cardDiv) {
       cardDiv = document.createElement("div");
       cardDiv.classList.add("card", "current");
