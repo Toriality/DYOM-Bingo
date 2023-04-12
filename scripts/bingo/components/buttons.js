@@ -40,6 +40,7 @@ export const buttons = {
         score.reset();
         timer.resetPB();
         history.reset();
+        history.refresh();
       }
     });
 
