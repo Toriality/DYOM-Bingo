@@ -1,12 +1,25 @@
 {
   "projectName": "DYOM-Bingo",
   "projectOwner": "Toriality",
-  "files": ["README.md"],
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
   "commit": false,
   "contributorsPerLine": 7,
   "contributorsSortAlphabetically": false,
   "linkToUsage": true,
   "skipCi": true,
-  "contributors": []
+  "contributors": [
+    {
+      "login": "TebexPL",
+      "name": "TebexPL",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10909246?v=4",
+      "profile": "https://github.com/TebexPL",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "commitConvention": "angular"
 }
