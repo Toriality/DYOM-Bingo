@@ -1,5 +1,3 @@
-
-
 <div align="center">
 <a href="https://toriality.github.io/DYOM-Bingo/">
 <img width="300" src="./images/logo.png">
@@ -36,18 +34,12 @@ To start contributing to the project please check our [Contributing Guidelines](
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TebexPL"><img src="https://avatars.githubusercontent.com/u/10909246?v=4?s=100" width="100px;" alt="TebexPL"/><br /><sub><b>TebexPL</b></sub></a><br /><a href="#code-TebexPL" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TebexPL"><img src="https://avatars.githubusercontent.com/u/10909246?v=4?s=100" width="100px;" alt="TebexPL"/><br /><sub><b>TebexPL</b></sub></a><br /><a href="https://github.com/toriality/dyom-bingo/commits?author=TebexPL" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/GermanAizek"><img src="https://avatars.githubusercontent.com/u/21138600?v=4?s=100" width="100px;" alt="Herman Semenov"/><br /><sub><b>Herman Semenov</b></sub></a><br /><a href="https://github.com/toriality/dyom-bingo/commits?author=GermanAizek" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lili1228"><img src="https://avatars.githubusercontent.com/u/27950372?v=4?s=100" width="100px;" alt="Lili Kurek"/><br /><sub><b>Lili Kurek</b></sub></a><br /><a href="https://github.com/toriality/dyom-bingo/commits?author=lili1228" title="Code">💻</a> <a href="https://github.com/toriality/dyom-bingo/issues?q=author%3Alili1228" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/laszlostark"><img src="https://avatars.githubusercontent.com/u/62555605?v=4?s=100" width="100px;" alt="Laszlo Stark"/><br /><sub><b>Laszlo Stark</b></sub></a><br /><a href="https://github.com/toriality/dyom-bingo/issues?q=author%3Alaszlostark" title="Bug reports">🐛</a> <a href="https://github.com/toriality/dyom-bingo/commits?author=laszlostark" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
-  <tfoot>
-    <tr>
-      <td align="center" size="13px" colspan="7">
-        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
-          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
-        </img>
-      </td>
-    </tr>
-  </tfoot>
 </table>
 
 <!-- markdownlint-restore -->
