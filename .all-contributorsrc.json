@@ -1,0 +1,12 @@
+{
+  "projectName": "DYOM-Bingo",
+  "projectOwner": "Toriality",
+  "files": ["README.md"],
+  "imageSize": 100,
+  "commit": false,
+  "contributorsPerLine": 7,
+  "contributorsSortAlphabetically": false,
+  "linkToUsage": true,
+  "skipCi": true,
+  "contributors": []
+}
