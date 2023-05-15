@@ -1,0 +1,91 @@
+#modal {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#modal.active {
+  display: block;
+}
+
+#modalBox {
+  margin: 2% 0;
+  padding: 2rem;
+  background-color: #f4f4f4;
+}
+
+#modalBox.dark {
+  background-color: #050505;
+  color: white;
+}
+
+#modalClose {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  color: red;
+  margin-bottom: 12px;
+}
+
+#modalContent table,
+#modalContent td {
+  pointer-events: none;
+  padding: 4px;
+  font-size: 1.1rem;
+}
+
+#modalContent div {
+  font-size: 1.4rem;
+  margin: 2rem 0;
+}
+
+@media screen and (min-width: 640px) {
+  #modalBox {
+    width: 90%;
+    margin: 2% auto;
+  }
+
+  #modalContent td {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #modalBox {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #modalBox {
+    width: 66%;
+  }
+
+  #modalContent table {
+    aspect-ratio: 4/3;
+    width: 80%;
+  }
+
+  #modalContent td {
+    padding: 1.6rem;
+    width: 18rem;
+    height: 12rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  #modalBox {
+    width: 50%;
+  }
+
+  #modalContent table {
+    width: 75%;
+  }
+}

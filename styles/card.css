@@ -1,5 +1,53 @@
 #card {
   display: flex;
+  flex-direction: column;
+}
+
+#card table {
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+#card .textBox {
+  margin-bottom: 0;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#card #seedInput {
+  display: flex;
+  align-items: center;
+}
+
+#card #seedInput input {
+  all: unset;
+  margin: 0 1rem;
+  background-color: white;
+  border: 1px solid white;
+}
+
+#card #seedInput input:focus {
+  background-color: #ffdf70;
+}
+
+#card #seedInput input:hover {
+  border: 1px solid #ccc;
+}
+
+#card #seedInput input.dark {
+  background-color: black;
+  border: 1px solid black;
+}
+
+#card #seedInput input.dark:focus {
+  background-color: white;
+  color: black;
+}
+
+#card #seedInput input.dark:hover {
+  border: 1px solid #ccc;
 }
 
 @media screen and (min-width: 1280px) {

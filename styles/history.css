@@ -1,0 +1,83 @@
+#history {
+  margin-top: 8rem;
+}
+
+#history h1 {
+  padding: 1rem;
+  background: #2b37b3;
+  color: white;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+#historyBox {
+  display: flex;
+  padding: 2rem 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 4rem;
+  background: #1a2431;
+}
+
+#historyBox .card {
+  margin: auto;
+  padding: 0 32px;
+}
+
+#historyBox .card.current td {
+  background: #777;
+  border-color: #222;
+}
+#historyBox .card.current td.selected {
+  background: #aaa;
+}
+#historyBox .card.current td.win {
+  background: #fff !important;
+}
+
+#historyBox table {
+  width: unset;
+}
+
+#historyBox table:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+#historyBox td {
+  width: unset;
+  height: unset;
+  pointer-events: none;
+}
+
+/* TODO: Make helperText on this code and on table.css DRY */
+#historyBox table span {
+  position: absolute;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  background-color: black;
+  color: #ccc;
+  padding: 5px 10px;
+  transition: opacity 600ms linear;
+  pointer-events: none;
+}
+
+#historyBox table:hover span {
+  visibility: visible;
+  position: absolute;
+  transform: translateY(-500%);
+  width: 32ch;
+  opacity: 0.9;
+  z-index: 999;
+}
+
+@media screen and (min-width: 1280px) {
+  #historyBox .card {
+    flex: 1 20%;
+  }
+
+  #historyBox table {
+    margin: auto;
+  }
+}

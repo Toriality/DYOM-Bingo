@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
-    <link rel="stylesheet" href="./styles/global.css" />
-    <link rel="stylesheet" href="./styles/header.css" />
-    <link rel="stylesheet" href="./styles/footer.css" />
-    <link rel="stylesheet" href="./styles/game.css" />
-    <link rel="stylesheet" href="./styles/table.css" />
-    <link rel="stylesheet" href="./styles/card.css" />
-    <link rel="stylesheet" href="./styles/panel.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/game.css">
+    <link rel="stylesheet" href="./styles/table.css">
+    <link rel="stylesheet" href="./styles/card.css">
+    <link rel="stylesheet" href="./styles/panel.css">
+    <link rel="stylesheet" href="./styles/history.css">
+    <link rel="stylesheet" href="./styles/modal.css">
     <title>DYOM Bingo</title>
   </head>
   <body>
     <header></header>
 
     <main>
-      <section id="game">
-        <div id="card"></div>
-        <div id="panel">
-          <div id="scoreBox" class="textBox"></div>
-          <div id="timerBox" class="textBox"></div>
-          <div id="options"></div>
-          <button type="button" id="generate">Generate new card</button>
-          <button type="button" id="reset">Reset score</button>
-        </div>
+      <div id="game"></div>
+      <section id="history">
+        <h1>Your DYOM Bingo history</h1>
+        <div id="historyBox"></div>
       </section>
     </main>
 
     <footer></footer>
+    <div id="modal">
+      <div id="modalBox">
+        <div id="modalClose"><span>Close</span></div>
+        <div id="modalContent"></div>
+      </div>
+    </div>
 
     <script src="./scripts/index.js" type="module"></script>
-    <script src="./scripts/import.js" type="module"></script>
+    <script src="./scripts/site/import.js" type="module"></script>
   </body>
 </html>

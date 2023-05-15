@@ -6,9 +6,9 @@ async function loadHeader() {
   target.innerHTML = text;
 
   //Since the header is present in every page
-  //Append theme script to it so that the theme is loaded in every apge
+  //Append theme script to it so that the theme is loaded in every page
   const script = document.createElement("script");
-  script.src = "./scripts/theme.js";
+  script.src = "./scripts/site/theme.js";
   script.type = "module";
 
   target.appendChild(script);
