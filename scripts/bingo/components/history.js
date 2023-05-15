@@ -64,6 +64,7 @@ export const history = {
       //Create cards
       const cardDiv = document.createElement("div");
       cardDiv.className = "card";
+      cardDiv.id = cardData.id;
 
       //Create table without strings
       const table = createBingoTable((cell, i, j) => {
@@ -94,9 +95,16 @@ export const history = {
 
   // Updates the last card in the history
   update() {
-    const card = history.get()[history.get().length - 1].card;
-    let cardDiv = history.div.querySelector(".card.current");
+    const lastGame = history.get()[history.get().length - 1];
+    const lastDiv = history.div.querySelector(".card:last-child");
+    const card = lastGame.card;
 
+    // Check if last card is the current unfinished game
+    if (lastGame?.id === lastDiv?.id) {
+      lastDiv.classList.add("current");
+    }
+
+    let cardDiv = history.div.querySelector(".card.current");
     if (!cardDiv) {
       cardDiv = document.createElement("div");
       cardDiv.classList.add("card", "current");
@@ -120,7 +128,7 @@ export const history = {
   },
 
   // Save card
-  save({ seed, id, date, score, time, pb, card }) {
+  save({ status, seed, id, date, score, time, pb, card, alreadyWon }) {
     //Parse history data from localStorage to json
     let historyData = JSON.parse(localStorage.getItem("history"));
 
@@ -156,6 +164,7 @@ export const history = {
     if (cardIndex === -1) {
       //New card
       historyData.push({
+        status: status,
         seed: seed,
         id: id,
         date: date,
@@ -163,16 +172,19 @@ export const history = {
         time: time,
         pb: pb,
         card: storedCard,
+        alreadyWon: alreadyWon,
       });
     } else {
       //Existing card
       historyData[cardIndex] = {
         ...historyData[cardIndex],
+        status: status,
         seed: seed,
         score: score,
         time: time,
         pb: pb,
         card: storedCard,
+        alreadyWon: alreadyWon,
       };
     }
     localStorage.setItem("history", JSON.stringify(historyData));
@@ -185,5 +197,12 @@ export const history = {
   get() {
     const historyData = JSON.parse(localStorage.getItem("history"));
     return historyData;
+  },
+
+  restorePoint() {
+    // Restore last card if it contains status of unfinished
+    const lastCard = history.get()[history.get().length - 1];
+    if (lastCard?.status === "unfinished") return lastCard;
+    else return null;
   },
 };

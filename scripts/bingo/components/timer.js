@@ -13,6 +13,9 @@ export const timer = {
   //setInterval reference for stopping the timer
   tickReference: null,
 
+  //Starts te time at given time (used for loading unfinished games)
+  at: null,
+
   //Creates timer text element
   createIn(div) {
     const timerDiv = document.createElement("div");
@@ -21,6 +24,10 @@ export const timer = {
     timerDiv.title = "Click to pause/resume";
     timerDiv.addEventListener("click", timer.pause);
     div.appendChild(timerDiv);
+  },
+
+  startAt(time) {
+    timer.at = time;
   },
 
   //Get PB from localStorage
@@ -46,11 +53,12 @@ export const timer = {
   },
 
   getTime() {
-    const time = Date.now() - timer.startTime;
+    const time = timer.at ? timer.at : Date.now() - timer.startTime;
     return time;
   },
 
   restart() {
+    timer.at = null;
     timer.state = "waiting";
     timer.startTime = Date.now();
     timer.pauseTime = null;
@@ -62,7 +70,8 @@ export const timer = {
   },
 
   start() {
-    timer.startTime = Date.now();
+    timer.startTime = timer.at ? Date.now() - timer.at : Date.now();
+    timer.at = null;
     if (timer.state === "waiting") {
       timer.display(timer.getTime(), timer.getPB());
       timer.tickReference = setInterval(timer.tick, 200);

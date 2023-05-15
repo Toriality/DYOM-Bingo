@@ -10,6 +10,7 @@ import { generateRandomString } from "./utils.js";
 import { easter } from "./components/easter.js";
 
 export const game = {
+  status: null,
   id: null,
   seed: null,
   date: null,
@@ -28,6 +29,9 @@ export const game = {
   },
   get card() {
     return card.get();
+  },
+  get shouldStartNewGame() {
+    return history.restorePoint() === null;
   },
 
   createIn(div) {
@@ -64,6 +68,7 @@ export const game = {
     const gameSeed = seed.get();
     const date = new Date();
 
+    this.status = "unfinished";
     this.id = id;
     this.seed = gameSeed;
     this.date = date.toLocaleString("en-US");
@@ -80,6 +85,23 @@ export const game = {
     timer.restart();
   },
 
+  // Load latest game from localStorage if it hasn't finished
+  load() {
+    const restored = history.restorePoint();
+    this.status = restored.status;
+    this.id = restored.id;
+    this.seed = restored.seed;
+    this.date = restored.date;
+    this.canSkip = false;
+    this.alreadyWon = restored.alreadyWon;
+    card.set(restored.card.slots, "load");
+    score.set(restored.score);
+    seed.set(restored.seed);
+    seed.update();
+    timer.restart();
+    timer.startAt(restored.time);
+  },
+
   pause() {
     timer.pause();
   },
@@ -90,6 +112,8 @@ export const game = {
 
   // Finish the game
   finish(newSeed) {
+    this.status = "finished";
+    if (!this.canSkip) this.save();
     if (newSeed) seed.set(newSeed);
     else seed.set(generateRandomString());
     this.new();
@@ -98,13 +122,15 @@ export const game = {
   // Save game
   save() {
     history.save({
-      seed: this.seed.string,
+      status: this.status,
+      seed: this.seed.string || this.seed,
       id: this.id,
       date: this.date,
       score: this.score,
       time: this.time,
       pb: this.pb,
       card: this.card,
+      alreadyWon: this.alreadyWon,
     });
     history.update();
   },
