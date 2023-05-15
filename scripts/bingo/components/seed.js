@@ -54,7 +54,7 @@ export const seed = {
 
   copy() {
     const text = `
-    ${window.location.origin}?seed=${seed.div.seedInput.value}`;
+    ${window.location.href}?seed=${seed.div.seedInput.value}`;
     navigator.clipboard.writeText(text);
 
     // Wait 200ms to show alert, otherwise it will throw a "Document not focused" error
