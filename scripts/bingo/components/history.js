@@ -142,17 +142,14 @@ export const history = {
     });
 
     storedCard.slots.forEach((slot, i) => {
-      //Get string until \n is reached
-      //Because helperText is contained inside innerText and should be removed
-      let string = slot.innerText;
-      if (slot.innerText.includes("\n")) {
-        string = slot.innerText.slice(0, slot.innerText.indexOf("\n"));
-      }
+      let string = slot.innerText.split("\n")[0];
+      let helperText = slot.children[0]?.innerHTML;
 
       storedCard.slots[i] = {
         x: slot.x,
         y: slot.y,
         string: string,
+        helperText: helperText,
         selected: !!slot.classList.contains("selected"),
         win: !!slot.classList.contains("win"),
       };
