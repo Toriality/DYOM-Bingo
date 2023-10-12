@@ -1,14 +1,17 @@
 #card {
   display: flex;
   flex-direction: column;
+  font-size: 1rem;
 }
 
 #card table {
+  table-layout: fixed;
   margin-bottom: 1rem;
   flex: 1;
 }
 
 #card .textBox {
+  font-size: initial;
   margin-bottom: 0;
   padding: 1rem 2rem;
   display: flex;
@@ -48,6 +51,12 @@
 
 #card #seedInput input.dark:hover {
   border: 1px solid #ccc;
+}
+
+@media screen and (min-width: 600px) {
+  #card {
+    font-size: inherit;
+  }
 }
 
 @media screen and (min-width: 1280px) {

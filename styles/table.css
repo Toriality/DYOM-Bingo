@@ -17,9 +17,8 @@ td {
   text-align: center;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  width: 16rem;
-  height: 16rem;
-  padding: 1.6rem;
+  height: 20vw;
+  padding: 0.25rem;
 }
 
 td.dark {
@@ -88,6 +87,7 @@ td:hover span {
   td {
     width: 12rem;
     height: 12rem;
+    padding: 1.6rem;
   }
 }
 
